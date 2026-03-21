@@ -29,9 +29,12 @@ export default function StatCounter({ value, label }: StatCounterProps) {
   }, [inView, numberTarget, suffix]);
 
   return (
-    <div ref={ref} className="rounded-lg border border-border-subtle bg-bg-dark px-5 py-4 text-center">
-      <p className="font-display text-4xl uppercase text-accent">{display}</p>
-      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">{label}</p>
+    <div
+      ref={ref}
+      className="rounded-sm border border-border-subtle bg-bg-dark px-4 py-4 text-center sm:px-5"
+    >
+      <p className="font-display text-3xl font-normal tabular-nums text-accent sm:text-4xl">{display}</p>
+      <p className="mt-2 text-[10px] font-semibold uppercase tracking-brand text-text-muted">{label}</p>
     </div>
   );
 }

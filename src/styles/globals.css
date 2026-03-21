@@ -17,41 +17,60 @@ main {
 
 @layer components {
   .section-container {
-    @apply mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28;
+    @apply mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-32;
+  }
+
+  .section-container-tight {
+    @apply mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-20;
   }
 
   .section-eyebrow {
-    @apply mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-accent;
+    @apply mb-3 text-[11px] font-semibold uppercase tracking-brand text-accent-blue;
   }
 
   .accent-divider {
-    @apply h-1 w-16 rounded-full bg-accent;
+    @apply h-px w-12 bg-accent;
+  }
+
+  .accent-rule {
+    @apply h-[3px] w-16 bg-accent;
   }
 
   .btn-primary {
-    @apply inline-flex min-h-[52px] items-center justify-center rounded-md bg-accent px-8 py-4 text-sm font-bold uppercase tracking-wide text-text-dark transition-all duration-300 hover:scale-[1.02] hover:bg-accent-hover hover:shadow-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
+    @apply inline-flex min-h-[50px] items-center justify-center rounded-sm bg-accent px-8 py-3.5 text-xs font-bold uppercase tracking-brand text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[52px] items-center justify-center rounded-md border-2 border-accent bg-transparent px-8 py-4 text-sm font-bold uppercase tracking-wide text-accent transition-all duration-300 hover:scale-[1.02] hover:bg-accent hover:text-text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
+    @apply inline-flex min-h-[50px] items-center justify-center rounded-sm border border-border-strong bg-transparent px-8 py-3.5 text-xs font-bold uppercase tracking-brand text-text-white transition-all duration-200 hover:border-text-white hover:bg-text-white hover:text-text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
+  }
+
+  .btn-ghost {
+    @apply inline-flex min-h-[50px] items-center justify-center rounded-sm border border-transparent px-6 py-3 text-xs font-semibold uppercase tracking-brand text-text-white/90 transition-colors hover:text-accent-blue;
+  }
+
+  .btn-on-accent {
+    @apply inline-flex min-h-[50px] items-center justify-center rounded-sm border-2 border-text-white px-8 py-3.5 text-xs font-bold uppercase tracking-brand text-text-white transition-all duration-200 hover:bg-text-white hover:text-text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-accent;
   }
 
   .card-base {
-    @apply rounded-xl border border-border-subtle bg-bg-dark-card p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-card;
+    @apply rounded-sm border border-border-subtle bg-bg-dark-card p-6 shadow-card transition-all duration-300 hover:border-border-strong md:p-8;
   }
 
   .input-field {
-    @apply w-full rounded-md border border-border-subtle bg-bg-dark px-3 py-2.5 text-text-white outline-none transition-all placeholder:text-text-muted/70 focus:border-accent focus:ring-2 focus:ring-accent/30;
+    @apply w-full rounded-sm border border-border-subtle bg-bg-dark px-3 py-2.5 text-text-white outline-none transition-all placeholder:text-text-muted/60 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue/40;
+  }
+
+  .nav-link-underline {
+    @apply absolute bottom-0 left-0 h-px bg-accent transition-all duration-300;
+  }
+
+  .surface-light {
+    @apply bg-surface-light text-text-dark;
   }
 }
 
 .skip-link {
-  @apply absolute left-4 top-2 z-[80] -translate-y-24 rounded-md bg-accent px-4 py-2 font-semibold text-text-dark transition-transform focus:translate-y-0;
-}
-
-.texture-layer {
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 200, 87, 0.08) 1px, transparent 0);
-  background-size: 24px 24px;
+  @apply absolute left-4 top-2 z-[80] -translate-y-24 rounded-sm bg-accent px-4 py-2 text-xs font-bold uppercase tracking-brand text-white transition-transform focus:translate-y-0;
 }
 
 @media (prefers-reduced-motion: reduce) {

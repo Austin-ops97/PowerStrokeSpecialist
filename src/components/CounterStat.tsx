@@ -30,7 +30,7 @@ export default function CounterStat({ to, label }: CounterStatProps) {
   }, [label, springValue]);
 
   return (
-    <p ref={ref} className="rounded-lg border border-border px-4 py-2 text-sm text-text-muted" aria-label={`${to}+ ${label}`}>
+    <p ref={ref} className="border border-border-subtle px-4 py-2 text-sm text-text-muted" aria-label={`${to}+ ${label}`}>
       0+ {label}
     </p>
   );

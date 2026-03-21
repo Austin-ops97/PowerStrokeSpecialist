@@ -1,37 +1,39 @@
 import { BUSINESS_INFO, NAV_LINKS, SERVICES } from "@/lib/constants";
 import { Facebook, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border-subtle bg-bg-dark-card pb-10 pt-16">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
-        <div>
-          <h3 className="font-display text-3xl uppercase tracking-[0.06em] text-accent">Power Stroke Specialist</h3>
-          <p className="mt-3 text-sm leading-relaxed text-text-muted">
-            Baytown&apos;s trusted diesel and full-service mechanic shop focused on honest repairs and dependable results.
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-text-muted">
-            We specialize in Power Stroke bulletproofing and full vehicle service for drivers across Texas.
+    <footer className="border-t border-border-subtle bg-black">
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-accent/50 to-transparent" aria-hidden />
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 lg:grid-cols-12 lg:gap-10 lg:px-12 lg:py-20">
+        <div className="lg:col-span-4">
+          <Link href="/" className="inline-flex items-center gap-3">
+            <Image src="/images/logo.png" alt="Power Stroke Specialist" width={140} height={48} className="h-10 w-auto object-contain" />
+          </Link>
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-text-muted">
+            Flagship diesel and automotive service in Baytown—focused on honest diagnostics, disciplined workmanship, and
+            Power Stroke builds done to a standard, not a shortcut.
           </p>
           <a
             href={BUSINESS_INFO.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit our Facebook page"
-            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-light"
+            className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-brand text-accent-blue transition-colors hover:text-text-white"
           >
-            <Facebook size={16} />
+            <Facebook size={16} strokeWidth={1.75} />
             Facebook
           </a>
         </div>
 
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-text-white">Quick Access</h4>
-          <ul className="mt-4 space-y-3 text-sm text-text-muted">
+        <div className="lg:col-span-2">
+          <h4 className="text-[11px] font-semibold uppercase tracking-brand text-accent-blue">Navigate</h4>
+          <ul className="mt-5 space-y-3 text-sm text-text-muted">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="transition-colors hover:text-accent">
+                <Link href={link.href} className="transition-colors hover:text-text-white">
                   {link.label}
                 </Link>
               </li>
@@ -39,12 +41,12 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-text-white">Services</h4>
-          <ul className="mt-4 space-y-3 text-sm text-text-muted">
+        <div className="lg:col-span-3">
+          <h4 className="text-[11px] font-semibold uppercase tracking-brand text-accent-blue">Services</h4>
+          <ul className="mt-5 space-y-3 text-sm text-text-muted">
             {SERVICES.slice(0, 6).map((service) => (
               <li key={service.id}>
-                <Link href="/services" className="transition-colors hover:text-accent">
+                <Link href="/services" className="transition-colors hover:text-text-white">
                   {service.name}
                 </Link>
               </li>
@@ -52,31 +54,34 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-text-white">Contact Info</h4>
-          <ul className="mt-4 space-y-4 text-sm text-text-muted">
-            <li className="flex gap-2">
-              <MapPin size={16} className="mt-0.5 text-accent" />
+        <div className="lg:col-span-3">
+          <h4 className="text-[11px] font-semibold uppercase tracking-brand text-accent-blue">Contact</h4>
+          <ul className="mt-5 space-y-4 text-sm text-text-muted">
+            <li className="flex gap-3">
+              <MapPin size={16} className="mt-0.5 shrink-0 text-accent" strokeWidth={1.75} />
               <span>
                 {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
               </span>
             </li>
-            <li className="flex gap-2">
-              <Phone size={16} className="text-accent" />
-              <a href={`tel:${BUSINESS_INFO.phone}`} className="hover:text-accent">
+            <li className="flex gap-3">
+              <Phone size={16} className="shrink-0 text-accent" strokeWidth={1.75} />
+              <a href={`tel:${BUSINESS_INFO.phone}`} className="font-medium text-text-white hover:text-accent-blue">
                 {BUSINESS_INFO.phoneFormatted}
               </a>
             </li>
             <li>
-              <p>Mon-Fri: 8:00 AM - 6:00 PM</p>
-              <p>Sat-Sun: Closed</p>
+              <p>Mon–Fri: 8:00 AM – 6:00 PM</p>
+              <p>Sat–Sun: Closed</p>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-7xl border-t border-border-subtle px-4 pt-6 text-center text-sm text-text-muted sm:px-6 lg:px-8">
-        © 2026 Power Stroke Specialist. All rights reserved.
+      <div className="border-t border-border-subtle">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-center text-[11px] uppercase tracking-brand text-text-muted sm:flex-row sm:text-left sm:px-8 lg:px-12">
+          <p>© {new Date().getFullYear()} Power Stroke Specialist. All rights reserved.</p>
+          <p className="text-text-muted/80">Ford Power Stroke · Diesel · Fleet · Performance</p>
+        </div>
       </div>
     </footer>
   );

@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  @apply bg-primary text-text-primary font-body;
+}
+
+main {
+  @apply flex-1;
+}
+
+@layer components {
+  .section-container {
+    @apply mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24;
+  }
+
+  .section-divider {
+    @apply mt-4 h-1 w-20 rounded-full bg-accent;
+  }
+
+  .btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-accent-hover hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-lg border border-white/30 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:border-accent/80 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary;
+  }
+
+  .card-base {
+    @apply rounded-xl border border-border bg-primary-light p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-glow;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-border bg-primary px-3 py-2 text-text-primary outline-none transition-all placeholder:text-text-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/30;
+  }
+}
+
+.industrial-overlay {
+  background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.14) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.skip-link {
+  @apply absolute left-4 top-2 z-[70] -translate-y-24 rounded-md bg-accent px-4 py-2 font-semibold text-white transition-transform focus:translate-y-0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

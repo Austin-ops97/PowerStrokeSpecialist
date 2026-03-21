@@ -1,28 +1,20 @@
 import type { Metadata } from "next";
-import Script from "next/script";
-import { Inter, Oswald } from "next/font/google";
-import "../styles/globals.css";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import PageTransition from "@/components/PageTransition";
+import TopInfoBar from "@/components/TopInfoBar";
 import { BUSINESS_INFO, HOURS, SERVICES } from "@/lib/constants";
 import { SITE_URL, buildMetadata } from "@/lib/site";
+import "@/styles/globals.css";
+import { Inter, Oswald } from "next/font/google";
+import Script from "next/script";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const oswald = Oswald({
-  subsets: ["latin"],
-  variable: "--font-oswald",
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald", display: "swap" });
 
 export const metadata: Metadata = buildMetadata(
   "Home",
-  "Premium diesel mechanic in Baytown TX for Power Stroke bulletproofing, diagnostics, fleet service, and full auto repair you can trust.",
+  "Power Stroke Specialist is a Baytown TX diesel mechanic specializing in Power Stroke bulletproofing, diagnostics, and complete automotive repair.",
   "/"
 );
 
@@ -65,14 +57,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   return (
     <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
-      <body className="min-h-screen bg-primary text-text-primary antialiased">
+      <body className="min-h-screen bg-bg-dark text-text-white antialiased">
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
+
+        <TopInfoBar />
         <Navbar />
+
         <PageTransition>
           <main id="main-content">{children}</main>
         </PageTransition>
+
         <Footer />
 
         <Script

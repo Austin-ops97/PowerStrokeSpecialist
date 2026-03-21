@@ -3,18 +3,19 @@ import { Quote, Star } from "lucide-react";
 type ReviewCardProps = {
   name: string;
   text: string;
+  rating: number;
 };
 
-export default function ReviewCard({ name, text }: ReviewCardProps) {
+export default function ReviewCard({ name, text, rating }: ReviewCardProps) {
   return (
     <article className="card-base h-full">
-      <Quote className="text-accent" />
-      <p className="mt-4 text-text-muted italic">{text}</p>
-      <div className="mt-5 flex items-center justify-between">
-        <p className="font-semibold text-text-primary">{name}</p>
-        <div className="flex gap-1 text-yellow-400" aria-label="5 star review">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <Star key={index} size={14} fill="currentColor" />
+      <Quote className="text-accent" size={26} />
+      <p className="mt-4 italic leading-relaxed text-text-white">{text}</p>
+      <div className="mt-6 flex items-center justify-between">
+        <p className="font-semibold text-accent">{name}</p>
+        <div className="flex gap-1 text-accent" aria-label={`${rating} star review`}>
+          {Array.from({ length: rating }).map((_, idx) => (
+            <Star key={idx} size={14} fill="currentColor" />
           ))}
         </div>
       </div>

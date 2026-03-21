@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SERVICES } from "@/lib/constants";
 import { contactSchema, type ContactFormValues } from "@/lib/contact-schema";
-import { CheckCircle2, LoaderCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle2, LoaderCircle } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -15,7 +15,9 @@ const serviceOptions = [
 ];
 
 export default function ContactForm() {
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -34,16 +36,18 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (values: ContactFormValues) => {
+    setSubmitError(null);
+    setIsSubmitted(false);
+
     const response = await fetch("/api/contact", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
 
     if (!response.ok) {
-      throw new Error("Failed to submit form");
+      setSubmitError("We could not send your message right now. Please call us directly.");
+      return;
     }
 
     setIsSubmitted(true);
@@ -52,34 +56,41 @@ export default function ContactForm() {
 
   return (
     <div className="card-base">
-      <h2 className="font-display text-3xl uppercase tracking-wide">Send Us a Message</h2>
+      <h2 className="font-display text-4xl uppercase text-text-white">Send Us a Message</h2>
 
-      {isSubmitted && (
-        <div className="mt-5 flex items-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 p-3 text-emerald-300">
+      {isSubmitted ? (
+        <div className="mt-5 flex items-center gap-2 rounded-md border border-success/40 bg-success/10 p-3 text-success">
           <CheckCircle2 size={18} />
           <p>Thanks! We&apos;ll get back to you shortly.</p>
         </div>
-      )}
+      ) : null}
+
+      {submitError ? (
+        <div className="mt-5 flex items-center gap-2 rounded-md border border-red-500/40 bg-red-500/10 p-3 text-red-300">
+          <AlertTriangle size={18} />
+          <p>{submitError}</p>
+        </div>
+      ) : null}
 
       <form className="mt-6 space-y-4" onSubmit={handleSubmit(onSubmit)}>
-        <InputField label="Name" error={errors.name?.message}>
-          <input {...register("name")} className="input-field" required />
+        <InputField label="Name" id="contact-name" error={errors.name?.message}>
+          <input id="contact-name" autoComplete="name" {...register("name")} className="input-field" required />
         </InputField>
 
-        <InputField label="Phone Number" error={errors.phone?.message}>
-          <input {...register("phone")} className="input-field" required />
+        <InputField label="Phone Number" id="contact-phone" error={errors.phone?.message}>
+          <input id="contact-phone" autoComplete="tel" {...register("phone")} className="input-field" required />
         </InputField>
 
-        <InputField label="Email (optional)" error={errors.email?.message}>
-          <input type="email" {...register("email")} className="input-field" />
+        <InputField label="Email (optional)" id="contact-email" error={errors.email?.message}>
+          <input id="contact-email" type="email" autoComplete="email" {...register("email")} className="input-field" />
         </InputField>
 
-        <InputField label="Vehicle Year / Make / Model (optional)" error={errors.vehicle?.message}>
-          <input {...register("vehicle")} className="input-field" />
+        <InputField label="Vehicle Year / Make / Model (optional)" id="contact-vehicle" error={errors.vehicle?.message}>
+          <input id="contact-vehicle" autoComplete="off" {...register("vehicle")} className="input-field" />
         </InputField>
 
-        <InputField label="Service Needed" error={errors.serviceNeeded?.message}>
-          <select {...register("serviceNeeded")} className="input-field" required>
+        <InputField label="Service Needed" id="contact-service" error={errors.serviceNeeded?.message}>
+          <select id="contact-service" {...register("serviceNeeded")} className="input-field" required>
             <option value="">Select a service</option>
             {serviceOptions.map((option) => (
               <option key={option} value={option}>
@@ -89,8 +100,8 @@ export default function ContactForm() {
           </select>
         </InputField>
 
-        <InputField label="Message" error={errors.message?.message}>
-          <textarea {...register("message")} className="input-field min-h-32" required />
+        <InputField label="Message" id="contact-message" error={errors.message?.message}>
+          <textarea id="contact-message" {...register("message")} className="input-field min-h-32" required />
         </InputField>
 
         <button type="submit" className="btn-primary w-full gap-2 disabled:cursor-not-allowed disabled:opacity-70" disabled={isSubmitting}>
@@ -104,16 +115,19 @@ export default function ContactForm() {
 
 type InputFieldProps = {
   label: string;
+  id: string;
   error?: string;
   children: React.ReactNode;
 };
 
-function InputField({ label, error, children }: InputFieldProps) {
+function InputField({ label, id, error, children }: InputFieldProps) {
   return (
-    <label className="block text-sm font-medium text-text-primary">
-      <span>{label}</span>
+    <div>
+      <label htmlFor={id} className="block text-sm font-medium text-text-white">
+        {label}
+      </label>
       <div className="mt-1">{children}</div>
       {error ? <span className="mt-1 block text-xs text-red-300">{error}</span> : null}
-    </label>
+    </div>
   );
 }

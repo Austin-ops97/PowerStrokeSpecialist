@@ -15,18 +15,19 @@ export default function CTABanner({
   buttonLink,
   variant = "accent",
 }: CTABannerProps) {
-  const accentVariant = variant === "accent";
+  const isAccent = variant === "accent";
 
   return (
-    <section className={`${accentVariant ? "bg-accent" : "bg-primary-light"}`}>
-      <div className="section-container flex flex-col items-start justify-between gap-6 py-10 md:flex-row md:items-center">
+    <section className={isAccent ? "bg-accent" : "bg-bg-dark-card border-y border-border-subtle"}>
+      <div className="section-container flex flex-col items-start justify-between gap-6 py-12 md:flex-row md:items-center">
         <div>
-          <h3 className={`font-display text-3xl uppercase tracking-wide ${accentVariant ? "text-white" : "text-text-primary"}`}>
+          <h3 className={`font-display text-4xl uppercase leading-tight ${isAccent ? "text-text-dark" : "text-text-white"}`}>
             {heading}
           </h3>
-          {subtext && <p className={`mt-2 ${accentVariant ? "text-orange-100" : "text-text-muted"}`}>{subtext}</p>}
+          {subtext ? <p className={`mt-2 ${isAccent ? "text-text-dark/80" : "text-text-muted"}`}>{subtext}</p> : null}
         </div>
-        <Link href={buttonLink} className={accentVariant ? "btn-secondary border-white/70" : "btn-primary"}>
+
+        <Link href={buttonLink} className={isAccent ? "btn-secondary border-text-dark text-text-dark hover:border-text-dark" : "btn-primary"}>
           {buttonText}
         </Link>
       </div>

@@ -7,16 +7,16 @@ import { Clock3, Facebook, MapPin, Phone } from "lucide-react";
 
 export const metadata = buildMetadata(
   "Contact",
-  "Contact Power Stroke Specialist in Baytown TX for diesel repair, Power Stroke bulletproofing, and full-service mechanic quotes and appointments.",
+  "Contact our Baytown TX diesel mechanic shop for Power Stroke bulletproofing, diagnostics, general repair, and appointment requests.",
   "/contact"
 );
 
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-primary-light/40">
+      <section className="bg-bg-dark-card">
         <div className="section-container py-14 text-center sm:py-16">
-          <h1 className="font-display text-5xl uppercase sm:text-6xl">Contact Us</h1>
+          <h1 className="font-display text-6xl uppercase text-text-white">Contact Us</h1>
           <p className="mt-4 text-text-muted">Questions? Need a quote? We&apos;d love to hear from you.</p>
         </div>
       </section>
@@ -25,30 +25,27 @@ export default function ContactPage() {
         <ContactForm />
 
         <div className="space-y-5">
-          <InfoCard icon={MapPin} title="Address">
+          <InfoCard title="Address" icon={MapPin}>
             {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
           </InfoCard>
-
-          <InfoCard icon={Phone} title="Phone">
-            <a href={`tel:${BUSINESS_INFO.phone}`} className="text-accent hover:underline">
+          <InfoCard title="Phone" icon={Phone}>
+            <a href={`tel:${BUSINESS_INFO.phone}`} className="font-medium text-accent hover:underline">
               {BUSINESS_INFO.phoneFormatted}
             </a>
           </InfoCard>
-
-          <InfoCard icon={Clock3} title="Hours">
-            <ul className="space-y-1">
+          <InfoCard title="Hours" icon={Clock3}>
+            <ul className="space-y-1 text-sm">
               {HOURS.map((entry) => (
-                <li key={entry.day} className="flex justify-between gap-4 text-sm">
+                <li key={entry.day} className="flex justify-between gap-4">
                   <span>{entry.day}</span>
                   <span className="text-text-muted">{entry.hours}</span>
                 </li>
               ))}
             </ul>
           </InfoCard>
-
-          <InfoCard icon={Facebook} title="Social">
-            <a href={BUSINESS_INFO.facebookUrl} target="_blank" rel="noreferrer" className="text-accent hover:underline">
-              Follow us on Facebook
+          <InfoCard title="Facebook" icon={Facebook}>
+            <a href={BUSINESS_INFO.facebookUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-accent hover:underline">
+              Visit our Facebook page
             </a>
           </InfoCard>
         </div>
@@ -59,8 +56,8 @@ export default function ContactPage() {
       </section>
 
       <CTABanner
-        heading="Ready for reliable service?"
-        subtext="Call now and we'll help you plan your next repair or upgrade."
+        heading="Need dependable service and straight answers?"
+        subtext="Call now and we will help plan your next repair or upgrade."
         buttonText={`Call ${BUSINESS_INFO.phoneFormatted}`}
         buttonLink={`tel:${BUSINESS_INFO.phone}`}
         variant="dark"
@@ -70,18 +67,18 @@ export default function ContactPage() {
 }
 
 type InfoCardProps = {
-  icon: React.ComponentType<{ size?: number; className?: string }>;
   title: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
   children: React.ReactNode;
 };
 
-function InfoCard({ icon: Icon, title, children }: InfoCardProps) {
+function InfoCard({ title, icon: Icon, children }: InfoCardProps) {
   return (
     <article className="card-base">
-      <div className="mb-3 inline-flex rounded-full bg-accent/10 p-3 text-accent">
+      <span className="inline-flex rounded-full bg-accent/10 p-3 text-accent">
         <Icon size={20} />
-      </div>
-      <h2 className="text-xl font-semibold">{title}</h2>
+      </span>
+      <h2 className="mt-4 text-2xl font-semibold text-text-white">{title}</h2>
       <div className="mt-3 text-text-muted">{children}</div>
     </article>
   );

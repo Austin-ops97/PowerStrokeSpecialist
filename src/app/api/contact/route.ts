@@ -21,7 +21,7 @@ export async function POST(request: Request) {
         from: process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev",
         to: [process.env.CONTACT_TO_EMAIL],
         subject: `New inquiry from ${data.name} - ${BUSINESS_INFO.name}`,
-        replyTo: data.email,
+        replyTo: data.email ?? undefined,
         text: [
           `Name: ${data.name}`,
           `Phone: ${data.phone}`,
@@ -35,7 +35,10 @@ export async function POST(request: Request) {
       });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      delivered: Boolean(process.env.RESEND_API_KEY && process.env.CONTACT_TO_EMAIL),
+    });
   } catch {
     return NextResponse.json({ error: "Failed to process request" }, { status: 500 });
   }

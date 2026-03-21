@@ -2,7 +2,7 @@ import { BUSINESS_INFO } from "@/lib/constants";
 
 export default function GoogleMap() {
   return (
-    <div className="overflow-hidden rounded-xl border border-border">
+    <div className="overflow-hidden rounded-xl border border-border-subtle bg-bg-dark-card">
       <iframe
         title="Power Stroke Specialist location map"
         src={BUSINESS_INFO.mapEmbedUrl}

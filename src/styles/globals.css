@@ -8,7 +8,7 @@
 
 html,
 body {
-  @apply bg-primary text-text-primary font-body;
+  @apply bg-bg-dark text-text-white font-body;
 }
 
 main {
@@ -17,37 +17,41 @@ main {
 
 @layer components {
   .section-container {
-    @apply mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24;
+    @apply mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28;
   }
 
-  .section-divider {
-    @apply mt-4 h-1 w-20 rounded-full bg-accent;
+  .section-eyebrow {
+    @apply mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-accent;
+  }
+
+  .accent-divider {
+    @apply h-1 w-16 rounded-full bg-accent;
   }
 
   .btn-primary {
-    @apply inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-accent-hover hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary;
+    @apply inline-flex min-h-[52px] items-center justify-center rounded-md bg-accent px-8 py-4 text-sm font-bold uppercase tracking-wide text-text-dark transition-all duration-300 hover:scale-[1.02] hover:bg-accent-hover hover:shadow-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-12 items-center justify-center rounded-lg border border-white/30 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:border-accent/80 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary;
+    @apply inline-flex min-h-[52px] items-center justify-center rounded-md border-2 border-accent bg-transparent px-8 py-4 text-sm font-bold uppercase tracking-wide text-accent transition-all duration-300 hover:scale-[1.02] hover:bg-accent hover:text-text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
   }
 
   .card-base {
-    @apply rounded-xl border border-border bg-primary-light p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-glow;
+    @apply rounded-xl border border-border-subtle bg-bg-dark-card p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-card;
   }
 
   .input-field {
-    @apply w-full rounded-lg border border-border bg-primary px-3 py-2 text-text-primary outline-none transition-all placeholder:text-text-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/30;
+    @apply w-full rounded-md border border-border-subtle bg-bg-dark px-3 py-2.5 text-text-white outline-none transition-all placeholder:text-text-muted/70 focus:border-accent focus:ring-2 focus:ring-accent/30;
   }
 }
 
-.industrial-overlay {
-  background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.14) 1px, transparent 0);
-  background-size: 24px 24px;
+.skip-link {
+  @apply absolute left-4 top-2 z-[80] -translate-y-24 rounded-md bg-accent px-4 py-2 font-semibold text-text-dark transition-transform focus:translate-y-0;
 }
 
-.skip-link {
-  @apply absolute left-4 top-2 z-[70] -translate-y-24 rounded-md bg-accent px-4 py-2 font-semibold text-white transition-transform focus:translate-y-0;
+.texture-layer {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 200, 87, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
 }
 
 @media (prefers-reduced-motion: reduce) {

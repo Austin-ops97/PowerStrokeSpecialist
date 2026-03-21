@@ -12,6 +12,14 @@ export type BusinessInfo = {
   coordinates: { lat: number; lng: number };
 };
 
+export type ServiceItem = {
+  id: string;
+  name: string;
+  shortDescription: string;
+  longDescription: string;
+  icon: string;
+};
+
 export const BUSINESS_INFO: BusinessInfo = {
   name: "Power Stroke Specialist",
   tagline: "Baytown's Trusted Diesel & Full-Service Mechanic Shop",
@@ -37,116 +45,128 @@ export const HOURS = [
   { day: "Sunday", hours: "Closed", isOpen: false },
 ] as const;
 
-export const SERVICES = [
+export const SERVICES: ServiceItem[] = [
   {
     id: "oil-changes",
     name: "Oil Changes",
-    description:
-      "Keep your engine protected with fresh oil and a quality filter change performed to manufacturer standards.",
+    shortDescription: "Protect engine life with high-quality oil and filter changes performed to spec.",
+    longDescription:
+      "Regular oil service protects internal engine components from heat and wear. We use quality oil and filters and inspect key systems while your vehicle is in the bay.",
     icon: "Droplets",
   },
   {
     id: "battery-replacement",
     name: "Battery Replacement",
-    description:
-      "We test charging systems and replace weak batteries so your vehicle starts reliably in every season.",
+    shortDescription: "Fast battery testing and replacement so your vehicle starts with confidence.",
+    longDescription:
+      "If your vehicle struggles to start, we test battery and charging health, then install a dependable replacement that matches your vehicle's needs.",
     icon: "BatteryCharging",
   },
   {
     id: "scanner-diagnostics",
     name: "Scanner / Computer Diagnostics",
-    description:
-      "Advanced scan tools and diagnostics help us pinpoint issues quickly and avoid unnecessary parts replacement.",
+    shortDescription: "Accurate diagnostics that identify the real issue before parts are replaced.",
+    longDescription:
+      "Our diagnostic process uses advanced scanners and real-world troubleshooting to isolate problems quickly and avoid unnecessary repairs.",
     icon: "ScanSearch",
   },
   {
     id: "ac-recharge",
     name: "A/C Work / Recharge",
-    description:
-      "From leak checks to full recharges, we restore cold air performance for Texas heat.",
+    shortDescription: "Restore strong cold-air performance with proper system checks and recharge.",
+    longDescription:
+      "From leak detection to full refrigerant recharge and component diagnosis, we make sure your A/C performs the way it should in Texas heat.",
     icon: "Snowflake",
   },
   {
     id: "heater-cores",
     name: "Heater Cores",
-    description:
-      "Cabin heat problems are diagnosed and repaired properly, including heater core service and replacement.",
+    shortDescription: "Reliable heater core diagnosis and repair to keep your cabin heat working.",
+    longDescription:
+      "If your cabin heat is weak or coolant odor is present, we inspect heater core and related components to deliver a lasting repair.",
     icon: "Flame",
   },
   {
     id: "radiator-flush",
     name: "Radiator Flush and Fill",
-    description:
-      "Cooling systems are flushed and refilled to prevent overheating and extend engine life.",
+    shortDescription: "Cooling system flush and refill to help prevent overheating and breakdowns.",
+    longDescription:
+      "A clean cooling system is critical for engine reliability. We flush old coolant, inspect components, and refill with the proper fluid mix.",
     icon: "Thermometer",
   },
   {
     id: "transmission-fluid",
     name: "Transmission Fluid Service",
-    description:
-      "Fluid and filter service helps maintain smooth shifting and long-term transmission reliability.",
+    shortDescription: "Maintain smooth shifts and longevity with scheduled transmission service.",
+    longDescription:
+      "Transmission fluid and filter maintenance reduces wear, supports shift quality, and helps protect one of your vehicle's most expensive systems.",
     icon: "Cog",
   },
   {
     id: "timing-belt",
     name: "Timing Belt Service",
-    description:
-      "Prevent costly engine damage with timely belt inspections and replacement intervals you can trust.",
+    shortDescription: "Timing belt inspections and replacements to avoid major engine damage.",
+    longDescription:
+      "We service timing components at the right intervals to reduce failure risk and keep your engine running reliably.",
     icon: "Timer",
   },
   {
     id: "abs-diagnosis",
     name: "ABS Diagnosis",
-    description:
-      "We diagnose warning lights and braking system faults to keep your anti-lock system working safely.",
+    shortDescription: "Solve ABS warning lights and braking faults with precise diagnostics.",
+    longDescription:
+      "We identify sensor, module, and hydraulic issues in anti-lock braking systems so your vehicle stays safe and predictable under braking.",
     icon: "ShieldAlert",
   },
   {
     id: "axle-services",
     name: "Axle Services - Bearings and Seals",
-    description:
-      "Axle noise, leaks, and wear are repaired with quality components for dependable drivetrain performance.",
+    shortDescription: "Repair axle leaks, noises, and wear for dependable drivetrain performance.",
+    longDescription:
+      "From bearing noise to leaking seals, axle service protects drivability and helps prevent larger drivetrain failures.",
     icon: "Disc",
   },
   {
     id: "shock-strut",
     name: "Shock and Strut Replacements",
-    description:
-      "Restore ride comfort, stability, and tire life with suspension component replacement.",
+    shortDescription: "Improve ride control and handling with quality suspension replacements.",
+    longDescription:
+      "Worn shocks and struts reduce stability and increase tire wear. We replace components to restore comfort, control, and confidence.",
     icon: "Mountain",
   },
   {
     id: "starters-alternators",
     name: "Starters and Alternators Replacements",
-    description:
-      "No-start and charging issues are handled fast with complete starting and charging system repairs.",
+    shortDescription: "Fix no-start and charging problems with complete electrical system service.",
+    longDescription:
+      "We diagnose starting and charging faults, then replace failed starters or alternators with reliable components.",
     icon: "Zap",
   },
   {
     id: "fleet-maintenance",
     name: "Fleet Vehicle Maintenance and Services",
-    description:
-      "Keep commercial vehicles road-ready with dependable scheduled service and repair support.",
+    shortDescription: "Dependable fleet maintenance programs to keep commercial vehicles in service.",
+    longDescription:
+      "We support fleet and commercial vehicles with scheduled maintenance and repair strategies designed to reduce downtime.",
     icon: "Truck",
   },
-] as const;
+];
 
 export const SPECIALTY_SERVICES = [
   {
     id: "power-stroke-bulletproofing",
     name: "Power Stroke Bulletproofing",
     description:
-      "Our signature specialty for 6.0L and 7.3L Ford Power Stroke engines.",
+      "Signature diesel reliability service for 6.0L and 7.3L Ford Power Stroke engines.",
     longDescription:
-      "This is what we're known for. We harden Power Stroke engines by addressing known failure points through upgrades like head studs, cooling and oil system improvements, and reliability-focused component replacements so your truck can handle real-world use with confidence.",
+      "This is the service that defines our shop. We upgrade known weak points in Power Stroke platforms with proven reliability-focused modifications so your truck can handle real work with confidence.",
   },
   {
     id: "aftermarket-upgrades",
-    name: "Aftermarket Upgrades & Modifications",
-    description:
-      "Performance upgrades and custom vehicle modifications tailored to your goals.",
+    name: "Aftermarket Upgrades",
+    description: "Performance modifications and custom upgrades tailored to your goals.",
     longDescription:
-      "From suspension and intake upgrades to exhaust, tuning, and custom setups, we help build trucks that perform and drive the way you want. Call to discuss your specific build goals.",
+      "From suspension and intake to exhaust and tuning support, we help design aftermarket setups that match your vehicle and use case.",
   },
 ] as const;
 
@@ -154,13 +174,13 @@ export const REVIEWS = [
   {
     id: "review-robert",
     name: "Robert N.",
-    text: "They never disappoint. I had issues, but no codes. They didn't want to just start selling me parts. We came up with a plan and got it fixed. I really appreciate their honesty.",
+    text: "They never disappoint. I had issues, but no codes. They didn’t want to just start selling me parts. We came up with a plan and got it fixed. I really appreciate their honesty.",
     rating: 5,
   },
   {
     id: "review-reece",
     name: "Reece",
-    text: "Chris, and his crew have done a lot of work on two different trucks for me. (7.3L and a 6.0) Always been a good experience, They are honest and reasonable for the quality of work they do. The only downfall of doing good work and a great reputation is sometimes they are busy, but to me that's a good sign, worth the wait to have it done right.",
+    text: "Chris, and his crew have done a lot of work on two different trucks for me. (7.3L and a 6.0) Always been a good experience, They are honest and reasonable for the quality of work they do. The only downfall of doing good work and a great reputation is sometimes they are busy, but to me that’s a good sign, worth the wait to have it done right.",
     rating: 5,
   },
   {
@@ -178,9 +198,15 @@ export const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-export const TRUST_STATS = [
-  { icon: "Wrench", label: "10+ Years Experience", value: "10+" },
-  { icon: "Truck", label: "Ford Power Stroke Experts", value: "Specialized" },
-  { icon: "ShieldCheck", label: "Trusted Across Texas", value: "Statewide" },
-  { icon: "Bus", label: "Fleet Services Available", value: "Commercial" },
+export const TRUST_BADGES = [
+  { icon: "Wrench", label: "Honest, Transparent Service" },
+  { icon: "Truck", label: "Power Stroke Diesel Experts" },
+  { icon: "ShieldCheck", label: "Trusted Across Texas" },
+  { icon: "Bus", label: "Fleet Services Available" },
+] as const;
+
+export const STATS = [
+  { value: "100+", label: "Engines Bulletproofed" },
+  { value: "10+", label: "Years Experience" },
+  { value: "2", label: "Engine Types Specialized" },
 ] as const;

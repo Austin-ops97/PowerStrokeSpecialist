@@ -10,29 +10,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#0F172A",
-        "primary-light": "#1E293B",
-        accent: "#F97316",
-        "accent-hover": "#EA580C",
-        secondary: "#3B82F6",
-        "text-primary": "#F8FAFC",
-        "text-muted": "#94A3B8",
-        surface: "#FFFFFF",
-        border: "#334155",
+        "bg-dark": "#0A0A0A",
+        "bg-dark-card": "#161616",
+        "bg-dark-lighter": "#1E1E1E",
+        accent: "#F5A623",
+        "accent-hover": "#E09000",
+        "accent-light": "#FFC857",
+        "text-white": "#F5F5F5",
+        "text-muted": "#9CA3AF",
+        "text-dark": "#1A1A1A",
+        "border-subtle": "#2A2A2A",
+        success: "#22C55E",
+        "surface-light": "#FAFAFA",
       },
       fontFamily: {
         body: ["var(--font-inter)", "sans-serif"],
         display: ["var(--font-oswald)", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(249, 115, 22, 0.25), 0 10px 24px rgba(15, 23, 42, 0.35)",
+        accent: "0 10px 24px rgba(245, 166, 35, 0.2)",
+        card: "0 14px 30px rgba(0, 0, 0, 0.35)",
       },
       backgroundImage: {
-        "industrial-grid":
-          "radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.14) 1px, transparent 0)",
+        "texture-grid": "radial-gradient(circle at 1px 1px, rgba(255, 200, 87, 0.08) 1px, transparent 0)",
+        "texture-carbon": "linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.03) 75%, transparent 75%, transparent)",
       },
       backgroundSize: {
-        grid: "24px 24px",
+        texture: "24px 24px",
+        carbon: "16px 16px",
       },
     },
   },

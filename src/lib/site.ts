@@ -5,10 +5,18 @@ const siteUrl = "https://powerstrokespecialist.com";
 
 export function buildMetadata(pageName: string, description: string, path = "/"): Metadata {
   const title = `Power Stroke Specialist | ${pageName} | Baytown TX Diesel Mechanic`;
+  const keywords = [
+    "diesel mechanic",
+    "Power Stroke bulletproofing",
+    "Baytown TX mechanic",
+    "Ford Power Stroke repair",
+    "full-service auto repair",
+  ];
 
   return {
     title,
     description,
+    keywords,
     metadataBase: new URL(siteUrl),
     alternates: { canonical: path },
     openGraph: {

@@ -14,18 +14,23 @@ export const metadata = buildMetadata(
 export default function ContactPage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-border-subtle bg-bg-dark">
-        <div className="absolute inset-0 bg-mesh-dark opacity-70" aria-hidden />
-        <div className="section-container-tight relative text-center">
-          <p className="section-eyebrow">Contact</p>
-          <div className="accent-rule mx-auto mt-1" />
-          <h1 className="mt-8 font-display text-4xl font-normal tracking-tight text-text-white sm:text-6xl">Let&apos;s talk</h1>
-          <p className="mx-auto mt-5 max-w-xl text-text-muted sm:text-lg">
-            Quotes, scheduling, and technical questions—send a message or call the shop direct.
+      {/* Page header */}
+      <section className="relative overflow-hidden bg-bg-dark border-b border-border-subtle">
+        <div className="pointer-events-none absolute inset-0 bg-line-grid bg-grid opacity-20" />
+        <div className="absolute inset-0 bg-mesh-hero opacity-40" />
+        {/* Red left stripe */}
+        <div className="absolute left-0 top-0 h-full w-1.5 bg-accent" aria-hidden />
+        <div className="section-container relative py-16 text-center sm:py-20">
+          <p className="section-eyebrow">Get in Touch</p>
+          <div className="accent-divider mx-auto" />
+          <h1 className="editorial-title mt-6 text-5xl sm:text-6xl">Contact Us</h1>
+          <p className="mx-auto mt-5 max-w-lg text-text-muted">
+            Questions, quotes, or appointment requests — we respond during shop hours.
           </p>
         </div>
       </section>
 
+      {/* Form + info cards */}
       <section className="section-container grid gap-10 lg:grid-cols-2 lg:gap-14">
         <ContactForm />
 
@@ -34,16 +39,21 @@ export default function ContactPage() {
             {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
           </InfoCard>
           <InfoCard title="Phone" icon={Phone}>
-            <a href={`tel:${BUSINESS_INFO.phone}`} className="font-medium text-text-white transition-colors hover:text-accent-blue">
+            <a
+              href={`tel:${BUSINESS_INFO.phone}`}
+              className="font-bold text-accent transition-colors hover:text-accent-light"
+            >
               {BUSINESS_INFO.phoneFormatted}
             </a>
           </InfoCard>
           <InfoCard title="Hours" icon={Clock3}>
-            <ul className="space-y-1.5 text-sm">
+            <ul className="space-y-2 text-sm">
               {HOURS.map((entry) => (
                 <li key={entry.day} className="flex justify-between gap-4">
-                  <span className="text-text-white">{entry.day}</span>
-                  <span className="text-text-muted">{entry.hours}</span>
+                  <span className="font-medium text-white">{entry.day}</span>
+                  <span className={entry.isOpen ? "text-text-muted" : "text-text-muted/50"}>
+                    {entry.hours}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -53,7 +63,7 @@ export default function ContactPage() {
               href={BUSINESS_INFO.facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-accent-blue transition-colors hover:text-text-white"
+              className="font-semibold text-brand-blue transition-colors hover:text-white"
             >
               Visit our page
             </a>
@@ -61,14 +71,15 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Map */}
       <section className="section-container pt-0">
         <GoogleMap />
       </section>
 
       <CTABanner
-        heading="Want straight answers and a solid plan?"
-        subtext="Call now and we will help scope your next repair or upgrade."
-        buttonText={`Call ${BUSINESS_INFO.phoneFormatted}`}
+        heading="Prefer to Talk It Through?"
+        subtext="Call now and we'll help plan your next repair or upgrade."
+        buttonText={BUSINESS_INFO.phoneFormatted}
         buttonLink={`tel:${BUSINESS_INFO.phone}`}
         variant="dark"
       />
@@ -84,12 +95,14 @@ type InfoCardProps = {
 
 function InfoCard({ title, icon: Icon, children }: InfoCardProps) {
   return (
-    <article className="rounded-sm border border-border-subtle bg-bg-dark-card p-6 shadow-card transition-colors hover:border-border-strong md:p-7">
-      <span className="inline-flex rounded-sm border border-border-strong bg-bg-dark p-3 text-accent">
-        <Icon size={20} />
+    <article className="flex gap-5 border-l-4 border-accent bg-bg-dark-card p-6 md:p-7">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-accent text-white mt-0.5">
+        <Icon size={17} strokeWidth={2} />
       </span>
-      <h2 className="mt-5 font-display text-2xl font-normal text-text-white">{title}</h2>
-      <div className="mt-3 text-sm leading-relaxed text-text-muted">{children}</div>
+      <div>
+        <h2 className="font-display text-lg font-bold tracking-tight text-white">{title}</h2>
+        <div className="mt-2 text-sm text-text-muted">{children}</div>
+      </div>
     </article>
   );
 }

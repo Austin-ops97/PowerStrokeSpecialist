@@ -56,7 +56,7 @@ export default function ContactForm() {
 
   return (
     <div className="card-base">
-      <h2 className="font-display text-3xl font-bold tracking-tight text-text-white sm:text-4xl">Send a message</h2>
+      <h2 className="font-display text-3xl font-semibold tracking-tight text-text-white sm:text-4xl">Send a message</h2>
 
       {isSubmitted ? (
         <div className="mt-5 flex items-center gap-2 rounded-md border border-success/40 bg-success/10 p-3 text-success">

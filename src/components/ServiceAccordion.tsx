@@ -16,33 +16,30 @@ export default function ServiceAccordion({ limit = 6 }: ServiceAccordionProps) {
   const [openId, setOpenId] = useState(items[0]?.id ?? "");
 
   return (
-    <div className="space-y-2">
+    <div className="divide-y divide-white/[0.06] border border-border-subtle">
       {items.map((service) => {
         const Icon = iconMap[service.icon] ?? Wrench;
         const expanded = openId === service.id;
 
         return (
-          <article
-            key={service.id}
-            className="overflow-hidden rounded-sm border border-border-subtle bg-bg-dark-card transition-colors hover:border-border-strong"
-          >
+          <article key={service.id} className="bg-bg-dark-card transition-colors hover:bg-bg-dark-lighter">
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
+              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left sm:px-7"
               onClick={() => setOpenId(expanded ? "" : service.id)}
               aria-expanded={expanded}
               aria-label={`Toggle ${service.name} details`}
             >
-              <span className="flex min-w-0 items-center gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border border-border-strong bg-bg-dark text-accent">
-                  <Icon size={18} strokeWidth={1.75} />
+              <span className="flex items-center gap-4">
+                <span className={`flex h-9 w-9 shrink-0 items-center justify-center transition-colors ${expanded ? "bg-accent text-white" : "bg-accent/10 text-accent"}`}>
+                  <Icon size={17} strokeWidth={2} />
                 </span>
-                <span className="font-display text-lg font-normal text-text-white">{service.name}</span>
+                <span className="font-bold text-white">{service.name}</span>
               </span>
               <ChevronDown
-                className={`shrink-0 text-accent-blue transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+                className={`shrink-0 transition-all duration-300 ${expanded ? "rotate-180 text-accent" : "text-white/30"}`}
                 size={20}
-                strokeWidth={1.75}
+                strokeWidth={2}
               />
             </button>
 
@@ -55,10 +52,10 @@ export default function ServiceAccordion({ limit = 6 }: ServiceAccordionProps) {
                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="border-t border-border-subtle px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+                  <div className="border-t border-white/[0.06] px-6 pb-6 pt-4 sm:px-7">
                     <p className="text-sm leading-relaxed text-text-muted">{service.longDescription}</p>
-                    <Link href="/contact" className="btn-primary mt-5 inline-flex px-6 py-3">
-                      Request appointment
+                    <Link href="/contact" className="btn-primary mt-5 inline-flex px-7 py-3 text-[10px]">
+                      Request Appointment
                     </Link>
                   </div>
                 </motion.div>

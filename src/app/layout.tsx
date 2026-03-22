@@ -6,15 +6,20 @@ import TopInfoBar from "@/components/TopInfoBar";
 import { BUSINESS_INFO, HOURS, SERVICES } from "@/lib/constants";
 import { SITE_URL, buildMetadata } from "@/lib/site";
 import "@/styles/globals.css";
-import { DM_Sans, Libre_Baskerville } from "next/font/google";
+import { Oswald, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 
-const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
-const libre = Libre_Baskerville({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-libre",
+  variable: "--font-sans",
   display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = buildMetadata(
@@ -61,8 +66,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="en" className={`${dmSans.variable} ${libre.variable}`}>
-      <body className="min-h-screen bg-bg-dark text-text-white antialiased">
+    <html lang="en" className={`${plusJakarta.variable} ${oswald.variable}`}>
+      <body className="min-h-screen bg-bg-dark text-text-white">
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>

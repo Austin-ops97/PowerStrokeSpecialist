@@ -14,13 +14,13 @@ export default function StatCounter({ value, label }: StatCounterProps) {
   const numericMatch = value.match(/\d+/);
   const numberTarget = numericMatch ? Number(numericMatch[0]) : null;
   const suffix = numberTarget === null ? "" : value.replace(String(numberTarget), "");
-  const [display, setDisplay] = useState(value);
+  const [display, setDisplay] = useState(numberTarget === null ? value : `0${suffix}`);
 
   useEffect(() => {
     if (!inView || numberTarget === null) return;
 
     const controls = animate(0, numberTarget, {
-      duration: 1.2,
+      duration: 1.4,
       ease: "easeOut",
       onUpdate: (latest) => setDisplay(`${Math.round(latest)}${suffix}`),
     });
@@ -31,10 +31,10 @@ export default function StatCounter({ value, label }: StatCounterProps) {
   return (
     <div
       ref={ref}
-      className="rounded-sm border border-border-subtle bg-bg-dark px-4 py-4 text-center sm:px-5"
+      className="group border-l-4 border-accent bg-bg-dark-lighter px-6 py-6"
     >
-      <p className="font-display text-3xl font-normal tabular-nums text-accent sm:text-4xl">{display}</p>
-      <p className="mt-2 text-[10px] font-semibold uppercase tracking-brand text-text-muted">{label}</p>
+      <p className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{display}</p>
+      <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.22em] text-text-muted">{label}</p>
     </div>
   );
 }

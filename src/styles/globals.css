@@ -8,7 +8,7 @@
 
 html,
 body {
-  @apply bg-bg-dark text-text-white font-body;
+  @apply bg-bg-dark text-text-white font-body antialiased;
 }
 
 main {
@@ -20,57 +20,65 @@ main {
     @apply mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-32;
   }
 
-  .section-container-tight {
-    @apply mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-20;
+  .section-eyebrow {
+    @apply mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-brand-blue;
   }
 
-  .section-eyebrow {
-    @apply mb-3 text-[11px] font-semibold uppercase tracking-brand text-accent-blue;
+  .section-eyebrow-accent {
+    @apply mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-accent;
   }
 
   .accent-divider {
-    @apply h-px w-12 bg-accent;
+    @apply h-[3px] w-10 bg-accent;
   }
 
-  .accent-rule {
-    @apply h-[3px] w-16 bg-accent;
-  }
-
+  /* Primary button — bold red CTA */
   .btn-primary {
-    @apply inline-flex min-h-[50px] items-center justify-center rounded-sm bg-accent px-8 py-3.5 text-xs font-bold uppercase tracking-brand text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
+    @apply inline-flex min-h-[52px] items-center justify-center bg-accent px-9 py-3.5 text-[12px] font-bold uppercase tracking-[0.18em] text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-accent active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
   }
 
+  /* Secondary button — bordered, dark backgrounds */
   .btn-secondary {
-    @apply inline-flex min-h-[50px] items-center justify-center rounded-sm border border-border-strong bg-transparent px-8 py-3.5 text-xs font-bold uppercase tracking-brand text-text-white transition-all duration-200 hover:border-text-white hover:bg-text-white hover:text-text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
+    @apply inline-flex min-h-[52px] items-center justify-center border-2 border-white/30 bg-transparent px-9 py-3.5 text-[12px] font-bold uppercase tracking-[0.18em] text-text-white transition-all duration-200 hover:border-white hover:text-white active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark;
   }
 
-  .btn-ghost {
-    @apply inline-flex min-h-[50px] items-center justify-center rounded-sm border border-transparent px-6 py-3 text-xs font-semibold uppercase tracking-brand text-text-white/90 transition-colors hover:text-accent-blue;
+  /* Secondary button — for light section backgrounds */
+  .btn-secondary-dark {
+    @apply inline-flex min-h-[52px] items-center justify-center border-2 border-text-dark/30 bg-transparent px-9 py-3.5 text-[12px] font-bold uppercase tracking-[0.18em] text-text-dark transition-all duration-200 hover:border-text-dark hover:bg-text-dark hover:text-white active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-dark/50;
   }
 
-  .btn-on-accent {
-    @apply inline-flex min-h-[50px] items-center justify-center rounded-sm border-2 border-text-white px-8 py-3.5 text-xs font-bold uppercase tracking-brand text-text-white transition-all duration-200 hover:bg-text-white hover:text-text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-accent;
-  }
-
+  /* Card — dark background */
   .card-base {
-    @apply rounded-sm border border-border-subtle bg-bg-dark-card p-6 shadow-card transition-all duration-300 hover:border-border-strong md:p-8;
+    @apply border border-border-subtle bg-bg-dark-card/90 p-7 backdrop-blur-sm transition-all duration-500 hover:border-white/[0.14] hover:shadow-lift md:p-9;
+  }
+
+  /* Card — light background */
+  .card-light {
+    @apply bg-white border border-border-light p-7 shadow-card-light transition-all duration-300 hover:shadow-lift-light md:p-8;
   }
 
   .input-field {
-    @apply w-full rounded-sm border border-border-subtle bg-bg-dark px-3 py-2.5 text-text-white outline-none transition-all placeholder:text-text-muted/60 focus:border-accent-blue focus:ring-1 focus:ring-accent-blue/40;
+    @apply w-full border border-border-subtle bg-bg-dark px-4 py-3.5 text-text-white outline-none transition-all placeholder:text-text-muted/50 focus:border-brand-blue/60 focus:ring-1 focus:ring-brand-blue/30;
+  }
+
+  /* Display heading — leverages Oswald automatically */
+  .editorial-title {
+    @apply font-display font-bold tracking-tight text-text-white;
   }
 
   .nav-link-underline {
-    @apply absolute bottom-0 left-0 h-px bg-accent transition-all duration-300;
-  }
-
-  .surface-light {
-    @apply bg-surface-light text-text-dark;
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 hover:after:scale-x-100;
   }
 }
 
 .skip-link {
-  @apply absolute left-4 top-2 z-[80] -translate-y-24 rounded-sm bg-accent px-4 py-2 text-xs font-bold uppercase tracking-brand text-white transition-transform focus:translate-y-0;
+  @apply absolute left-4 top-2 z-[80] -translate-y-24 border border-brand-blue bg-bg-dark px-4 py-2 text-sm font-medium text-brand-blue transition-transform focus:translate-y-0;
+}
+
+.texture-layer {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
 @media (prefers-reduced-motion: reduce) {

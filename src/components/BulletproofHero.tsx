@@ -4,45 +4,59 @@ import Image from "next/image";
 
 export default function BulletproofHero() {
   return (
-    <section className="relative overflow-hidden border-y border-border-subtle bg-bg-dark">
-      <div className="absolute inset-0 bg-line-grid bg-grid opacity-25" />
-      <div className="absolute inset-0 bg-mesh-dark" />
+    <section className="relative overflow-hidden bg-bg-dark">
+      {/* Background texture */}
+      <div className="absolute inset-0 bg-texture-carbon bg-carbon opacity-30" />
+      <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-accent/5 to-transparent" />
 
-      <div className="section-container relative grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
-        <div className="relative order-2 lg:order-1">
-          <div className="absolute -left-3 top-6 hidden h-24 w-1 bg-accent lg:block" aria-hidden />
-          <div className="overflow-hidden rounded-sm border border-border-strong bg-bg-dark-card shadow-lift ring-1 ring-white/5">
+      <div className="section-container relative grid items-center gap-16 py-0 lg:grid-cols-12 lg:gap-12">
+
+        {/* Image column */}
+        <div className="relative lg:col-span-6">
+          <div className="relative overflow-hidden shadow-lift">
+            {/* Red left accent stripe */}
+            <div className="absolute left-0 top-0 z-10 h-full w-1.5 bg-accent" aria-hidden />
             <Image
               src="/images/bulletproof-engine.svg"
-              alt="Ford Power Stroke bulletproofing upgrades and diesel engine reliability"
+              alt="Ford Power Stroke bulletproofing and diesel engine reliability"
               width={900}
               height={600}
               className="h-auto w-full"
             />
+            {/* Bottom label strip */}
+            <div className="absolute bottom-0 left-0 right-0 bg-accent px-5 py-3 pl-7">
+              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-white">
+                Signature Bulletproofing Program
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="order-1 lg:order-2">
-          <p className="section-eyebrow">Signature program</p>
-          <div className="accent-rule mt-1" />
-          <h2 className="mt-8 font-display text-4xl font-normal leading-[1.05] tracking-tight text-text-white sm:text-5xl lg:text-[3.25rem]">
-            Power Stroke <span className="text-accent">bulletproofing</span>
+        {/* Content column */}
+        <div className="lg:col-span-6">
+          <p className="section-eyebrow">Specialty Service</p>
+          <div className="accent-divider" />
+          <h2 className="editorial-title mt-6 text-4xl sm:text-5xl lg:text-6xl">
+            Power Stroke Bulletproofing
           </h2>
           <p className="mt-6 text-base leading-relaxed text-text-muted sm:text-lg">
-            The work we&apos;re known for—hundreds of Ford Power Stroke engines brought to a higher standard. 6.0L or 7.3L,
-            we address the failure points that matter so your truck earns back your confidence.
+            The work we&apos;re known for. Hundreds of Ford Power Stroke engines brought to a
+            higher standard — head studs, cooling, oiling, and every weak point addressed so
+            your truck earns its keep for the long haul.
           </p>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          {/* Stats */}
+          <div className="mt-10 grid gap-3 sm:grid-cols-3">
             {STATS.map((stat) => (
               <StatCounter key={stat.label} value={stat.value} label={stat.label} />
             ))}
           </div>
 
           <a href={`tel:${BUSINESS_INFO.phone}`} className="btn-primary mt-10 inline-flex">
-            Discuss your build — {BUSINESS_INFO.phoneFormatted}
+            Discuss Your Build &mdash; {BUSINESS_INFO.phoneFormatted}
           </a>
         </div>
+
       </div>
     </section>
   );

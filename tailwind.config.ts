@@ -10,47 +10,66 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "bg-dark": "#030303",
-        "bg-dark-card": "#0a0a0a",
-        "bg-dark-lighter": "#111111",
-        "bg-panel": "#0e0e0e",
-        accent: "#B21E1E",
-        "accent-hover": "#951818",
-        "accent-muted": "rgba(178, 30, 30, 0.45)",
-        "accent-blue": "#77A9D1",
-        "accent-blue-hover": "#5f94bf",
-        "accent-blue-dim": "rgba(119, 169, 209, 0.12)",
-        "text-white": "#F4F4F2",
-        "text-muted": "#9B9B97",
-        "text-dark": "#030303",
-        "border-subtle": "rgba(255, 255, 255, 0.09)",
-        "border-strong": "rgba(255, 255, 255, 0.16)",
+        // Dark surfaces — deep charcoal with blue undertone
+        "bg-dark": "#0C0E13",
+        "bg-dark-card": "#131720",
+        "bg-dark-lighter": "#1A1F2B",
+
+        // Light surfaces
+        surface: "#F7F8FA",
+        "surface-alt": "#ECEEF2",
+
+        // Accent red — bold and confident
+        accent: "#D32F2F",
+        "accent-hover": "#B71C1C",
+        "accent-light": "#EF5350",
+
+        // Brand blue — clean, professional
+        "brand-blue": "#4A9FD4",
+        "brand-blue-dim": "#2E7EAD",
+
+        // Text
+        "text-white": "#FFFFFF",
+        "text-light": "#E4E7EE",
+        "text-muted": "#8A929E",
+        "text-dark": "#0C0E13",
+        "text-dark-muted": "#4A5568",
+
+        // Borders
+        "border-subtle": "rgba(255,255,255,0.08)",
+        "border-light": "rgba(0,0,0,0.07)",
+
         success: "#22C55E",
-        "surface-light": "#FFFFFF",
+        silver: "#8E9BAD",
       },
       fontFamily: {
-        body: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-libre)", "Georgia", "serif"],
+        body: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Impact", "Arial Narrow", "sans-serif"],
       },
       boxShadow: {
-        accent: "0 0 0 1px rgba(178, 30, 30, 0.35), 0 24px 48px rgba(0, 0, 0, 0.45)",
-        card: "0 20px 50px rgba(0, 0, 0, 0.55)",
-        lift: "0 32px 64px rgba(0, 0, 0, 0.5)",
+        accent: "0 0 48px rgba(211, 47, 47, 0.35)",
+        card: "0 8px 32px rgba(0, 0, 0, 0.55)",
+        lift: "0 24px 64px rgba(0, 0, 0, 0.65)",
+        "card-light": "0 2px 16px rgba(0, 0, 0, 0.07)",
+        "lift-light": "0 8px 32px rgba(0, 0, 0, 0.12)",
       },
       backgroundImage: {
-        "hero-vignette":
-          "linear-gradient(105deg, rgba(3,3,3,0.92) 0%, rgba(3,3,3,0.55) 45%, rgba(3,3,3,0.35) 100%)",
-        "mesh-dark":
-          "radial-gradient(ellipse 80% 50% at 20% 40%, rgba(119, 169, 209, 0.08), transparent 50%), radial-gradient(ellipse 60% 40% at 85% 20%, rgba(178, 30, 30, 0.07), transparent 45%)",
+        "grain-soft":
+          "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")",
+        "mesh-hero":
+          "radial-gradient(ellipse 120% 80% at 70% 20%, rgba(74, 159, 212, 0.10) 0%, transparent 50%), radial-gradient(ellipse 80% 60% at 10% 90%, rgba(211, 47, 47, 0.08) 0%, transparent 45%)",
         "line-grid":
-          "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
-        "red-sheen": "linear-gradient(135deg, rgba(178,30,30,0.15) 0%, transparent 50%)",
+          "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
+        "texture-carbon":
+          "linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.02) 75%, transparent 75%, transparent)",
+        "dot-grid":
+          "radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px)",
       },
       backgroundSize: {
+        texture: "24px 24px",
+        carbon: "16px 16px",
         grid: "48px 48px",
-      },
-      letterSpacing: {
-        brand: "0.22em",
+        dot: "28px 28px",
       },
     },
   },

@@ -13,18 +13,19 @@ export const metadata = buildMetadata(
 );
 
 const values = [
-  { label: "Honest pricing", icon: Wallet },
-  { label: "Power Stroke experts", icon: Wrench },
-  { label: "Modern diagnostics", icon: Gauge },
+  { label: "Honest, transparent pricing", icon: Wallet },
+  { label: "Power Stroke experts on staff", icon: Wrench },
+  { label: "Advanced diagnostics equipment", icon: Gauge },
   { label: "Trusted across Texas", icon: ShieldCheck },
   { label: "No job too big or small", icon: BadgeCheck },
-  { label: "Fleet experience", icon: Truck },
+  { label: "Fleet vehicle support", icon: Truck },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <section className="relative flex min-h-[52vh] items-end overflow-hidden pb-16 pt-32 sm:items-center sm:pb-20 sm:pt-24">
+      {/* Page hero */}
+      <section className="relative flex min-h-[52vh] items-end overflow-hidden pb-16 pt-32 sm:items-center sm:pb-24">
         <Image
           src="/images/hero-diesel.svg"
           alt="Power Stroke Specialist team and diesel repair"
@@ -32,67 +33,69 @@ export default function AboutPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/80 to-bg-dark/35" />
-        <div className="section-container relative z-10 pb-0">
-          <p className="section-eyebrow">About</p>
-          <div className="accent-rule mt-1" />
-          <h1 className="mt-6 max-w-3xl font-display text-4xl font-normal leading-tight tracking-tight text-text-white sm:text-6xl lg:text-[3.75rem]">
-            Power Stroke Specialist
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/85 to-bg-dark/50" />
+        <div className="absolute inset-0 bg-mesh-hero opacity-40" />
+        {/* Red side accent */}
+        <div className="absolute left-0 top-0 h-full w-1.5 bg-accent" aria-hidden />
+        <div className="section-container relative z-10 py-0">
+          <p className="section-eyebrow">Our Shop</p>
+          <div className="accent-divider" />
+          <h1 className="editorial-title mt-6 max-w-3xl text-5xl sm:text-6xl lg:text-7xl">
+            About Power Stroke Specialist
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-text-muted">Dedicated to vehicles that work for a living.</p>
+          <p className="mt-5 max-w-xl text-lg text-text-muted">
+            Dedicated to vehicles that work for a living.
+          </p>
         </div>
       </section>
 
-      <section className="border-b border-border-subtle">
-        <div className="section-container grid items-center gap-14 lg:grid-cols-2">
-          <ScrollReveal>
-            <p className="section-eyebrow">Our story</p>
-            <div className="accent-rule mt-1" />
-            <h2 className="mt-8 font-display text-4xl font-normal leading-tight text-text-white sm:text-5xl">
-              Built on trust and experience
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-text-muted sm:text-lg">
-              We work on the full spectrum of vehicle issues—from daily drivers to diesels that never get a day off. Our
-              team is technical, direct, and focused on outcomes you can feel on the road.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-text-muted sm:text-lg">
-              Finding a mechanic you trust shouldn&apos;t be a gamble. Customers from Baytown and across Texas choose us
-              for straight answers and workmanship that holds up.
-            </p>
-          </ScrollReveal>
+      {/* Story */}
+      <section className="section-container grid items-center gap-16 lg:grid-cols-2">
+        <ScrollReveal>
+          <p className="section-eyebrow">Our Story</p>
+          <div className="accent-divider" />
+          <h2 className="editorial-title mt-6 text-4xl sm:text-5xl">Built on Trust and Experience</h2>
+          <p className="mt-6 text-text-muted leading-relaxed">
+            We work on and fix all sorts of vehicle issues. Our team is knowledgeable, skilled,
+            and dedicated to making vehicles run like new — every time.
+          </p>
+          <p className="mt-4 text-text-muted leading-relaxed">
+            We know how hard it can be to find a trustworthy mechanic. That&apos;s why customers
+            from Baytown and across Texas choose us for straight answers and workmanship that holds up.
+          </p>
+        </ScrollReveal>
 
-          <ScrollReveal>
-            <div className="overflow-hidden rounded-sm border border-border-strong bg-bg-dark-card shadow-lift ring-1 ring-white/5">
-              <Image
-                src="/images/shop-building.svg"
-                alt="Power Stroke Specialist in Baytown Texas"
-                width={900}
-                height={560}
-                className="h-auto w-full"
-              />
-            </div>
-          </ScrollReveal>
-        </div>
+        <ScrollReveal>
+          <div className="relative overflow-hidden shadow-lift">
+            <div className="absolute left-0 top-0 z-10 h-full w-1.5 bg-accent" aria-hidden />
+            <Image
+              src="/images/shop-building.svg"
+              alt="Power Stroke Specialist building and service bays in Baytown Texas"
+              width={900}
+              height={560}
+              className="h-auto w-full"
+            />
+          </div>
+        </ScrollReveal>
       </section>
 
-      <section className="border-b border-border-subtle bg-bg-dark-card/40">
+      {/* What sets us apart — light section */}
+      <section className="bg-surface border-y border-border-light">
         <div className="section-container">
           <ScrollReveal>
-            <p className="section-eyebrow">Standards</p>
-            <div className="accent-rule mt-1" />
-            <h2 className="mt-8 font-display text-4xl font-normal leading-tight text-text-white sm:text-5xl">
-              What sets us apart
-            </h2>
+            <p className="section-eyebrow">Our Standards</p>
+            <div className="accent-divider" />
+            <h2 className="editorial-title mt-6 text-4xl text-text-dark sm:text-5xl">What Sets Us Apart</h2>
           </ScrollReveal>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((value, idx) => (
               <ScrollReveal key={value.label} delay={idx * 0.08}>
-                <article className="flex gap-4 rounded-sm border border-border-subtle bg-bg-dark p-6 transition-colors hover:border-border-strong md:p-7">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-border-strong text-accent">
-                    <value.icon size={20} strokeWidth={1.75} />
+                <article className="flex items-start gap-4 bg-white border border-border-light p-6 shadow-card-light transition-shadow hover:shadow-lift-light">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent text-white">
+                    <value.icon size={18} strokeWidth={2} />
                   </span>
-                  <p className="font-display text-lg font-normal text-text-white">{value.label}</p>
+                  <p className="mt-1 font-bold text-text-dark">{value.label}</p>
                 </article>
               </ScrollReveal>
             ))}
@@ -100,35 +103,39 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="surface-light border-y border-black/10">
-        <div className="section-container">
-          <article className="mx-auto max-w-2xl rounded-sm border border-black/10 bg-white p-8 shadow-[0_24px_60px_rgba(0,0,0,0.08)] md:p-10">
-            <h2 className="text-center font-display text-3xl font-normal text-text-dark sm:text-4xl">Hours</h2>
-            <div className="mt-8 space-y-2">
-              {HOURS.map((entry) => (
-                <div
-                  key={entry.day}
-                  className="flex items-center justify-between rounded-sm border border-black/10 px-4 py-3.5"
-                >
-                  <span className="text-text-dark">{entry.day}</span>
-                  <span className="text-text-dark/60">{entry.hours}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 text-center text-sm text-text-dark/55">Call to schedule during business hours.</p>
-          </article>
+      {/* Hours */}
+      <section className="section-container">
+        <div className="mx-auto max-w-2xl border-l-4 border-accent bg-bg-dark-card p-10 md:p-12">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">Shop Hours</h2>
+          <div className="mt-8 divide-y divide-white/[0.06]">
+            {HOURS.map((entry) => (
+              <div
+                key={entry.day}
+                className="flex items-center justify-between py-3.5 text-sm"
+              >
+                <span className="font-semibold text-white">{entry.day}</span>
+                <span className={`font-medium ${entry.isOpen ? "text-text-muted" : "text-text-muted/50"}`}>
+                  {entry.hours}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-text-muted">
+            Call during business hours to schedule your appointment.
+          </p>
         </div>
       </section>
 
-      <section className="border-b border-border-subtle bg-bg-dark">
+      {/* Reviews — light section */}
+      <section className="bg-surface border-y border-border-light">
         <div className="section-container">
           <p className="section-eyebrow">Reviews</p>
-          <div className="accent-rule mt-1" />
-          <h2 className="mt-8 font-display text-4xl font-normal text-text-white sm:text-5xl">Trusted by real customers</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="accent-divider" />
+          <h2 className="editorial-title mt-6 text-4xl text-text-dark sm:text-5xl">From Our Customers</h2>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {REVIEWS.map((review, idx) => (
               <ScrollReveal key={review.id} delay={idx * 0.08}>
-                <ReviewCard name={review.name} text={review.text} rating={review.rating} />
+                <ReviewCard name={review.name} text={review.text} rating={review.rating} light />
               </ScrollReveal>
             ))}
           </div>
@@ -136,17 +143,17 @@ export default function AboutPage() {
             href={BUSINESS_INFO.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary mt-10 inline-flex"
+            className="btn-secondary-dark mt-10 inline-flex"
           >
-            Leave a review
+            Leave a Review
           </a>
         </div>
       </section>
 
       <CTABanner
-        heading="Ready to get your vehicle serviced?"
-        subtext="Call today and we will help plan your next repair or upgrade."
-        buttonText={`Call ${BUSINESS_INFO.phoneFormatted}`}
+        heading="Book Your Next Visit"
+        subtext="Call today and we'll get you back on the road with confidence."
+        buttonText={BUSINESS_INFO.phoneFormatted}
         buttonLink={`tel:${BUSINESS_INFO.phone}`}
         variant="accent"
       />

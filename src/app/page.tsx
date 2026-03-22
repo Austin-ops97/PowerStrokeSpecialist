@@ -20,43 +20,46 @@ export const metadata = buildMetadata(
 export default function HomePage() {
   return (
     <>
+      {/* 1 — Hero (dark) */}
       <Hero />
+
+      {/* 2 — Trust bar (light) */}
       <TrustBadges />
 
-      <section className="relative border-b border-border-subtle">
-        <div className="absolute inset-0 bg-mesh-dark opacity-60" aria-hidden />
+      {/* 3 — Capabilities accordion (dark) */}
+      <section className="relative overflow-hidden bg-bg-dark">
+        <div className="pointer-events-none absolute inset-0 bg-line-grid bg-grid opacity-20" />
         <div className="section-container relative">
           <ScrollReveal>
             <p className="section-eyebrow">Capabilities</p>
-            <div className="accent-rule mt-1" />
-            <h2 className="mt-8 max-w-3xl font-display text-4xl font-normal leading-tight tracking-tight text-text-white sm:text-5xl">
-              Service categories
+            <div className="accent-divider" />
+            <h2 className="editorial-title mt-6 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
+              Everything Under One Roof
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-text-muted sm:text-lg">
-              Diagnostics through heavy repair—structured like an OEM program, delivered with shop-floor honesty. Open a
-              category to read scope, then book time with our crew.
+              From daily drivers to fleet trucks — diagnostics, repair, and Power Stroke programs
+              handled with the same discipline you&apos;d expect from a flagship service center.
             </p>
           </ScrollReveal>
 
-          <div className="mt-10">
+          <div className="mt-12">
             <ServiceAccordion limit={6} />
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border-subtle bg-bg-dark-card/50">
+      {/* 4 — Featured service cards (dark lighter) */}
+      <section className="bg-bg-dark-lighter border-y border-border-subtle">
         <div className="section-container">
           <ScrollReveal>
-            <p className="section-eyebrow">Featured</p>
-            <div className="accent-rule mt-1" />
-            <h2 className="mt-8 font-display text-4xl font-normal leading-tight tracking-tight text-text-white sm:text-5xl">
-              Programs customers ask for first
-            </h2>
+            <p className="section-eyebrow">Highlighted Work</p>
+            <div className="accent-divider" />
+            <h2 className="editorial-title mt-6 text-4xl sm:text-5xl lg:text-6xl">Services We Lead With</h2>
           </ScrollReveal>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {SERVICES.slice(0, 6).map((service, idx) => (
-              <ScrollReveal key={service.id} delay={idx * 0.1}>
+              <ScrollReveal key={service.id} delay={idx * 0.08}>
                 <ServiceCard name={service.name} shortDescription={service.shortDescription} icon={service.icon} />
               </ScrollReveal>
             ))}
@@ -64,77 +67,75 @@ export default function HomePage() {
 
           <div className="mt-12 flex justify-center">
             <Link href="/services" className="btn-secondary">
-              Full service menu
+              View Full Service List
             </Link>
           </div>
         </div>
       </section>
 
+      {/* 5 — Bulletproof section (dark) */}
       <BulletproofHero />
 
-      <section className="surface-light border-y border-black/10">
-        <div className="section-container">
+      {/* 6 — Reviews (light) */}
+      <section className="relative bg-surface border-y border-border-light">
+        <div className="section-container relative">
           <ScrollReveal>
-            <p className="section-eyebrow text-accent">Reputation</p>
-            <div className="accent-rule mt-1 bg-accent" />
-            <h2 className="mt-8 font-display text-4xl font-normal leading-tight tracking-tight text-text-dark sm:text-5xl">
-              What drivers say
+            <p className="section-eyebrow">Customer Reviews</p>
+            <div className="accent-divider" />
+            <h2 className="editorial-title mt-6 text-4xl text-text-dark sm:text-5xl lg:text-6xl">
+              What Texas Drivers Say
             </h2>
-            <p className="mt-4 max-w-2xl text-text-dark/70">
-              Real feedback from Texas customers—no script, no fluff.
-            </p>
           </ScrollReveal>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {REVIEWS.map((review, idx) => (
               <ScrollReveal key={review.id} delay={idx * 0.1}>
-                <ReviewCard name={review.name} text={review.text} rating={review.rating} tone="light" />
+                <ReviewCard name={review.name} text={review.text} rating={review.rating} light />
               </ScrollReveal>
             ))}
           </div>
 
-          <p className="mt-14 text-center font-display text-xl font-normal text-text-dark/85 sm:text-2xl">
-            Trusted by owners and fleets across Texas.
+          <p className="mt-14 text-center font-display text-2xl font-bold text-text-dark sm:text-3xl">
+            Trusted by customers{" "}
+            <span className="text-accent">across Texas</span>
           </p>
         </div>
       </section>
 
-      <section className="border-b border-border-subtle bg-bg-dark">
-        <div className="section-container grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-14">
-          <GoogleMap />
-          <article className="rounded-sm border border-border-strong bg-bg-dark-card p-8 shadow-card md:p-10">
-            <p className="section-eyebrow">Visit</p>
-            <div className="accent-rule mt-1" />
-            <h2 className="mt-8 font-display text-3xl font-normal tracking-tight text-text-white sm:text-4xl">
-              The shop
-            </h2>
-            <p className="mt-5 text-text-muted">
-              {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
-            </p>
-            <p className="mt-2 text-sm text-text-muted">Mon–Fri: 8:00 AM – 6:00 PM</p>
-            <p className="text-sm text-text-muted">Saturday & Sunday: Closed</p>
+      {/* 7 — Map + shop info (dark) */}
+      <section className="section-container grid gap-10 lg:grid-cols-2 lg:gap-14">
+        <GoogleMap />
+        <article className="flex flex-col justify-center border-l-4 border-accent bg-bg-dark-card p-8 md:p-10">
+          <p className="section-eyebrow">Visit the Shop</p>
+          <div className="accent-divider" />
+          <h2 className="editorial-title mt-5 text-3xl sm:text-4xl">Come See Us</h2>
+          <p className="mt-5 text-text-muted">
+            {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
+          </p>
+          <p className="mt-2 text-sm font-semibold text-white/80">Monday–Friday &nbsp;8:00 AM — 6:00 PM</p>
+          <p className="text-sm text-text-muted">Saturday &amp; Sunday — Closed</p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${BUSINESS_INFO.address}, ${BUSINESS_INFO.city}, ${BUSINESS_INFO.state} ${BUSINESS_INFO.zip}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                Directions
-              </a>
-              <Link href="/contact" className="btn-primary">
-                Contact
-              </Link>
-            </div>
-          </article>
-        </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${BUSINESS_INFO.address}, ${BUSINESS_INFO.city}, ${BUSINESS_INFO.state} ${BUSINESS_INFO.zip}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
+              Get Directions
+            </a>
+            <Link href="/contact" className="btn-primary">
+              Contact Us
+            </Link>
+          </div>
+        </article>
       </section>
 
+      {/* 8 — CTA (red) */}
       <CTABanner
-        heading="Need the job done right the first time?"
-        subtext="Call to schedule diagnostics, repair, or a bulletproofing consultation with our Baytown team."
-        buttonText={`Call ${BUSINESS_INFO.phoneFormatted}`}
+        heading="Ready When You Are."
+        subtext="Call to schedule diagnostics, repair, or a bulletproofing consultation."
+        buttonText={BUSINESS_INFO.phoneFormatted}
         buttonLink={`tel:${BUSINESS_INFO.phone}`}
         variant="accent"
       />

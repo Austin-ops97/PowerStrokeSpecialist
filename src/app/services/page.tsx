@@ -19,7 +19,7 @@ export default function ServicesPage() {
         <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-80" />
         <div className="wrap section-pad relative">
           <span className="label">
-            <span className="h-px w-6 bg-brand" />
+            <span className="h-px w-6 bg-accent" />
             What We Offer
           </span>
           <h1 className="mt-5 text-[clamp(44px,7vw,88px)] font-black leading-[0.92] tracking-tighter text-white">
@@ -51,7 +51,7 @@ export default function ServicesPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <ScrollReveal>
               <span className="label">
-                <span className="h-px w-6 bg-brand" />
+                <span className="h-px w-6 bg-accent" />
                 Signature Service
               </span>
               <h2 className="mt-5 text-5xl font-black tracking-tighter text-white sm:text-6xl">
@@ -95,7 +95,7 @@ export default function ServicesPage() {
             <ScrollReveal>
               <div className="h-full border-l-4 border-brand bg-chalk p-8 lg:p-10">
                 <span className="label">
-                  <span className="h-px w-6 bg-brand" />
+                  <span className="h-px w-6 bg-accent" />
                   Upgrades
                 </span>
                 <h2 className="mt-5 text-3xl font-black tracking-tighter text-ink sm:text-4xl">

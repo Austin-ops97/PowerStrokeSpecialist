@@ -7,7 +7,7 @@ export default function NotFound() {
       <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-80" />
       <div className="wrap relative">
         <span className="label">
-          <span className="h-px w-6 bg-brand" />
+          <span className="h-px w-6 bg-accent" />
           404
         </span>
         <h1 className="mt-5 text-[clamp(72px,14vw,160px)] font-black leading-none tracking-tighter text-white/10">

@@ -19,7 +19,7 @@ export default function ContactPage() {
         <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-80" />
         <div className="wrap section-pad relative">
           <span className="label">
-            <span className="h-px w-6 bg-brand" />
+            <span className="h-px w-6 bg-accent" />
             Get in Touch
           </span>
           <h1 className="mt-5 text-[clamp(44px,7vw,88px)] font-black leading-[0.92] tracking-tighter text-white">

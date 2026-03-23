@@ -28,7 +28,8 @@ export default function ServiceAccordion({ limit = 6 }: ServiceAccordionProps) {
               aria-expanded={expanded}
             >
               <span className="flex items-center gap-4">
-                <span className={`flex h-9 w-9 shrink-0 items-center justify-center transition-all ${expanded ? "bg-brand text-white" : "bg-brand/10 text-brand"}`}>
+                {/* Texas blue icon when open */}
+                <span className={`flex h-9 w-9 shrink-0 items-center justify-center transition-all ${expanded ? "bg-accent text-white" : "bg-accent/10 text-accent"}`}>
                   <Icon size={16} strokeWidth={2} />
                 </span>
                 <span className="font-bold text-ink">{service.name}</span>
@@ -36,7 +37,7 @@ export default function ServiceAccordion({ limit = 6 }: ServiceAccordionProps) {
               <ChevronRight
                 size={18}
                 strokeWidth={2.5}
-                className={`shrink-0 text-zinc-300 transition-transform duration-300 ${expanded ? "rotate-90 text-brand" : ""}`}
+                className={`shrink-0 text-zinc-300 transition-transform duration-300 ${expanded ? "rotate-90 text-accent" : ""}`}
               />
             </button>
 

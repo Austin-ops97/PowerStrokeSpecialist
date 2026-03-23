@@ -27,7 +27,7 @@ export default function StatCounter({ value, label }: StatCounterProps) {
   }, [inView, numberTarget, suffix]);
 
   return (
-    <div ref={ref} className="border-l-4 border-brand py-4 pl-6">
+    <div ref={ref} className="border-l-4 border-accent py-4 pl-6">
       <p className="text-5xl font-black tracking-tighter text-white">{display}</p>
       <p className="mt-2 text-[10px] font-black uppercase tracking-[0.22em] text-white/40">{label}</p>
     </div>

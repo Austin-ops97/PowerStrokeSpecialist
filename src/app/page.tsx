@@ -8,7 +8,8 @@ import ServiceCard from "@/components/ServiceCard";
 import TrustBadges from "@/components/TrustBadges";
 import { BUSINESS_INFO, REVIEWS, SERVICES } from "@/lib/constants";
 import { buildMetadata } from "@/lib/site";
-import { ArrowRight, Clock3, MapPin, Phone } from "lucide-react";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = buildMetadata(
@@ -20,18 +21,18 @@ export const metadata = buildMetadata(
 export default function HomePage() {
   return (
     <>
-      {/* Hero — black */}
+      {/* 1. Hero — dark navy */}
       <Hero />
 
-      {/* Credentials — white */}
+      {/* 2. Credentials strip — white */}
       <TrustBadges />
 
-      {/* Services grid — light gray */}
+      {/* 3. Services grid — light gray */}
       <section className="bg-chalk">
         <div className="wrap section-pad">
           <ScrollReveal>
             <span className="label">
-              <span className="h-px w-6 bg-brand" />
+              <span className="h-px w-6 bg-accent" />
               What We Do
             </span>
             <h2 className="mt-5 text-5xl font-black tracking-tighter text-ink sm:text-6xl">
@@ -50,7 +51,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-10 flex items-center gap-2">
+          <div className="mt-10">
             <Link
               href="/services"
               className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-brand transition-colors hover:text-brand-dark"
@@ -62,15 +63,69 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Bulletproof feature — black */}
+      {/* 4. Shop photo — full-width cinematic section */}
+      <section className="relative h-[520px] overflow-hidden sm:h-[600px] lg:h-[680px]">
+        <Image
+          src="/images/shop-exterior.jpg"
+          alt="Power Stroke Specialist shop in Baytown, Texas"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority={false}
+        />
+        {/* Dark navy overlay */}
+        <div className="absolute inset-0 bg-ink/75" />
+
+        {/* Texas flag accent stripe at top of image */}
+        <div className="absolute left-0 right-0 top-0 flex h-1 w-full">
+          <div className="flex-1 bg-accent" />
+          <div className="flex-1 bg-white/30" />
+          <div className="flex-1 bg-brand" />
+        </div>
+
+        {/* Content anchored to bottom-left */}
+        <div className="absolute inset-0 flex items-end">
+          <div className="wrap pb-16">
+            <ScrollReveal>
+              <span className="label">
+                <span className="h-px w-6 bg-accent" />
+                Our Shop
+              </span>
+              <h2 className="mt-4 text-4xl font-black tracking-tighter text-white sm:text-5xl lg:text-6xl">
+                Come See Us in<br />Baytown, Texas.
+              </h2>
+              <p className="mt-4 max-w-md text-base font-medium text-white/60">
+                {BUSINESS_INFO.address} &mdash; {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a href={`tel:${BUSINESS_INFO.phone}`} className="btn-red">
+                  <Phone size={15} strokeWidth={2.5} />
+                  {BUSINESS_INFO.phoneFormatted}
+                </a>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${BUSINESS_INFO.address}, ${BUSINESS_INFO.city}, ${BUSINESS_INFO.state} ${BUSINESS_INFO.zip}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline-light"
+                >
+                  <MapPin size={14} strokeWidth={2.5} />
+                  Get Directions
+                </a>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Bulletproof feature — dark navy */}
       <BulletproofHero />
 
-      {/* Reviews — white */}
+      {/* 6. Reviews — white */}
       <section className="bg-chalk-card border-y border-zinc-100">
         <div className="wrap section-pad">
           <ScrollReveal>
             <span className="label">
-              <span className="h-px w-6 bg-brand" />
+              <span className="h-px w-6 bg-accent" />
               Customer Reviews
             </span>
             <h2 className="mt-5 text-5xl font-black tracking-tighter text-ink sm:text-6xl">
@@ -88,50 +143,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Location — dark */}
+      {/* 7. Map + Location — dark navy */}
       <section className="bg-ink">
         <div className="wrap section-pad">
           <ScrollReveal>
             <span className="label">
-              <span className="h-px w-6 bg-brand" />
+              <span className="h-px w-6 bg-accent" />
               Find Us
             </span>
             <h2 className="mt-5 text-5xl font-black tracking-tighter text-white sm:text-6xl">
-              Come See Us.
+              Hours &amp; Location.
             </h2>
           </ScrollReveal>
 
           <div className="mt-12 grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
-            {/* Map */}
             <GoogleMap />
 
-            {/* Info */}
             <div className="space-y-6">
-              <div className="flex gap-4 border-l-4 border-brand pl-6">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">Address</p>
-                  <p className="mt-1 text-base font-semibold text-white">
-                    {BUSINESS_INFO.address}<br />
-                    {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
-                  </p>
-                </div>
+              <div className="border-l-4 border-accent pl-6">
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">Address</p>
+                <p className="mt-1 text-base font-semibold text-white">
+                  {BUSINESS_INFO.address}<br />
+                  {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
+                </p>
               </div>
 
-              <div className="flex gap-4 border-l-4 border-brand pl-6">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">Phone</p>
-                  <a href={`tel:${BUSINESS_INFO.phone}`} className="mt-1 block text-base font-semibold text-white hover:text-brand">
-                    {BUSINESS_INFO.phoneFormatted}
-                  </a>
-                </div>
+              <div className="border-l-4 border-brand pl-6">
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">Phone</p>
+                <a href={`tel:${BUSINESS_INFO.phone}`} className="mt-1 block text-base font-semibold text-white hover:text-brand">
+                  {BUSINESS_INFO.phoneFormatted}
+                </a>
               </div>
 
-              <div className="flex gap-4 border-l-4 border-brand pl-6">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">Hours</p>
-                  <p className="mt-1 text-base font-semibold text-white">Mon – Fri &nbsp; 8:00 AM – 6:00 PM</p>
-                  <p className="text-sm font-medium text-white/40">Saturday &amp; Sunday — Closed</p>
-                </div>
+              <div className="border-l-4 border-accent pl-6">
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">Hours</p>
+                <p className="mt-1 text-base font-semibold text-white">Mon – Fri &nbsp; 8:00 AM – 6:00 PM</p>
+                <p className="text-sm font-medium text-white/40">Saturday &amp; Sunday — Closed</p>
               </div>
 
               <div className="mt-4 flex flex-wrap gap-3">
@@ -154,7 +201,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA — red */}
+      {/* 8. CTA — Texas red */}
       <CTABanner
         heading="Ready to Get Started?"
         subtext="Call to schedule diagnostics, repair, or a bulletproofing consultation."

@@ -19,9 +19,9 @@ export default function ServiceCard({ name, shortDescription, icon }: ServiceCar
       transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
       className="group flex flex-col bg-chalk-card p-7 shadow-sm transition-shadow duration-300 hover:shadow-lg"
     >
-      {/* Icon + arrow row */}
+      {/* Icon (Texas blue) + arrow row */}
       <div className="flex items-start justify-between">
-        <span className="flex h-12 w-12 items-center justify-center bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
+        <span className="flex h-12 w-12 items-center justify-center bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-white">
           <Icon size={22} strokeWidth={2} />
         </span>
         <ArrowUpRight
@@ -35,7 +35,7 @@ export default function ServiceCard({ name, shortDescription, icon }: ServiceCar
       <h3 className="mt-5 text-lg font-black tracking-tight text-ink">{name}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-500">{shortDescription}</p>
 
-      {/* Bottom CTA */}
+      {/* Bottom CTA — Texas red */}
       <div className="mt-6 border-t border-zinc-100 pt-5">
         <span className="text-[10px] font-black uppercase tracking-[0.22em] text-brand">
           Call for Quote

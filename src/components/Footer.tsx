@@ -5,7 +5,14 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t-4 border-brand bg-ink">
+    <footer className="bg-ink">
+      {/* Texas flag stripe — blue | white | red */}
+      <div className="flex h-1.5 w-full">
+        <div className="flex-1 bg-accent" />
+        <div className="flex-1 bg-white/20" />
+        <div className="flex-1 bg-brand" />
+      </div>
+
       <div className="wrap section-pad">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
 
@@ -23,7 +30,7 @@ export default function Footer() {
               </span>
               <span className="flex flex-col leading-none">
                 <span className="text-[14px] font-black tracking-tight text-white">POWER STROKE</span>
-                <span className="mt-0.5 text-[9px] font-black tracking-[0.35em] text-brand">SPECIALIST</span>
+                <span className="mt-0.5 text-[9px] font-black tracking-[0.35em] text-accent-light">SPECIALIST</span>
               </span>
             </Link>
             <p className="mt-6 max-w-xs text-sm font-medium leading-relaxed text-white/40">
@@ -73,7 +80,7 @@ export default function Footer() {
             <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/25">Contact</p>
             <ul className="mt-5 space-y-5">
               <li className="flex gap-3">
-                <MapPin size={15} className="mt-0.5 shrink-0 text-brand" strokeWidth={2} />
+                <MapPin size={15} className="mt-0.5 shrink-0 text-accent" strokeWidth={2} />
                 <span className="text-sm font-medium text-white/50">
                   {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
                 </span>

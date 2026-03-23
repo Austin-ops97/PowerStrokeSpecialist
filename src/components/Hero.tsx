@@ -10,32 +10,36 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export default function Hero() {
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-ink">
-      {/* Subtle dot grid */}
-      <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-100" />
+      {/* Dot grid */}
+      <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md" />
 
-      {/* Red glow — top left */}
+      {/* Texas blue glow — top left */}
       <div
-        className="pointer-events-none absolute -left-64 -top-64 h-[600px] w-[600px] rounded-full bg-brand/5 blur-3xl"
+        className="pointer-events-none absolute -left-64 -top-64 h-[700px] w-[700px] rounded-full bg-accent/8 blur-3xl"
+        aria-hidden
+      />
+      {/* Texas red glow — bottom right */}
+      <div
+        className="pointer-events-none absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full bg-brand/5 blur-3xl"
         aria-hidden
       />
 
-      {/* Content */}
       <div className="wrap relative z-10 flex min-h-[100svh] flex-col justify-center py-28">
         <div className="max-w-4xl">
 
-          {/* Location label */}
+          {/* Label — Texas blue */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease }}
           >
             <span className="label">
-              <span className="h-px w-6 bg-brand" />
+              <span className="h-px w-6 bg-accent" />
               Baytown, Texas &nbsp;·&nbsp; Diesel Specialists
             </span>
           </motion.div>
 
-          {/* Main headline */}
+          {/* Headline — white + Texas red accent */}
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,7 +50,6 @@ export default function Hero() {
             <span className="text-brand">Done Right.</span>
           </motion.h1>
 
-          {/* Sub-headline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -57,7 +60,7 @@ export default function Hero() {
             automotive service — the shop Baytown trusts.
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs — red primary, outline secondary */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -93,13 +96,13 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Right-side decorative vertical text */}
+      {/* Decorative vertical text */}
       <div
         className="pointer-events-none absolute bottom-12 right-8 hidden origin-bottom-right rotate-90 lg:block"
         aria-hidden
       >
         <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/10">
-          Power Stroke Specialist &nbsp;·&nbsp; Est. Baytown TX
+          Power Stroke Specialist &nbsp;·&nbsp; Baytown TX
         </p>
       </div>
     </section>

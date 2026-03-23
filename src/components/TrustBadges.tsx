@@ -11,7 +11,8 @@ export default function TrustBadges() {
             const Icon = iconMap[badge.icon] ?? ShieldCheck;
             return (
               <article key={badge.label} className="flex items-center gap-4 py-7 sm:px-8 lg:py-9">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-brand text-white">
+                {/* Texas blue icon box */}
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-accent text-white">
                   <Icon size={20} strokeWidth={2} />
                 </span>
                 <p className="text-sm font-bold leading-snug text-ink">{badge.label}</p>

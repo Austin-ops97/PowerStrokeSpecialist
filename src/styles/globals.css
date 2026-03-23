@@ -24,18 +24,24 @@ main {
     @apply py-20 sm:py-24 lg:py-32;
   }
 
-  /* Section label — "— LABEL TEXT" */
+  /* Section label — dash + uppercase text in Texas blue */
   .label {
-    @apply inline-flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.28em] text-brand;
+    @apply inline-flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.28em] text-accent;
   }
 
-  /* Buttons */
+  /* Primary CTA — Texas red */
   .btn-red {
     @apply inline-flex min-h-[52px] items-center justify-center gap-2.5 bg-brand px-8 text-[11px] font-black uppercase tracking-[0.2em] text-white transition-all duration-200 hover:bg-brand-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
   }
+  /* Secondary CTA — Texas blue */
+  .btn-blue {
+    @apply inline-flex min-h-[52px] items-center justify-center gap-2.5 bg-accent px-8 text-[11px] font-black uppercase tracking-[0.2em] text-white transition-all duration-200 hover:bg-accent-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
+  }
+  /* Outline on dark bg */
   .btn-outline-light {
     @apply inline-flex min-h-[52px] items-center justify-center gap-2.5 border-2 border-white/25 px-8 text-[11px] font-black uppercase tracking-[0.2em] text-white transition-all duration-200 hover:border-white hover:bg-white hover:text-ink active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white;
   }
+  /* Outline on light bg */
   .btn-outline-dark {
     @apply inline-flex min-h-[52px] items-center justify-center gap-2.5 border-2 border-ink px-8 text-[11px] font-black uppercase tracking-[0.2em] text-ink transition-all duration-200 hover:bg-ink hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink;
   }

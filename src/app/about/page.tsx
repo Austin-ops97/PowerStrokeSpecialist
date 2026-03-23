@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { BUSINESS_INFO, HOURS, REVIEWS } from "@/lib/constants";
 import { buildMetadata } from "@/lib/site";
 import { BadgeCheck, Gauge, ShieldCheck, Truck, Wallet, Wrench } from "lucide-react";
+import Image from "next/image";
 
 export const metadata = buildMetadata(
   "About",
@@ -23,12 +24,12 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      {/* Page hero — black */}
+      {/* Page hero — dark navy */}
       <section className="relative bg-ink">
         <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-80" />
         <div className="wrap section-pad relative">
           <span className="label">
-            <span className="h-px w-6 bg-brand" />
+            <span className="h-px w-6 bg-accent" />
             Our Shop
           </span>
           <h1 className="mt-5 text-[clamp(44px,7vw,88px)] font-black leading-[0.92] tracking-tighter text-white">
@@ -42,13 +43,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Story — white */}
+      {/* Story + shop photo — white */}
       <section className="bg-chalk-card border-y border-zinc-100">
         <div className="wrap section-pad">
-          <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
+          <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-16">
+
+            {/* Left — text content */}
             <ScrollReveal>
               <span className="label">
-                <span className="h-px w-6 bg-brand" />
+                <span className="h-px w-6 bg-accent" />
                 Our Story
               </span>
               <h2 className="mt-5 text-4xl font-black tracking-tighter text-ink sm:text-5xl">
@@ -62,35 +65,56 @@ export default function AboutPage() {
                 We know how hard it can be to find a trustworthy mechanic. That&apos;s why customers
                 from Baytown and across Texas choose us for straight answers and workmanship that holds up.
               </p>
-            </ScrollReveal>
 
-            {/* Stats panel */}
-            <ScrollReveal delay={0.1}>
-              <div className="grid grid-cols-2 gap-px bg-zinc-100">
+              {/* Inline quick stats */}
+              <div className="mt-10 grid grid-cols-3 divide-x divide-zinc-200 border border-zinc-200">
                 {[
-                  { value: "100+", label: "Engines Bulletproofed" },
-                  { value: "10+", label: "Years in Business" },
-                  { value: "13", label: "Services Offered" },
-                  { value: "2", label: "Engine Types Specialized" },
+                  { value: "100+", label: "Engines" },
+                  { value: "10+", label: "Years" },
+                  { value: "13", label: "Services" },
                 ].map((stat) => (
-                  <div key={stat.label} className="bg-white px-8 py-10">
-                    <p className="text-5xl font-black tracking-tighter text-brand">{stat.value}</p>
-                    <p className="mt-2 text-sm font-bold text-zinc-500">{stat.label}</p>
+                  <div key={stat.label} className="px-6 py-5 text-center">
+                    <p className="text-3xl font-black tracking-tighter text-brand">{stat.value}</p>
+                    <p className="mt-1 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">{stat.label}</p>
                   </div>
                 ))}
               </div>
             </ScrollReveal>
+
+            {/* Right — shop exterior photo */}
+            <ScrollReveal delay={0.1}>
+              <div className="relative h-[360px] overflow-hidden sm:h-[440px] lg:h-[520px]">
+                <Image
+                  src="/images/shop-exterior.jpg"
+                  alt="Power Stroke Specialist shop exterior in Baytown, Texas"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                {/* Texas flag stripe at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 flex h-1.5">
+                  <div className="flex-1 bg-accent" />
+                  <div className="flex-1 bg-white/40" />
+                  <div className="flex-1 bg-brand" />
+                </div>
+              </div>
+              {/* Caption */}
+              <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                711 Massey Tompkins Rd &nbsp;·&nbsp; Baytown, TX
+              </p>
+            </ScrollReveal>
+
           </div>
         </div>
       </section>
 
-      {/* Values — dark */}
+      {/* Values — dark navy */}
       <section className="relative bg-ink">
         <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-60" />
         <div className="wrap section-pad relative">
           <ScrollReveal>
             <span className="label">
-              <span className="h-px w-6 bg-brand" />
+              <span className="h-px w-6 bg-accent" />
               Our Standards
             </span>
             <h2 className="mt-5 text-4xl font-black tracking-tighter text-white sm:text-5xl">
@@ -102,7 +126,7 @@ export default function AboutPage() {
             {values.map((value, idx) => (
               <ScrollReveal key={value.label} delay={idx * 0.07}>
                 <div className="bg-ink-card p-8">
-                  <value.icon size={22} strokeWidth={2} className="text-brand" />
+                  <value.icon size={22} strokeWidth={2} className="text-accent" />
                   <h3 className="mt-5 text-lg font-black text-white">{value.label}</h3>
                   <p className="mt-2 text-sm font-medium leading-relaxed text-white/40">{value.sub}</p>
                 </div>
@@ -118,7 +142,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-2xl">
             <ScrollReveal>
               <span className="label">
-                <span className="h-px w-6 bg-brand" />
+                <span className="h-px w-6 bg-accent" />
                 Hours
               </span>
               <h2 className="mt-5 text-4xl font-black tracking-tighter text-ink sm:text-5xl">Shop Hours.</h2>
@@ -137,12 +161,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Reviews — gray */}
+      {/* Reviews — light gray */}
       <section className="bg-chalk">
         <div className="wrap section-pad">
           <ScrollReveal>
             <span className="label">
-              <span className="h-px w-6 bg-brand" />
+              <span className="h-px w-6 bg-accent" />
               Reviews
             </span>
             <h2 className="mt-5 text-4xl font-black tracking-tighter text-ink sm:text-5xl">

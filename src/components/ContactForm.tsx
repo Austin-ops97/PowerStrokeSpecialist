@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const serviceOptions = [
-  ...SERVICES.map((service) => service.name),
+  ...SERVICES.map((s) => s.name),
   "Power Stroke Bulletproofing",
   "Aftermarket Upgrades",
   "Other",
@@ -25,109 +25,102 @@ export default function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: "",
-      phone: "",
-      email: "",
-      vehicle: "",
-      serviceNeeded: "",
-      message: "",
-    },
+    defaultValues: { name: "", phone: "", email: "", vehicle: "", serviceNeeded: "", message: "" },
   });
 
   const onSubmit = async (values: ContactFormValues) => {
     setSubmitError(null);
     setIsSubmitted(false);
-
     const response = await fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
-
     if (!response.ok) {
-      setSubmitError("We could not send your message right now. Please call us directly.");
+      setSubmitError("Could not send your message. Please call us directly.");
       return;
     }
-
     setIsSubmitted(true);
     reset();
   };
 
   return (
-    <div className="card-base">
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-text-white sm:text-4xl">Send a message</h2>
+    <div>
+      <h2 className="text-3xl font-black tracking-tighter text-ink sm:text-4xl">Send a Message</h2>
+      <p className="mt-2 text-sm font-medium text-zinc-500">We respond during business hours.</p>
 
-      {isSubmitted ? (
-        <div className="mt-5 flex items-center gap-2 rounded-md border border-success/40 bg-success/10 p-3 text-success">
-          <CheckCircle2 size={18} />
-          <p>Thanks! We&apos;ll get back to you shortly.</p>
+      {isSubmitted && (
+        <div className="mt-5 flex items-center gap-2 border border-green-200 bg-green-50 p-4 text-sm font-semibold text-green-700">
+          <CheckCircle2 size={16} strokeWidth={2.5} />
+          Thanks! We&apos;ll get back to you shortly.
         </div>
-      ) : null}
-
-      {submitError ? (
-        <div className="mt-5 flex items-center gap-2 rounded-md border border-red-500/40 bg-red-500/10 p-3 text-red-300">
-          <AlertTriangle size={18} />
-          <p>{submitError}</p>
+      )}
+      {submitError && (
+        <div className="mt-5 flex items-center gap-2 border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-600">
+          <AlertTriangle size={16} strokeWidth={2.5} />
+          {submitError}
         </div>
-      ) : null}
+      )}
 
-      <form className="mt-6 space-y-4" onSubmit={handleSubmit(onSubmit)}>
-        <InputField label="Name" id="contact-name" error={errors.name?.message}>
-          <input id="contact-name" autoComplete="name" {...register("name")} className="input-field" required />
-        </InputField>
+      <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <Field label="Name *" id="f-name" error={errors.name?.message}>
+            <input id="f-name" autoComplete="name" placeholder="John Smith" {...register("name")} className="input-field" />
+          </Field>
+          <Field label="Phone *" id="f-phone" error={errors.phone?.message}>
+            <input id="f-phone" autoComplete="tel" placeholder="(832) 555-0100" {...register("phone")} className="input-field" />
+          </Field>
+        </div>
 
-        <InputField label="Phone Number" id="contact-phone" error={errors.phone?.message}>
-          <input id="contact-phone" autoComplete="tel" {...register("phone")} className="input-field" required />
-        </InputField>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <Field label="Email" id="f-email" error={errors.email?.message}>
+            <input id="f-email" type="email" autoComplete="email" placeholder="you@email.com" {...register("email")} className="input-field" />
+          </Field>
+          <Field label="Vehicle (Year/Make/Model)" id="f-vehicle" error={errors.vehicle?.message}>
+            <input id="f-vehicle" autoComplete="off" placeholder="2004 Ford F-250" {...register("vehicle")} className="input-field" />
+          </Field>
+        </div>
 
-        <InputField label="Email (optional)" id="contact-email" error={errors.email?.message}>
-          <input id="contact-email" type="email" autoComplete="email" {...register("email")} className="input-field" />
-        </InputField>
-
-        <InputField label="Vehicle Year / Make / Model (optional)" id="contact-vehicle" error={errors.vehicle?.message}>
-          <input id="contact-vehicle" autoComplete="off" {...register("vehicle")} className="input-field" />
-        </InputField>
-
-        <InputField label="Service Needed" id="contact-service" error={errors.serviceNeeded?.message}>
-          <select id="contact-service" {...register("serviceNeeded")} className="input-field" required>
+        <Field label="Service Needed *" id="f-service" error={errors.serviceNeeded?.message}>
+          <select id="f-service" {...register("serviceNeeded")} className="input-field-select">
             <option value="">Select a service</option>
-            {serviceOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
+            {serviceOptions.map((o) => (
+              <option key={o} value={o}>{o}</option>
             ))}
           </select>
-        </InputField>
+        </Field>
 
-        <InputField label="Message" id="contact-message" error={errors.message?.message}>
-          <textarea id="contact-message" {...register("message")} className="input-field min-h-32" required />
-        </InputField>
+        <Field label="Message *" id="f-message" error={errors.message?.message}>
+          <textarea
+            id="f-message"
+            {...register("message")}
+            placeholder="Tell us what's going on with your vehicle..."
+            className="input-field min-h-[120px] resize-none"
+          />
+        </Field>
 
-        <button type="submit" className="btn-primary w-full gap-2 disabled:cursor-not-allowed disabled:opacity-70" disabled={isSubmitting}>
-          {isSubmitting ? <LoaderCircle size={18} className="animate-spin" /> : null}
-          {isSubmitting ? "Sending..." : "Send Message"}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="btn-red w-full justify-center disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isSubmitting
+            ? <><LoaderCircle size={16} className="animate-spin" /> Sending...</>
+            : "Send Message"}
         </button>
       </form>
     </div>
   );
 }
 
-type InputFieldProps = {
-  label: string;
-  id: string;
-  error?: string;
-  children: React.ReactNode;
-};
-
-function InputField({ label, id, error, children }: InputFieldProps) {
+function Field({ label, id, error, children }: { label: string; id: string; error?: string; children: React.ReactNode }) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-text-white">
+      <label htmlFor={id} className="block text-[11px] font-black uppercase tracking-[0.2em] text-zinc-400">
         {label}
       </label>
       <div className="mt-1">{children}</div>
-      {error ? <span className="mt-1 block text-xs text-red-300">{error}</span> : null}
+      {error && <p className="mt-1.5 text-xs font-semibold text-brand">{error}</p>}
     </div>
   );
 }

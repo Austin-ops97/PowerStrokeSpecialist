@@ -1,9 +1,9 @@
-import BulletproofHero from "@/components/BulletproofHero";
 import CTABanner from "@/components/CTABanner";
 import ScrollReveal from "@/components/ScrollReveal";
 import ServiceCard from "@/components/ServiceCard";
 import { BUSINESS_INFO, SERVICES } from "@/lib/constants";
 import { buildMetadata } from "@/lib/site";
+import { CheckCircle2 } from "lucide-react";
 
 export const metadata = buildMetadata(
   "Services",
@@ -14,75 +14,116 @@ export const metadata = buildMetadata(
 export default function ServicesPage() {
   return (
     <>
-      {/* Page header */}
-      <section className="relative overflow-hidden bg-bg-dark border-b border-border-subtle">
-        <div className="absolute inset-0 bg-mesh-hero opacity-50" />
-        <div className="absolute inset-0 bg-line-grid bg-grid opacity-20" />
-        {/* Red left stripe */}
-        <div className="absolute left-0 top-0 h-full w-1.5 bg-accent" aria-hidden />
-        <div className="section-container relative py-16 text-center sm:py-20">
-          <p className="section-eyebrow">Work We Perform</p>
-          <div className="accent-divider mx-auto" />
-          <h1 className="editorial-title mt-6 text-5xl sm:text-6xl lg:text-7xl">Our Services</h1>
-          <p className="mx-auto mt-5 max-w-xl text-text-muted">
-            Diagnostics through complete rebuilds — if it moves your fleet or your family,
+      {/* Page hero */}
+      <section className="relative bg-ink">
+        <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-80" />
+        <div className="wrap section-pad relative">
+          <span className="label">
+            <span className="h-px w-6 bg-brand" />
+            What We Offer
+          </span>
+          <h1 className="mt-5 text-[clamp(44px,7vw,88px)] font-black leading-[0.92] tracking-tighter text-white">
+            Our Services.
+          </h1>
+          <p className="mt-7 max-w-lg text-base font-medium leading-relaxed text-white/50">
+            Diagnostics through complete engine rebuilds — if it moves your family or your fleet,
             we can maintain and repair it.
           </p>
         </div>
       </section>
 
       {/* All service cards */}
-      <section className="section-container">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {SERVICES.map((service, idx) => (
-            <ScrollReveal key={service.id} delay={idx * 0.05}>
-              <ServiceCard name={service.name} shortDescription={service.shortDescription} icon={service.icon} />
-            </ScrollReveal>
-          ))}
+      <section className="bg-chalk">
+        <div className="wrap section-pad">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((service, idx) => (
+              <ScrollReveal key={service.id} delay={idx * 0.04}>
+                <ServiceCard name={service.name} shortDescription={service.shortDescription} icon={service.icon} />
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Bulletproofing callout */}
-      <section className="section-container pt-0">
-        <article className="relative overflow-hidden border-l-4 border-accent bg-bg-dark-card p-8 md:p-12">
-          <div className="pointer-events-none absolute inset-0 bg-line-grid bg-grid opacity-10" />
-          <div className="relative">
-            <p className="section-eyebrow">Signature Service</p>
-            <h2 className="editorial-title text-3xl sm:text-4xl lg:text-5xl">Power Stroke Bulletproofing</h2>
-            <p className="mt-5 max-w-3xl text-text-muted leading-relaxed">
-              We build bulletproofed Power Stroke engines for long-term reliability by addressing known
-              failure points. Depending on platform and goals, this can include head studs, EGR-related
-              work, oil cooler service, FICM support, water pump improvements, and cooling-system updates.
-            </p>
-            <a href={`tel:${BUSINESS_INFO.phone}`} className="btn-primary mt-8 inline-flex">
-              Discuss Your Build
-            </a>
+      {/* Bulletproofing callout — black */}
+      <section className="bg-ink border-y border-ink-border">
+        <div className="wrap section-pad">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <ScrollReveal>
+              <span className="label">
+                <span className="h-px w-6 bg-brand" />
+                Signature Service
+              </span>
+              <h2 className="mt-5 text-5xl font-black tracking-tighter text-white sm:text-6xl">
+                Power Stroke<br />Bulletproofing.
+              </h2>
+              <p className="mt-6 text-base font-medium leading-relaxed text-white/50">
+                We build bulletproofed Power Stroke engines for long-term reliability by addressing
+                known failure points. Every job is tailored to your platform and goals.
+              </p>
+              <a href={`tel:${BUSINESS_INFO.phone}`} className="btn-red mt-8 inline-flex">
+                Call to Discuss Your Build
+              </a>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.1}>
+              <ul className="space-y-4">
+                {[
+                  "ARP head stud installation",
+                  "Oil cooler flush and replacement",
+                  "EGR system service",
+                  "FICM support and replacement",
+                  "Cooling system updates",
+                  "Water pump service",
+                  "Full diagnostic workup before and after",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 border-b border-ink-border pb-4 last:border-0">
+                    <CheckCircle2 size={16} className="shrink-0 text-brand" strokeWidth={2.5} />
+                    <span className="text-sm font-semibold text-white/70">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
           </div>
-        </article>
+        </div>
       </section>
 
-      {/* Bulletproof hero section */}
-      <BulletproofHero />
+      {/* Aftermarket + Fleet — white */}
+      <section className="bg-chalk-card border-y border-zinc-100">
+        <div className="wrap section-pad">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <ScrollReveal>
+              <div className="h-full border-l-4 border-brand bg-chalk p-8 lg:p-10">
+                <span className="label">
+                  <span className="h-px w-6 bg-brand" />
+                  Upgrades
+                </span>
+                <h2 className="mt-5 text-3xl font-black tracking-tighter text-ink sm:text-4xl">
+                  Aftermarket Upgrades.
+                </h2>
+                <p className="mt-4 text-base font-medium leading-relaxed text-zinc-500">
+                  Lift kits, exhaust, tuning, intake, suspension — tell us the goal and we&apos;ll
+                  engineer the path to get there.
+                </p>
+              </div>
+            </ScrollReveal>
 
-      {/* Aftermarket + Fleet */}
-      <section className="bg-surface border-y border-border-light">
-        <div className="section-container grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <article className="bg-white border border-border-light p-8 shadow-card-light md:p-10">
-            <span className="inline-block h-1 w-10 bg-accent mb-5" />
-            <h2 className="font-display text-2xl font-bold tracking-tight text-text-dark sm:text-3xl">Aftermarket Upgrades</h2>
-            <p className="mt-4 text-text-dark-muted leading-relaxed">
-              Lift kits, exhaust, tuning, intake, suspension — tell us the goal and
-              we&apos;ll engineer the path to get there.
-            </p>
-          </article>
-          <article className="bg-white border-l-4 border-accent border border-border-light p-8 shadow-card-light md:p-10">
-            <span className="inline-block h-1 w-10 bg-brand-blue mb-5" />
-            <h2 className="font-display text-2xl font-bold tracking-tight text-text-dark sm:text-3xl">Fleet Services</h2>
-            <p className="mt-4 text-text-dark-muted leading-relaxed">
-              Maintenance and repair for commercial vehicles — less downtime,
-              more predictable outcomes for your operation.
-            </p>
-          </article>
+            <ScrollReveal delay={0.1}>
+              <div className="h-full border-l-4 border-zinc-300 bg-chalk p-8 lg:p-10">
+                <span className="label" style={{ color: "#6B7280" }}>
+                  <span className="h-px w-6 bg-zinc-400" />
+                  Fleet
+                </span>
+                <h2 className="mt-5 text-3xl font-black tracking-tighter text-ink sm:text-4xl">
+                  Fleet Services.
+                </h2>
+                <p className="mt-4 text-base font-medium leading-relaxed text-zinc-500">
+                  Scheduled maintenance and repair for commercial vehicles — less downtime,
+                  more predictable outcomes for your operation.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
@@ -91,7 +132,7 @@ export default function ServicesPage() {
         subtext={`Call ${BUSINESS_INFO.phoneFormatted} and we'll talk through your specific situation.`}
         buttonText="Call for a Quote"
         buttonLink={`tel:${BUSINESS_INFO.phone}`}
-        variant="accent"
+        variant="red"
       />
     </>
   );

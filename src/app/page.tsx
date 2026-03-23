@@ -4,11 +4,11 @@ import GoogleMap from "@/components/GoogleMap";
 import Hero from "@/components/Hero";
 import ReviewCard from "@/components/ReviewCard";
 import ScrollReveal from "@/components/ScrollReveal";
-import ServiceAccordion from "@/components/ServiceAccordion";
 import ServiceCard from "@/components/ServiceCard";
 import TrustBadges from "@/components/TrustBadges";
 import { BUSINESS_INFO, REVIEWS, SERVICES } from "@/lib/constants";
 import { buildMetadata } from "@/lib/site";
+import { ArrowRight, Clock3, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = buildMetadata(
@@ -20,124 +20,147 @@ export const metadata = buildMetadata(
 export default function HomePage() {
   return (
     <>
-      {/* 1 — Hero (dark) */}
+      {/* Hero — black */}
       <Hero />
 
-      {/* 2 — Trust bar (light) */}
+      {/* Credentials — white */}
       <TrustBadges />
 
-      {/* 3 — Capabilities accordion (dark) */}
-      <section className="relative overflow-hidden bg-bg-dark">
-        <div className="pointer-events-none absolute inset-0 bg-line-grid bg-grid opacity-20" />
-        <div className="section-container relative">
+      {/* Services grid — light gray */}
+      <section className="bg-chalk">
+        <div className="wrap section-pad">
           <ScrollReveal>
-            <p className="section-eyebrow">Capabilities</p>
-            <div className="accent-divider" />
-            <h2 className="editorial-title mt-6 max-w-3xl text-4xl sm:text-5xl lg:text-6xl">
-              Everything Under One Roof
+            <span className="label">
+              <span className="h-px w-6 bg-brand" />
+              What We Do
+            </span>
+            <h2 className="mt-5 text-5xl font-black tracking-tighter text-ink sm:text-6xl">
+              Our Services.
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-text-muted sm:text-lg">
-              From daily drivers to fleet trucks — diagnostics, repair, and Power Stroke programs
-              handled with the same discipline you&apos;d expect from a flagship service center.
+            <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-zinc-500">
+              From routine maintenance to complete Power Stroke rebuilds — if it moves, we can fix it.
             </p>
           </ScrollReveal>
 
-          <div className="mt-12">
-            <ServiceAccordion limit={6} />
-          </div>
-        </div>
-      </section>
-
-      {/* 4 — Featured service cards (dark lighter) */}
-      <section className="bg-bg-dark-lighter border-y border-border-subtle">
-        <div className="section-container">
-          <ScrollReveal>
-            <p className="section-eyebrow">Highlighted Work</p>
-            <div className="accent-divider" />
-            <h2 className="editorial-title mt-6 text-4xl sm:text-5xl lg:text-6xl">Services We Lead With</h2>
-          </ScrollReveal>
-
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.slice(0, 6).map((service, idx) => (
-              <ScrollReveal key={service.id} delay={idx * 0.08}>
+              <ScrollReveal key={service.id} delay={idx * 0.06}>
                 <ServiceCard name={service.name} shortDescription={service.shortDescription} icon={service.icon} />
               </ScrollReveal>
             ))}
           </div>
 
-          <div className="mt-12 flex justify-center">
-            <Link href="/services" className="btn-secondary">
-              View Full Service List
+          <div className="mt-10 flex items-center gap-2">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-brand transition-colors hover:text-brand-dark"
+            >
+              View All {SERVICES.length} Services
+              <ArrowRight size={15} strokeWidth={2.5} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 5 — Bulletproof section (dark) */}
+      {/* Bulletproof feature — black */}
       <BulletproofHero />
 
-      {/* 6 — Reviews (light) */}
-      <section className="relative bg-surface border-y border-border-light">
-        <div className="section-container relative">
+      {/* Reviews — white */}
+      <section className="bg-chalk-card border-y border-zinc-100">
+        <div className="wrap section-pad">
           <ScrollReveal>
-            <p className="section-eyebrow">Customer Reviews</p>
-            <div className="accent-divider" />
-            <h2 className="editorial-title mt-6 text-4xl text-text-dark sm:text-5xl lg:text-6xl">
-              What Texas Drivers Say
+            <span className="label">
+              <span className="h-px w-6 bg-brand" />
+              Customer Reviews
+            </span>
+            <h2 className="mt-5 text-5xl font-black tracking-tighter text-ink sm:text-6xl">
+              What Customers Say.
             </h2>
           </ScrollReveal>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {REVIEWS.map((review, idx) => (
               <ScrollReveal key={review.id} delay={idx * 0.1}>
-                <ReviewCard name={review.name} text={review.text} rating={review.rating} light />
+                <ReviewCard name={review.name} text={review.text} rating={review.rating} />
               </ScrollReveal>
             ))}
           </div>
-
-          <p className="mt-14 text-center font-display text-2xl font-bold text-text-dark sm:text-3xl">
-            Trusted by customers{" "}
-            <span className="text-accent">across Texas</span>
-          </p>
         </div>
       </section>
 
-      {/* 7 — Map + shop info (dark) */}
-      <section className="section-container grid gap-10 lg:grid-cols-2 lg:gap-14">
-        <GoogleMap />
-        <article className="flex flex-col justify-center border-l-4 border-accent bg-bg-dark-card p-8 md:p-10">
-          <p className="section-eyebrow">Visit the Shop</p>
-          <div className="accent-divider" />
-          <h2 className="editorial-title mt-5 text-3xl sm:text-4xl">Come See Us</h2>
-          <p className="mt-5 text-text-muted">
-            {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
-          </p>
-          <p className="mt-2 text-sm font-semibold text-white/80">Monday–Friday &nbsp;8:00 AM — 6:00 PM</p>
-          <p className="text-sm text-text-muted">Saturday &amp; Sunday — Closed</p>
+      {/* Location — dark */}
+      <section className="bg-ink">
+        <div className="wrap section-pad">
+          <ScrollReveal>
+            <span className="label">
+              <span className="h-px w-6 bg-brand" />
+              Find Us
+            </span>
+            <h2 className="mt-5 text-5xl font-black tracking-tighter text-white sm:text-6xl">
+              Come See Us.
+            </h2>
+          </ScrollReveal>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${BUSINESS_INFO.address}, ${BUSINESS_INFO.city}, ${BUSINESS_INFO.state} ${BUSINESS_INFO.zip}`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary"
-            >
-              Get Directions
-            </a>
-            <Link href="/contact" className="btn-primary">
-              Contact Us
-            </Link>
+          <div className="mt-12 grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+            {/* Map */}
+            <GoogleMap />
+
+            {/* Info */}
+            <div className="space-y-6">
+              <div className="flex gap-4 border-l-4 border-brand pl-6">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">Address</p>
+                  <p className="mt-1 text-base font-semibold text-white">
+                    {BUSINESS_INFO.address}<br />
+                    {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 border-l-4 border-brand pl-6">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">Phone</p>
+                  <a href={`tel:${BUSINESS_INFO.phone}`} className="mt-1 block text-base font-semibold text-white hover:text-brand">
+                    {BUSINESS_INFO.phoneFormatted}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex gap-4 border-l-4 border-brand pl-6">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-white/30">Hours</p>
+                  <p className="mt-1 text-base font-semibold text-white">Mon – Fri &nbsp; 8:00 AM – 6:00 PM</p>
+                  <p className="text-sm font-medium text-white/40">Saturday &amp; Sunday — Closed</p>
+                </div>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-3">
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${BUSINESS_INFO.address}, ${BUSINESS_INFO.city}, ${BUSINESS_INFO.state} ${BUSINESS_INFO.zip}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline-light"
+                >
+                  <MapPin size={14} strokeWidth={2.5} />
+                  Get Directions
+                </a>
+                <a href={`tel:${BUSINESS_INFO.phone}`} className="btn-red">
+                  <Phone size={14} strokeWidth={2.5} />
+                  Call Now
+                </a>
+              </div>
+            </div>
           </div>
-        </article>
+        </div>
       </section>
 
-      {/* 8 — CTA (red) */}
+      {/* CTA — red */}
       <CTABanner
-        heading="Ready When You Are."
+        heading="Ready to Get Started?"
         subtext="Call to schedule diagnostics, repair, or a bulletproofing consultation."
         buttonText={BUSINESS_INFO.phoneFormatted}
         buttonLink={`tel:${BUSINESS_INFO.phone}`}
-        variant="accent"
+        variant="red"
       />
     </>
   );

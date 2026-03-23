@@ -14,67 +14,72 @@ export const metadata = buildMetadata(
 export default function ContactPage() {
   return (
     <>
-      {/* Page header */}
-      <section className="relative overflow-hidden bg-bg-dark border-b border-border-subtle">
-        <div className="pointer-events-none absolute inset-0 bg-line-grid bg-grid opacity-20" />
-        <div className="absolute inset-0 bg-mesh-hero opacity-40" />
-        {/* Red left stripe */}
-        <div className="absolute left-0 top-0 h-full w-1.5 bg-accent" aria-hidden />
-        <div className="section-container relative py-16 text-center sm:py-20">
-          <p className="section-eyebrow">Get in Touch</p>
-          <div className="accent-divider mx-auto" />
-          <h1 className="editorial-title mt-6 text-5xl sm:text-6xl">Contact Us</h1>
-          <p className="mx-auto mt-5 max-w-lg text-text-muted">
+      {/* Page hero */}
+      <section className="relative bg-ink">
+        <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-80" />
+        <div className="wrap section-pad relative">
+          <span className="label">
+            <span className="h-px w-6 bg-brand" />
+            Get in Touch
+          </span>
+          <h1 className="mt-5 text-[clamp(44px,7vw,88px)] font-black leading-[0.92] tracking-tighter text-white">
+            Contact Us.
+          </h1>
+          <p className="mt-7 max-w-lg text-base font-medium leading-relaxed text-white/50">
             Questions, quotes, or appointment requests — we respond during shop hours.
           </p>
         </div>
       </section>
 
-      {/* Form + info cards */}
-      <section className="section-container grid gap-10 lg:grid-cols-2 lg:gap-14">
-        <ContactForm />
+      {/* Form + info */}
+      <section className="bg-chalk-card border-y border-zinc-100">
+        <div className="wrap section-pad">
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
+            {/* Form */}
+            <ContactForm />
 
-        <div className="space-y-4">
-          <InfoCard title="Address" icon={MapPin}>
-            {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
-          </InfoCard>
-          <InfoCard title="Phone" icon={Phone}>
-            <a
-              href={`tel:${BUSINESS_INFO.phone}`}
-              className="font-bold text-accent transition-colors hover:text-accent-light"
-            >
-              {BUSINESS_INFO.phoneFormatted}
-            </a>
-          </InfoCard>
-          <InfoCard title="Hours" icon={Clock3}>
-            <ul className="space-y-2 text-sm">
-              {HOURS.map((entry) => (
-                <li key={entry.day} className="flex justify-between gap-4">
-                  <span className="font-medium text-white">{entry.day}</span>
-                  <span className={entry.isOpen ? "text-text-muted" : "text-text-muted/50"}>
-                    {entry.hours}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </InfoCard>
-          <InfoCard title="Facebook" icon={Facebook}>
-            <a
-              href={BUSINESS_INFO.facebookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-brand-blue transition-colors hover:text-white"
-            >
-              Visit our page
-            </a>
-          </InfoCard>
+            {/* Info */}
+            <div className="space-y-0 divide-y divide-zinc-100">
+              <InfoRow icon={MapPin} label="Address">
+                {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
+              </InfoRow>
+              <InfoRow icon={Phone} label="Phone">
+                <a
+                  href={`tel:${BUSINESS_INFO.phone}`}
+                  className="font-bold text-brand transition-colors hover:text-brand-dark"
+                >
+                  {BUSINESS_INFO.phoneFormatted}
+                </a>
+              </InfoRow>
+              <InfoRow icon={Clock3} label="Hours">
+                <ul className="space-y-2">
+                  {HOURS.map((entry) => (
+                    <li key={entry.day} className="flex justify-between gap-6 text-sm">
+                      <span className="font-semibold text-ink">{entry.day}</span>
+                      <span className={entry.isOpen ? "text-zinc-500" : "text-zinc-300"}>
+                        {entry.hours}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </InfoRow>
+              <InfoRow icon={Facebook} label="Facebook">
+                <a
+                  href={BUSINESS_INFO.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-brand transition-colors hover:text-brand-dark"
+                >
+                  Visit our page
+                </a>
+              </InfoRow>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Map */}
-      <section className="section-container pt-0">
-        <GoogleMap />
-      </section>
+      {/* Map — full width */}
+      <GoogleMap />
 
       <CTABanner
         heading="Prefer to Talk It Through?"
@@ -87,22 +92,24 @@ export default function ContactPage() {
   );
 }
 
-type InfoCardProps = {
-  title: string;
-  icon: React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>;
+function InfoRow({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
+  label: string;
   children: React.ReactNode;
-};
-
-function InfoCard({ title, icon: Icon, children }: InfoCardProps) {
+}) {
   return (
-    <article className="flex gap-5 border-l-4 border-accent bg-bg-dark-card p-6 md:p-7">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-accent text-white mt-0.5">
-        <Icon size={17} strokeWidth={2} />
+    <div className="flex gap-5 py-6">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-brand text-white">
+        <Icon size={16} strokeWidth={2.5} />
       </span>
       <div>
-        <h2 className="font-display text-lg font-bold tracking-tight text-white">{title}</h2>
-        <div className="mt-2 text-sm text-text-muted">{children}</div>
+        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-zinc-400">{label}</p>
+        <div className="mt-1.5 text-sm font-medium text-zinc-600">{children}</div>
       </div>
-    </article>
+    </div>
   );
 }

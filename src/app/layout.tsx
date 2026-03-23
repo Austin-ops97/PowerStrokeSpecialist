@@ -2,24 +2,17 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import PageTransition from "@/components/PageTransition";
-import TopInfoBar from "@/components/TopInfoBar";
 import { BUSINESS_INFO, HOURS, SERVICES } from "@/lib/constants";
 import { SITE_URL, buildMetadata } from "@/lib/site";
 import "@/styles/globals.css";
-import { Oswald, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
   display: "swap",
-});
-
-const oswald = Oswald({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = buildMetadata(
@@ -58,35 +51,24 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     areaServed: "Texas",
     makesOffer: SERVICES.map((service) => ({
       "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: service.name,
-      },
+      itemOffered: { "@type": "Service", name: service.name },
     })),
   };
 
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${oswald.variable}`}>
-      <body className="min-h-screen bg-bg-dark text-text-white">
-        <a href="#main-content" className="skip-link">
-          Skip to content
-        </a>
-
-        <TopInfoBar />
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen bg-ink font-sans text-white">
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
-
         <PageTransition>
           <main id="main-content">{children}</main>
         </PageTransition>
-
         <Footer />
-
         <Script
           id="local-business-json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
-
         {process.env.NEXT_PUBLIC_GA_ID ? (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} strategy="afterInteractive" />

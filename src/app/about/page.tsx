@@ -86,7 +86,7 @@ export default function AboutPage() {
                 <div className="absolute -bottom-3 -right-3 h-full w-full border-2 border-navy/15" />
                 <div className="relative h-[380px] overflow-hidden border border-slate-200 sm:h-[460px]">
                   <Image
-                    src="/images/shop-exterior.jpg"
+                    src="https://2pbqjgxycewduhvh.public.blob.vercel-storage.com/PowerStroke/Screenshot%202026-03-23%20at%2010.19.10%E2%80%AFAM.png"
                     alt="Power Stroke Specialist shop exterior in Baytown, Texas"
                     fill
                     className="object-cover"

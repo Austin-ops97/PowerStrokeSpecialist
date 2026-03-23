@@ -21,7 +21,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center gap-3">
               <span className="relative h-9 w-9 shrink-0">
                 <Image
-                  src="/images/logo-power-stroke-specialist.png"
+                  src="https://2pbqjgxycewduhvh.public.blob.vercel-storage.com/PowerStroke/Untitled_Artwork.png"
                   alt="Power Stroke Specialist"
                   fill
                   className="object-contain"

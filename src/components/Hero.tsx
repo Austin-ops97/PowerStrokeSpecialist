@@ -100,7 +100,7 @@ export default function Hero() {
             {/* Photo frame */}
             <div className="relative h-[480px] xl:h-[560px] overflow-hidden border border-slate-200 bg-navy-50">
               <Image
-                src="/images/shop-exterior.jpg"
+                src="https://2pbqjgxycewduhvh.public.blob.vercel-storage.com/PowerStroke/Screenshot%202026-03-23%20at%2010.19.10%E2%80%AFAM.png"
                 alt="Power Stroke Specialist shop in Baytown, Texas"
                 fill
                 className="object-cover object-center"

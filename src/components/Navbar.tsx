@@ -21,7 +21,7 @@ export default function Navbar() {
           <Link href="/" onClick={() => setOpen(false)} className="flex shrink-0 items-center gap-3">
             <span className="relative h-10 w-10 shrink-0">
               <Image
-                src="/images/logo-power-stroke-specialist.png"
+                src="https://2pbqjgxycewduhvh.public.blob.vercel-storage.com/PowerStroke/Untitled_Artwork.png"
                 alt="Power Stroke Specialist"
                 fill
                 className="object-contain"

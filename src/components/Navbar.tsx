@@ -15,23 +15,23 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
-        <div className="wrap flex h-[68px] items-center justify-between gap-6">
+        <div className="wrap flex h-[72px] items-center justify-between gap-6">
 
           {/* Logo */}
-          <Link href="/" onClick={() => setOpen(false)} className="flex shrink-0 items-center gap-3">
-            <span className="relative h-10 w-10 shrink-0">
+          <Link href="/" onClick={() => setOpen(false)} className="flex shrink-0 items-center gap-3.5">
+            <span className="relative h-12 w-12 shrink-0 drop-shadow-sm">
               <Image
                 src="https://2pbqjgxycewduhvh.public.blob.vercel-storage.com/PowerStroke/Untitled_Artwork.png"
                 alt="Power Stroke Specialist"
                 fill
                 className="object-contain"
-                sizes="40px"
+                sizes="48px"
                 priority
               />
             </span>
             <span className="flex flex-col leading-none">
-              <span className="text-[14px] font-black tracking-tight text-slate-900">POWER STROKE</span>
-              <span className="mt-0.5 text-[8px] font-black tracking-[0.35em] text-navy">SPECIALIST</span>
+              <span className="text-[16px] font-black tracking-tight text-slate-900">POWER STROKE</span>
+              <span className="mt-0.5 text-[9px] font-black tracking-[0.38em] text-navy">SPECIALIST</span>
             </span>
           </Link>
 
@@ -90,7 +90,7 @@ export default function Navbar() {
             className="fixed inset-0 z-40 flex flex-col bg-white lg:hidden"
           >
             {/* Top bar */}
-            <div className="flex h-[68px] items-center justify-between border-b border-slate-200 px-5">
+            <div className="flex h-[72px] items-center justify-between border-b border-slate-200 px-5">
               <span className="text-[14px] font-black tracking-tight text-slate-900">
                 POWER STROKE <span className="text-navy">SPECIALIST</span>
               </span>

@@ -48,15 +48,16 @@ export default function ServicesPage() {
         <div className="wrap section-pad">
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
             <ScrollReveal>
-              <span className="label text-white/40">
-                <span className="h-px w-5 bg-action" />
+              <span className="inline-flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-white/50">
+                <span className="h-px w-5 bg-white/30" />
                 Signature Service
               </span>
+              {/* All white heading — no red text on blue */}
               <h2 className="mt-5 text-4xl font-black tracking-tighter text-white sm:text-5xl">
-                Power Stroke<br />
-                <span className="text-action">Bulletproofing.</span>
+                Power Stroke<br />Bulletproofing.
               </h2>
-              <p className="mt-5 text-base font-medium leading-relaxed text-white/55">
+              <div className="mt-4 h-1 w-16 bg-action" />
+              <p className="mt-5 text-base font-medium leading-relaxed text-white/60">
                 Every known failure point addressed so your Ford Power Stroke engine runs longer and
                 harder. Hundreds of builds completed across Texas.
               </p>
@@ -77,7 +78,8 @@ export default function ServicesPage() {
                   "Pre- and post-build diagnostic workup",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 py-4">
-                    <CheckCircle2 size={16} className="shrink-0 text-action" strokeWidth={2.5} />
+                    {/* White icons on navy — readable */}
+                    <CheckCircle2 size={16} className="shrink-0 text-white/70" strokeWidth={2.5} />
                     <span className="text-sm font-semibold text-white/75">{item}</span>
                   </li>
                 ))}

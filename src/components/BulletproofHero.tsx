@@ -13,8 +13,8 @@ const checklist = [
 
 export default function BulletproofHero() {
   return (
-    <section className="relative bg-navy overflow-hidden">
-      {/* Subtle dot grid on navy */}
+    <section className="relative overflow-hidden bg-navy">
+      {/* Subtle dot grid */}
       <div className="pointer-events-none absolute inset-0 bg-dot-navy bg-dot-md" />
 
       <div className="wrap section-pad relative">
@@ -22,15 +22,21 @@ export default function BulletproofHero() {
 
           {/* Left — text */}
           <div>
-            <span className="label text-white/50">
-              <span className="h-px w-5 bg-action" />
+            {/* Eyebrow: white text on navy — clear and readable */}
+            <span className="inline-flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-white/50">
+              <span className="h-px w-5 bg-white/30" />
               Signature Service
             </span>
+
+            {/* Heading: all white — no red text on blue (contrast clash) */}
             <h2 className="mt-5 text-5xl font-black tracking-tighter text-white sm:text-6xl">
-              Power Stroke<br />
-              <span className="text-action">Bulletproofing.</span>
+              Power Stroke<br />Bulletproofing.
             </h2>
-            <p className="mt-6 max-w-md text-base font-medium leading-relaxed text-white/55">
+
+            {/* Red underline accent below heading — decorative only, not text */}
+            <div className="mt-4 h-1 w-16 bg-action" />
+
+            <p className="mt-5 max-w-md text-base font-medium leading-relaxed text-white/60">
               The work we&apos;re known for across Texas. Every known Ford Power Stroke failure
               point addressed — so your engine outlasts everything else on the road.
             </p>
@@ -38,12 +44,14 @@ export default function BulletproofHero() {
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {checklist.map((item) => (
                 <li key={item} className="flex items-center gap-2.5 text-sm font-medium text-white/70">
-                  <CheckCircle2 size={15} className="shrink-0 text-action" strokeWidth={2.5} />
+                  {/* White check icons on navy — clean and readable */}
+                  <CheckCircle2 size={15} className="shrink-0 text-white/80" strokeWidth={2.5} />
                   {item}
                 </li>
               ))}
             </ul>
 
+            {/* CTA button: red bg, white text — strong contrast, works on navy */}
             <a href={`tel:${BUSINESS_INFO.phone}`} className="btn-action mt-10 inline-flex">
               <Phone size={15} strokeWidth={2.5} />
               Discuss Your Build

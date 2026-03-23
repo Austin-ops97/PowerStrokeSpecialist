@@ -3,60 +3,62 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
 body {
-  @apply bg-ink font-sans text-white antialiased;
-}
-
-main {
-  @apply flex-1;
+  @apply bg-white font-sans text-slate-900 antialiased;
 }
 
 @layer components {
-  /* Layout */
+  /* ── Layout ── */
   .wrap {
     @apply mx-auto max-w-7xl px-5 sm:px-8 lg:px-12;
   }
   .section-pad {
-    @apply py-20 sm:py-24 lg:py-32;
+    @apply py-20 sm:py-24 lg:py-28;
   }
 
-  /* Section label — dash + uppercase text in Texas blue */
+  /* ── Section eyebrow label ── */
   .label {
-    @apply inline-flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.28em] text-accent;
+    @apply inline-flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-navy;
   }
 
-  /* Primary CTA — Texas red */
-  .btn-red {
-    @apply inline-flex min-h-[52px] items-center justify-center gap-2.5 bg-brand px-8 text-[11px] font-black uppercase tracking-[0.2em] text-white transition-all duration-200 hover:bg-brand-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
+  /* ── Buttons ── */
+  /* Primary — navy blue */
+  .btn-navy {
+    @apply inline-flex min-h-[50px] items-center justify-center gap-2 bg-navy px-7 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-navy/20 transition-all duration-200 hover:bg-navy-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
   }
-  /* Secondary CTA — Texas blue */
-  .btn-blue {
-    @apply inline-flex min-h-[52px] items-center justify-center gap-2.5 bg-accent px-8 text-[11px] font-black uppercase tracking-[0.2em] text-white transition-all duration-200 hover:bg-accent-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
+  /* Action — Texas red */
+  .btn-action {
+    @apply inline-flex min-h-[50px] items-center justify-center gap-2 bg-action px-7 text-[11px] font-black uppercase tracking-[0.18em] text-white transition-all duration-200 hover:bg-action-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action focus-visible:ring-offset-2;
   }
-  /* Outline on dark bg */
-  .btn-outline-light {
-    @apply inline-flex min-h-[52px] items-center justify-center gap-2.5 border-2 border-white/25 px-8 text-[11px] font-black uppercase tracking-[0.2em] text-white transition-all duration-200 hover:border-white hover:bg-white hover:text-ink active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white;
+  /* Outline — navy border */
+  .btn-outline {
+    @apply inline-flex min-h-[50px] items-center justify-center gap-2 border-2 border-navy px-7 text-[11px] font-black uppercase tracking-[0.18em] text-navy transition-all duration-200 hover:bg-navy hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
   }
-  /* Outline on light bg */
-  .btn-outline-dark {
-    @apply inline-flex min-h-[52px] items-center justify-center gap-2.5 border-2 border-ink px-8 text-[11px] font-black uppercase tracking-[0.2em] text-ink transition-all duration-200 hover:bg-ink hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink;
+  /* Outline on dark bg — white border */
+  .btn-outline-white {
+    @apply inline-flex min-h-[50px] items-center justify-center gap-2 border-2 border-white/30 px-7 text-[11px] font-black uppercase tracking-[0.18em] text-white transition-all duration-200 hover:border-white hover:bg-white hover:text-navy active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white;
   }
 
-  /* Form inputs */
+  /* ── Form inputs ── */
   .input-field {
-    @apply w-full border-0 border-b-2 border-zinc-200 bg-transparent px-0 py-3 text-zinc-900 font-medium outline-none transition-colors duration-150 placeholder:text-zinc-400 focus:border-brand;
+    @apply w-full rounded-none border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-navy focus:ring-2 focus:ring-navy/10;
   }
   .input-field-select {
-    @apply w-full border-0 border-b-2 border-zinc-200 bg-transparent px-0 py-3 text-zinc-900 font-medium outline-none transition-colors duration-150 focus:border-brand appearance-none cursor-pointer;
+    @apply w-full rounded-none border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-navy focus:ring-2 focus:ring-navy/10 cursor-pointer appearance-none;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply border border-slate-200 bg-white transition-shadow duration-300 hover:shadow-hover;
   }
 }
 
 .skip-link {
-  @apply absolute left-4 top-2 z-[80] -translate-y-24 bg-brand px-4 py-2 text-sm font-bold text-white transition-transform focus:translate-y-0;
+  @apply absolute left-4 top-2 z-[80] -translate-y-24 bg-navy px-4 py-2 text-sm font-bold text-white transition-transform focus:translate-y-0;
 }
 
 @media (prefers-reduced-motion: reduce) {

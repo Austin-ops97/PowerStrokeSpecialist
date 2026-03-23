@@ -3,28 +3,27 @@ import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <section className="relative flex min-h-[80vh] items-center bg-ink">
-      <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-80" />
-      <div className="wrap relative">
+    <section className="bg-white">
+      <div className="wrap flex min-h-[80vh] flex-col items-start justify-center py-20">
         <span className="label">
-          <span className="h-px w-6 bg-accent" />
+          <span className="h-px w-5 bg-navy" />
           404
         </span>
-        <h1 className="mt-5 text-[clamp(72px,14vw,160px)] font-black leading-none tracking-tighter text-white/10">
+        <h1 className="mt-5 text-[clamp(80px,18vw,200px)] font-black leading-none tracking-tighter text-slate-100">
           404
         </h1>
-        <h2 className="-mt-4 text-4xl font-black tracking-tighter text-white sm:text-5xl">
+        <h2 className="-mt-3 text-4xl font-black tracking-tighter text-slate-900 sm:text-5xl">
           Page Not Found.
         </h2>
-        <p className="mt-5 max-w-md text-base font-medium leading-relaxed text-white/50">
+        <p className="mt-4 max-w-md text-base font-medium leading-relaxed text-slate-500">
           That page doesn&apos;t exist. Head back home to explore our services or give us a call.
         </p>
-        <div className="mt-10 flex flex-wrap gap-4">
-          <Link href="/" className="btn-red">
+        <div className="mt-9 flex flex-wrap gap-3">
+          <Link href="/" className="btn-navy">
             <ArrowLeft size={15} strokeWidth={2.5} />
             Back to Home
           </Link>
-          <Link href="/services" className="btn-outline-light">
+          <Link href="/services" className="btn-outline">
             View Services
           </Link>
         </div>

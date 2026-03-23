@@ -1,5 +1,5 @@
-import CTABanner from "@/components/CTABanner";
 import ContactForm from "@/components/ContactForm";
+import CTABanner from "@/components/CTABanner";
 import GoogleMap from "@/components/GoogleMap";
 import { BUSINESS_INFO, HOURS } from "@/lib/constants";
 import { buildMetadata } from "@/lib/site";
@@ -7,86 +7,99 @@ import { Clock3, Facebook, MapPin, Phone } from "lucide-react";
 
 export const metadata = buildMetadata(
   "Contact",
-  "Contact our Baytown TX diesel mechanic shop for Power Stroke bulletproofing, diagnostics, general repair, and appointment requests.",
+  "Contact Power Stroke Specialist in Baytown TX — schedule service, ask about bulletproofing, or request a quote for any diesel or auto repair.",
   "/contact"
 );
 
 export default function ContactPage() {
   return (
     <>
-      {/* Page hero */}
-      <section className="relative bg-ink">
-        <div className="pointer-events-none absolute inset-0 bg-dot-grid bg-dot-md opacity-80" />
-        <div className="wrap section-pad relative">
+      {/* Header — slate-50 */}
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="wrap section-pad">
           <span className="label">
-            <span className="h-px w-6 bg-accent" />
+            <span className="h-px w-5 bg-navy" />
             Get in Touch
           </span>
-          <h1 className="mt-5 text-[clamp(44px,7vw,88px)] font-black leading-[0.92] tracking-tighter text-white">
+          <h1 className="mt-5 text-[clamp(40px,7vw,80px)] font-black leading-[0.93] tracking-tighter text-slate-900">
             Contact Us.
           </h1>
-          <p className="mt-7 max-w-lg text-base font-medium leading-relaxed text-white/50">
+          <p className="mt-5 max-w-lg text-lg font-medium leading-relaxed text-slate-500">
             Questions, quotes, or appointment requests — we respond during shop hours.
           </p>
         </div>
       </section>
 
-      {/* Form + info */}
-      <section className="bg-chalk-card border-y border-zinc-100">
+      {/* Form + info — white */}
+      <section className="bg-white">
         <div className="wrap section-pad">
           <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
+
             {/* Form */}
             <ContactForm />
 
             {/* Info */}
-            <div className="space-y-0 divide-y divide-zinc-100">
-              <InfoRow icon={MapPin} label="Address">
-                {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
-              </InfoRow>
-              <InfoRow icon={Phone} label="Phone">
-                <a
-                  href={`tel:${BUSINESS_INFO.phone}`}
-                  className="font-bold text-brand transition-colors hover:text-brand-dark"
-                >
-                  {BUSINESS_INFO.phoneFormatted}
-                </a>
-              </InfoRow>
-              <InfoRow icon={Clock3} label="Hours">
-                <ul className="space-y-2">
-                  {HOURS.map((entry) => (
-                    <li key={entry.day} className="flex justify-between gap-6 text-sm">
-                      <span className="font-semibold text-ink">{entry.day}</span>
-                      <span className={entry.isOpen ? "text-zinc-500" : "text-zinc-300"}>
-                        {entry.hours}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </InfoRow>
-              <InfoRow icon={Facebook} label="Facebook">
-                <a
-                  href={BUSINESS_INFO.facebookUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-brand transition-colors hover:text-brand-dark"
-                >
-                  Visit our page
-                </a>
-              </InfoRow>
+            <div>
+              <h2 className="text-xl font-black tracking-tight text-slate-900">Shop Info</h2>
+              <div className="mt-6 divide-y divide-slate-100 border border-slate-200">
+
+                <InfoRow icon={MapPin} label="Address" accent="navy">
+                  <span className="text-sm font-semibold text-slate-700">
+                    {BUSINESS_INFO.address}<br />
+                    {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
+                  </span>
+                </InfoRow>
+
+                <InfoRow icon={Phone} label="Phone" accent="action">
+                  <a
+                    href={`tel:${BUSINESS_INFO.phone}`}
+                    className="text-sm font-bold text-action hover:text-action-dark"
+                  >
+                    {BUSINESS_INFO.phoneFormatted}
+                  </a>
+                </InfoRow>
+
+                <InfoRow icon={Clock3} label="Hours" accent="navy">
+                  <ul className="space-y-2">
+                    {HOURS.map((e) => (
+                      <li key={e.day} className="flex justify-between gap-6">
+                        <span className="text-sm font-semibold text-slate-700">{e.day}</span>
+                        <span className={`text-sm font-medium ${e.isOpen ? "text-slate-500" : "text-slate-300"}`}>
+                          {e.hours}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </InfoRow>
+
+                <InfoRow icon={Facebook} label="Facebook" accent="navy">
+                  <a
+                    href={BUSINESS_INFO.facebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-navy hover:text-navy-dark"
+                  >
+                    Visit our page →
+                  </a>
+                </InfoRow>
+
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Map — full width */}
-      <GoogleMap />
+      <div className="border-y border-slate-200">
+        <GoogleMap />
+      </div>
 
       <CTABanner
-        heading="Prefer to Talk It Through?"
+        heading="Prefer to Talk?"
         subtext="Call now and we'll help plan your next repair or upgrade."
         buttonText={BUSINESS_INFO.phoneFormatted}
         buttonLink={`tel:${BUSINESS_INFO.phone}`}
-        variant="dark"
+        variant="navy"
       />
     </>
   );
@@ -95,20 +108,23 @@ export default function ContactPage() {
 function InfoRow({
   icon: Icon,
   label,
+  accent,
   children,
 }: {
   icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
   label: string;
+  accent: "navy" | "action";
   children: React.ReactNode;
 }) {
+  const bg = accent === "navy" ? "bg-navy-50 text-navy" : "bg-action-50 text-action";
   return (
-    <div className="flex gap-5 py-6">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-brand text-white">
-        <Icon size={16} strokeWidth={2.5} />
+    <div className="flex gap-4 p-5">
+      <span className={`flex h-9 w-9 shrink-0 items-center justify-center ${bg}`}>
+        <Icon size={15} strokeWidth={2} />
       </span>
       <div>
-        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-zinc-400">{label}</p>
-        <div className="mt-1.5 text-sm font-medium text-zinc-600">{children}</div>
+        <p className="mb-2 text-[10px] font-black uppercase tracking-[0.22em] text-slate-400">{label}</p>
+        {children}
       </div>
     </div>
   );

@@ -17,12 +17,12 @@ const inter = Inter({
 
 export const metadata: Metadata = buildMetadata(
   "Home",
-  "Power Stroke Specialist is a Baytown TX diesel mechanic specializing in Power Stroke bulletproofing, diagnostics, and complete automotive repair.",
+  "Power Stroke Specialist — Baytown TX diesel mechanic specializing in Ford Power Stroke bulletproofing, diagnostics, and complete automotive repair.",
   "/"
 );
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const localBusinessSchema = {
+  const schema = {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
     name: BUSINESS_INFO.name,
@@ -41,23 +41,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       latitude: BUSINESS_INFO.coordinates.lat,
       longitude: BUSINESS_INFO.coordinates.lng,
     },
-    openingHoursSpecification: HOURS.map((entry) => ({
+    openingHoursSpecification: HOURS.map((e) => ({
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: entry.day,
-      opens: entry.isOpen ? "08:00" : "00:00",
-      closes: entry.isOpen ? "18:00" : "00:00",
+      dayOfWeek: e.day,
+      opens: e.isOpen ? "08:00" : "00:00",
+      closes: e.isOpen ? "18:00" : "00:00",
     })),
     sameAs: [BUSINESS_INFO.facebookUrl],
     areaServed: "Texas",
-    makesOffer: SERVICES.map((service) => ({
+    makesOffer: SERVICES.map((s) => ({
       "@type": "Offer",
-      itemOffered: { "@type": "Service", name: service.name },
+      itemOffered: { "@type": "Service", name: s.name },
     })),
   };
 
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen bg-ink font-sans text-white">
+      <body className="min-h-screen bg-white font-sans text-slate-900">
         <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
         <PageTransition>
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Script
           id="local-business-json-ld"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
         {process.env.NEXT_PUBLIC_GA_ID ? (
           <>

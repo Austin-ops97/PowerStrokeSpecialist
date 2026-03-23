@@ -3,41 +3,38 @@
 import { SERVICES } from "@/lib/constants";
 import { iconMap } from "@/lib/icon-map";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronRight, Wrench } from "lucide-react";
+import { ChevronDown, Wrench } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-type ServiceAccordionProps = { limit?: number };
-
-export default function ServiceAccordion({ limit = 6 }: ServiceAccordionProps) {
+export default function ServiceAccordion({ limit = 6 }: { limit?: number }) {
   const items = SERVICES.slice(0, limit);
   const [openId, setOpenId] = useState(items[0]?.id ?? "");
 
   return (
-    <div className="divide-y divide-zinc-100 border-y border-zinc-100">
+    <div className="divide-y divide-slate-100 border border-slate-200 bg-white">
       {items.map((service) => {
         const Icon = iconMap[service.icon] ?? Wrench;
         const expanded = openId === service.id;
 
         return (
-          <div key={service.id} className="bg-chalk-card">
+          <div key={service.id}>
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-zinc-50"
               onClick={() => setOpenId(expanded ? "" : service.id)}
               aria-expanded={expanded}
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-slate-50"
             >
-              <span className="flex items-center gap-4">
-                {/* Texas blue icon when open */}
-                <span className={`flex h-9 w-9 shrink-0 items-center justify-center transition-all ${expanded ? "bg-accent text-white" : "bg-accent/10 text-accent"}`}>
-                  <Icon size={16} strokeWidth={2} />
+              <span className="flex items-center gap-3">
+                <span className={`flex h-8 w-8 shrink-0 items-center justify-center transition-all ${expanded ? "bg-navy text-white" : "bg-navy-50 text-navy"}`}>
+                  <Icon size={15} strokeWidth={2} />
                 </span>
-                <span className="font-bold text-ink">{service.name}</span>
+                <span className="text-sm font-bold text-slate-900">{service.name}</span>
               </span>
-              <ChevronRight
-                size={18}
+              <ChevronDown
+                size={16}
                 strokeWidth={2.5}
-                className={`shrink-0 text-zinc-300 transition-transform duration-300 ${expanded ? "rotate-90 text-accent" : ""}`}
+                className={`shrink-0 text-slate-400 transition-transform duration-300 ${expanded ? "rotate-180 text-navy" : ""}`}
               />
             </button>
 
@@ -47,17 +44,16 @@ export default function ServiceAccordion({ limit = 6 }: ServiceAccordionProps) {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="border-t border-zinc-100 px-6 pb-6 pt-4 pl-[calc(1.5rem+36px+1rem)]">
-                    <p className="text-sm leading-relaxed text-zinc-500">{service.longDescription}</p>
+                  <div className="border-t border-slate-100 bg-slate-50 px-5 pb-5 pt-4 pl-[calc(1.25rem+32px+0.75rem)]">
+                    <p className="text-sm leading-relaxed text-slate-500">{service.longDescription}</p>
                     <Link
                       href="/contact"
-                      className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.18em] text-brand hover:text-brand-dark"
+                      className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-navy hover:text-navy-dark"
                     >
-                      Request Appointment
-                      <ChevronRight size={13} strokeWidth={3} />
+                      Request Appointment <ChevronDown size={12} strokeWidth={3} className="-rotate-90" />
                     </Link>
                   </div>
                 </motion.div>

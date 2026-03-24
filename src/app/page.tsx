@@ -128,6 +128,36 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── DRAG STRIP PHOTO ─── */}
+      <section className="relative overflow-hidden" style={{ height: "clamp(320px, 55vh, 620px)" }}>
+        {/* Photo */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://2pbqjgxycewduhvh.public.blob.vercel-storage.com/PowerStroke/467700419_10231728681578635_282292225606239125_n.jpg"
+          alt="Performance build on the drag strip"
+          className="h-full w-full object-cover object-center"
+          loading="lazy"
+        />
+
+        {/* Gradient overlay — dark at bottom, light at top */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
+
+        {/* Text — bottom left */}
+        <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 lg:p-14">
+          <span className="inline-flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-white/50">
+            <span className="h-px w-5 bg-action" />
+            Performance
+          </span>
+          <h2 className="mt-3 text-3xl font-black leading-tight tracking-tighter text-white sm:text-4xl lg:text-5xl">
+            Built for the Strip.<br />
+            <span className="text-white/60">Trusted on the Road.</span>
+          </h2>
+          <p className="mt-3 max-w-lg text-sm font-medium leading-relaxed text-white/55 sm:text-base">
+            From daily drivers to full performance builds — we take every job seriously.
+          </p>
+        </div>
+      </section>
+
       {/* ─── BULLETPROOF ─── */}
       <BulletproofHero />
 

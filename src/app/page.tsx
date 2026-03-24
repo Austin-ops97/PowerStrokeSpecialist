@@ -105,7 +105,7 @@ export default function HomePage() {
 
           {/* Single "Don't see it?" strip */}
           <ScrollReveal>
-            <div className="mt-5 flex flex-col gap-4 border border-slate-200 bg-slate-50 p-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div className="mt-5 flex flex-col gap-4 rounded-lg border border-slate-200 bg-slate-50 p-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
               <p className="text-sm font-semibold text-slate-600">
                 <span className="font-black text-slate-900">Don&apos;t see your service?</span>
                 &nbsp; If it has an engine, we can work on it — call and we&apos;ll confirm.
@@ -188,7 +188,7 @@ export default function HomePage() {
               </p>
 
               {/* Stats */}
-              <div className="mt-8 grid grid-cols-2 divide-x divide-slate-200 border border-slate-200 sm:grid-cols-3">
+              <div className="mt-8 grid grid-cols-2 divide-x divide-slate-200 overflow-hidden rounded-lg border border-slate-200 sm:grid-cols-3">
                 {[
                   { v: "100+", l: "Engines", mobileHide: true },
                   { v: "10+",  l: "Years", mobileHide: false },
@@ -225,7 +225,7 @@ export default function HomePage() {
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shopValues.map((v, i) => (
               <ScrollReveal key={v.label} delay={i * 0.05} className={v.label === "Any Size Job" ? "hidden sm:block" : ""}>
-                <div className="border border-slate-200 p-6 transition-shadow hover:shadow-card">
+                <div className="rounded-lg border border-slate-200 p-6 transition-shadow hover:shadow-card">
                   <v.icon size={20} strokeWidth={2} className="text-navy" />
                   <h3 className="mt-4 text-base font-black text-slate-900">{v.label}</h3>
                   <p className="mt-1 text-sm font-medium leading-relaxed text-slate-500">{v.sub}</p>
@@ -289,7 +289,7 @@ export default function HomePage() {
 
             {/* Info panel */}
             <ScrollReveal delay={0.1}>
-              <div className="divide-y divide-slate-100 border border-slate-200">
+              <div className="divide-y divide-slate-100 overflow-hidden rounded-lg border border-slate-200">
 
                 {/* Phone */}
                 <div className="flex items-center gap-4 p-4 sm:p-5">

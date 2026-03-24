@@ -1,6 +1,11 @@
+"use client";
+
 import { BUSINESS_INFO, STATS } from "@/lib/constants";
 import StatCounter from "@/components/StatCounter";
+import { motion } from "framer-motion";
 import { CheckCircle2, Phone } from "lucide-react";
+
+const ease = [0.22, 1, 0.36, 1];
 
 const checklist = [
   "ARP head stud installation",
@@ -22,49 +27,89 @@ export default function BulletproofHero() {
 
           {/* Left — text */}
           <div>
-            {/* Eyebrow: white text on navy — clear and readable */}
-            <span className="inline-flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-white/50">
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, ease }}
+              className="inline-flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-white/50"
+            >
               <span className="h-px w-5 bg-white/30" />
               Signature Service
-            </span>
+            </motion.span>
 
-            {/* Heading: all white — no red text on blue (contrast clash) */}
-            <h2 className="mt-5 text-5xl font-black tracking-tighter text-white sm:text-6xl">
+            <motion.h2
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: 0.06, ease }}
+              className="mt-5 text-5xl font-black tracking-tighter text-white sm:text-6xl"
+            >
               Power Stroke<br />Bulletproofing.
-            </h2>
+            </motion.h2>
 
-            {/* Red underline accent below heading — decorative only, not text */}
-            <div className="mt-4 h-1 w-16 bg-action" />
+            {/* Animated accent line */}
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 64 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease }}
+              className="mt-4 h-1 bg-action"
+            />
 
-            <p className="mt-5 max-w-md text-base font-medium leading-relaxed text-white/60">
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15, ease }}
+              className="mt-5 max-w-md text-base font-medium leading-relaxed text-white/60"
+            >
               The work we&apos;re known for across Texas. Every known Ford Power Stroke failure
               point addressed — so your engine outlasts everything else on the road.
-            </p>
+            </motion.p>
 
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-              {checklist.map((item) => (
-                <li key={item} className="flex items-center gap-2.5 text-sm font-medium text-white/70">
-                  {/* White check icons on navy — clean and readable */}
+              {checklist.map((item, i) => (
+                <motion.li
+                  key={item}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.25 + i * 0.06, ease }}
+                  className="flex items-center gap-2.5 text-sm font-medium text-white/70"
+                >
                   <CheckCircle2 size={15} className="shrink-0 text-white/80" strokeWidth={2.5} />
                   {item}
-                </li>
+                </motion.li>
               ))}
             </ul>
 
-            {/* CTA button: red bg, white text — strong contrast, works on navy */}
-            <a href={`tel:${BUSINESS_INFO.phone}`} className="btn-action mt-10 inline-flex">
+            <motion.a
+              href={`tel:${BUSINESS_INFO.phone}`}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.55, ease }}
+              className="btn-action mt-10 inline-flex"
+            >
               <Phone size={15} strokeWidth={2.5} />
               Discuss Your Build
-            </a>
+            </motion.a>
           </div>
 
           {/* Right — stats + callout */}
-          <div className="space-y-5">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease }}
+            className="space-y-5"
+          >
             {STATS.map((stat) => (
               <StatCounter key={stat.label} value={stat.value} label={stat.label} light />
             ))}
 
-            <div className="mt-4 border border-white/10 bg-white/5 p-6">
+            <div className="mt-4 rounded-lg border border-white/10 bg-white/5 p-6">
               <p className="text-sm font-bold text-white">
                 Specializing in Ford 6.0L and 7.3L Power Stroke engines.
               </p>
@@ -72,7 +117,7 @@ export default function BulletproofHero() {
                 Every job starts with a conversation. Call before you bring it in.
               </p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

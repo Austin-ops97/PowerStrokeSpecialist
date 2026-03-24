@@ -6,16 +6,27 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Phone, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const LOGO = "https://2pbqjgxycewduhvh.public.blob.vercel-storage.com/PowerStroke/Untitled_Artwork.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
+      <header
+        className={`sticky top-0 z-50 border-b bg-white/95 backdrop-blur-sm transition-all duration-300 ${
+          scrolled ? "border-slate-200 shadow-md" : "border-transparent"
+        }`}
+      >
         <div className="wrap flex h-[76px] items-center justify-between gap-4">
 
           {/* Logo */}

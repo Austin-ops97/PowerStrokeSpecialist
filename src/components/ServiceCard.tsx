@@ -13,13 +13,13 @@ export default function ServiceCard({ name, shortDescription, icon }: Props) {
     <motion.article
       whileHover={{ y: -3 }}
       transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col border border-slate-200 bg-white p-6 transition-shadow duration-300 hover:shadow-hover"
+      className="group relative flex flex-col rounded-lg border border-slate-200 bg-white p-6 transition-shadow duration-300 hover:shadow-hover"
     >
       {/* Navy left-border accent on hover */}
       <span className="absolute inset-y-0 left-0 w-0.5 origin-bottom scale-y-0 bg-navy transition-transform duration-300 group-hover:scale-y-100" />
 
       <div className="flex items-start justify-between">
-        <span className="flex h-11 w-11 items-center justify-center bg-navy-50 text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+        <span className="flex h-11 w-11 items-center justify-center rounded-md bg-navy-50 text-navy transition-colors group-hover:bg-navy group-hover:text-white">
           <Icon size={20} strokeWidth={2} />
         </span>
         <ArrowUpRight

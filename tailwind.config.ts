@@ -45,6 +45,31 @@ const config: Config = {
         "dot-sm": "20px 20px",
         "dot-md": "28px 28px",
       },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        "ken-burns": {
+          "0%": { transform: "scale(1) translate(0,0)" },
+          "100%": { transform: "scale(1.08) translate(-1%,-1%)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% center" },
+          "100%": { backgroundPosition: "200% center" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(220,38,38,0.3)" },
+          "50%": { boxShadow: "0 0 24px 4px rgba(220,38,38,0.15)" },
+        },
+      },
+      animation: {
+        float: "float 4s ease-in-out infinite",
+        "float-delayed": "float 4s ease-in-out 2s infinite",
+        "ken-burns": "ken-burns 20s ease-in-out infinite alternate",
+        shimmer: "shimmer 3s ease-in-out infinite",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+      },
     },
   },
   plugins: [],

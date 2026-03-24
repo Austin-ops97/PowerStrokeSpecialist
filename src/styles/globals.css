@@ -38,32 +38,32 @@ body {
   /* ── Buttons ── */
   /* Primary — navy blue */
   .btn-navy {
-    @apply inline-flex min-h-[50px] items-center justify-center gap-2 bg-navy px-7 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-navy/20 transition-all duration-200 hover:bg-navy-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
+    @apply inline-flex min-h-[50px] items-center justify-center gap-2 rounded-lg bg-navy px-7 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-navy/20 transition-all duration-200 hover:bg-navy-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
   }
   /* Action — Texas red */
   .btn-action {
-    @apply inline-flex min-h-[50px] items-center justify-center gap-2 bg-action px-7 text-[11px] font-black uppercase tracking-[0.18em] text-white transition-all duration-200 hover:bg-action-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action focus-visible:ring-offset-2;
+    @apply inline-flex min-h-[50px] items-center justify-center gap-2 rounded-lg bg-action px-7 text-[11px] font-black uppercase tracking-[0.18em] text-white transition-all duration-200 hover:bg-action-dark active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action focus-visible:ring-offset-2;
   }
   /* Outline — navy border */
   .btn-outline {
-    @apply inline-flex min-h-[50px] items-center justify-center gap-2 border-2 border-navy px-7 text-[11px] font-black uppercase tracking-[0.18em] text-navy transition-all duration-200 hover:bg-navy hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
+    @apply inline-flex min-h-[50px] items-center justify-center gap-2 rounded-lg border-2 border-navy px-7 text-[11px] font-black uppercase tracking-[0.18em] text-navy transition-all duration-200 hover:bg-navy hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2;
   }
   /* Outline on dark bg — white border */
   .btn-outline-white {
-    @apply inline-flex min-h-[50px] items-center justify-center gap-2 border-2 border-white/30 px-7 text-[11px] font-black uppercase tracking-[0.18em] text-white transition-all duration-200 hover:border-white hover:bg-white hover:text-navy active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white;
+    @apply inline-flex min-h-[50px] items-center justify-center gap-2 rounded-lg border-2 border-white/30 px-7 text-[11px] font-black uppercase tracking-[0.18em] text-white transition-all duration-200 hover:border-white hover:bg-white hover:text-navy active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white;
   }
 
   /* ── Form inputs ── */
   .input-field {
-    @apply w-full rounded-none border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-navy focus:ring-2 focus:ring-navy/10;
+    @apply w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-navy focus:ring-2 focus:ring-navy/10;
   }
   .input-field-select {
-    @apply w-full rounded-none border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-navy focus:ring-2 focus:ring-navy/10 cursor-pointer appearance-none;
+    @apply w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition-all focus:border-navy focus:ring-2 focus:ring-navy/10 cursor-pointer appearance-none;
   }
 
   /* ── Cards ── */
   .card {
-    @apply border border-slate-200 bg-white transition-shadow duration-300 hover:shadow-hover;
+    @apply rounded-lg border border-slate-200 bg-white transition-shadow duration-300 hover:shadow-hover;
   }
 }
 

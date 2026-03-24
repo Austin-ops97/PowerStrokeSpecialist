@@ -39,7 +39,9 @@ export default function Hero() {
               className="mt-6 text-[clamp(38px,5.5vw,76px)] font-black leading-[0.93] tracking-tighter text-slate-900"
             >
               The Diesel Shop<br />
-              <span className="text-navy">Baytown Trusts.</span>
+              <span className="bg-gradient-to-r from-navy via-navy-light to-navy bg-[length:200%_auto] bg-clip-text text-transparent animate-shimmer">
+                Baytown Trusts.
+              </span>
             </motion.h1>
 
             <motion.p
@@ -58,7 +60,7 @@ export default function Hero() {
               transition={{ duration: 0.45, delay: 0.28, ease }}
               className="mt-8 flex flex-wrap gap-3"
             >
-              <a href={`tel:${BUSINESS_INFO.phone}`} className="btn-action">
+              <a href={`tel:${BUSINESS_INFO.phone}`} className="btn-action animate-glow-pulse">
                 <Phone size={15} strokeWidth={2.5} />
                 {BUSINESS_INFO.phoneFormatted}
               </a>
@@ -99,9 +101,9 @@ export default function Hero() {
 
           {/* ── Right — wide shop photo with rounded corners ── */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.65, delay: 0.14, ease }}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.14, ease }}
             className="relative hidden lg:block"
           >
             {/* Subtle shadow offset behind */}
@@ -123,16 +125,16 @@ export default function Hero() {
               {/* Bottom gradient for badge legibility */}
               <div className="absolute inset-x-0 bottom-0 h-28 rounded-b-2xl bg-gradient-to-t from-black/55 to-transparent" />
 
-              {/* Navy stat badge — bottom left */}
-              <div className="absolute bottom-4 left-4 rounded-xl bg-navy px-5 py-3.5 text-white shadow-lg">
+              {/* Navy stat badge — bottom left — floating */}
+              <div className="absolute bottom-4 left-4 animate-float rounded-xl bg-navy px-5 py-3.5 text-white shadow-lg">
                 <p className="text-2xl font-black leading-none">100+</p>
                 <p className="mt-1 text-[9px] font-black uppercase tracking-[0.22em] text-white/65">
                   Bulletproofed Engines
                 </p>
               </div>
 
-              {/* Red stat badge — bottom right */}
-              <div className="absolute bottom-4 right-4 rounded-xl bg-action px-4 py-3.5 text-white shadow-lg">
+              {/* Red stat badge — bottom right — floating delayed */}
+              <div className="absolute bottom-4 right-4 animate-float-delayed rounded-xl bg-action px-4 py-3.5 text-white shadow-lg">
                 <p className="text-xl font-black leading-none">10+</p>
                 <p className="mt-1 text-[9px] font-black uppercase tracking-[0.2em] text-white/75">
                   Yrs Experience

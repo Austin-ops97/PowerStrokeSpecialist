@@ -16,26 +16,26 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
-        <div className="wrap flex h-[68px] items-center justify-between gap-4">
+        <div className="wrap flex h-[76px] items-center justify-between gap-4">
 
           {/* Logo */}
           <Link href="/" onClick={() => setOpen(false)} className="flex shrink-0 items-center gap-3">
-            <span className="relative h-11 w-11 shrink-0">
-              <Image src={LOGO} alt="Power Stroke Specialist" fill className="object-contain" sizes="44px" priority />
+            <span className="relative h-14 w-14 shrink-0">
+              <Image src={LOGO} alt="Power Stroke Specialist" fill className="object-contain" sizes="56px" priority />
             </span>
             <span className="hidden flex-col leading-none sm:flex">
-              <span className="text-[15px] font-black tracking-tight text-slate-900">POWER STROKE</span>
-              <span className="mt-0.5 text-[8px] font-black tracking-[0.38em] text-navy">SPECIALIST</span>
+              <span className="text-[16px] font-black tracking-tight text-slate-900">POWER STROKE</span>
+              <span className="mt-0.5 text-[9px] font-black tracking-[0.38em] text-navy">SPECIALIST</span>
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-8 lg:flex">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="relative text-[11px] font-black uppercase tracking-[0.2em] text-slate-500 transition-colors hover:text-navy after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-navy after:transition-transform after:duration-300 hover:after:scale-x-100"
+                className="relative text-sm font-black uppercase tracking-[0.15em] text-slate-500 transition-colors hover:text-navy after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-navy after:transition-transform after:duration-300 hover:after:scale-x-100"
               >
                 {link.label}
               </a>

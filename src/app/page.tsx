@@ -55,21 +55,25 @@ export default function HomePage() {
       {/* ─── SERVICES ─── */}
       <section id="services" className="bg-white">
         <div className="wrap py-14 sm:py-20 lg:py-28">
+
+          {/* Section header */}
           <ScrollReveal>
             <span className="label">
               <span className="h-px w-5 bg-navy" />
-              What We Do
+              Full-Service Shop
             </span>
             <h2 className="mt-4 text-4xl font-black tracking-tighter text-slate-900 sm:text-5xl">
               Bumper to Bumper.<br />
               <span className="text-navy">Gas &amp; Diesel.</span>
             </h2>
-            <p className="mt-3 max-w-xl text-base font-medium leading-relaxed text-slate-500">
-              If it has an engine, we work on it. From routine maintenance to complete rebuilds —
-              one shop, every service covered.
+            <p className="mt-3 max-w-2xl text-base font-medium leading-relaxed text-slate-500">
+              We are a complete, bumper-to-bumper repair shop for both gas and diesel vehicles.
+              The services listed below are just a sample of what we handle every day —
+              if it has an engine, bring it in.
             </p>
           </ScrollReveal>
 
+          {/* Service cards — common services */}
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s, i) => (
               <ScrollReveal key={s.id} delay={i * 0.04}>
@@ -78,34 +82,62 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Specialty callouts */}
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {/* Specialty highlight row */}
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <ScrollReveal>
-              <div className="flex gap-4 border border-navy/20 bg-navy-50 p-6">
-                <div className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy" />
+              <div className="flex items-start gap-4 border border-navy/20 bg-navy-50 p-6">
+                <div className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-navy" />
                 <div>
                   <p className="font-black text-navy">Power Stroke Bulletproofing</p>
-                  <p className="mt-1 text-sm text-slate-500">Our signature service — Ford 6.0L &amp; 7.3L reliability upgrades.</p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-500">
+                    Our signature service — Ford 6.0L &amp; 7.3L complete reliability upgrades.
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
-            <ScrollReveal delay={0.06}>
-              <div className="flex gap-4 border border-slate-200 bg-slate-50 p-6">
-                <div className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
+            <ScrollReveal delay={0.05}>
+              <div className="flex items-start gap-4 border border-slate-200 bg-slate-50 p-6">
+                <div className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-slate-400" />
                 <div>
-                  <p className="font-black text-slate-700">Aftermarket &amp; Upgrades</p>
-                  <p className="mt-1 text-sm text-slate-500">Lift kits, exhaust, tuning, suspension — tell us your goal.</p>
+                  <p className="font-black text-slate-700">Aftermarket &amp; Performance Upgrades</p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-500">
+                    Lift kits, exhaust, tuning, intake, suspension — you name it.
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          {/* "We do it all" callout banner */}
+          <ScrollReveal>
+            <div className="mt-6 border border-slate-200 bg-slate-50 p-6 sm:p-8">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-lg font-black text-slate-900">
+                    Don&apos;t see your service listed?
+                  </p>
+                  <p className="mt-1 max-w-xl text-sm font-medium leading-relaxed text-slate-500">
+                    We handle brakes, tires, engine rebuilds, fuel systems, power steering, electrical,
+                    exhaust, alignments, and much more. If it rolls and has an engine,
+                    we can diagnose and repair it. Call and we&apos;ll tell you exactly what we can do.
+                  </p>
+                </div>
+                <div className="flex shrink-0 flex-wrap gap-3">
+                  <a href="tel:8325976986" className="btn-action whitespace-nowrap">
+                    <Phone size={14} strokeWidth={2.5} />
+                    Call Us
+                  </a>
+                  <QuoteButton className="btn-outline whitespace-nowrap" />
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <div className="mt-7 flex flex-wrap items-center gap-4">
             <a href="#contact" className="btn-navy inline-flex">
               Schedule Service
               <ArrowRight size={14} strokeWidth={2.5} />
             </a>
-            <QuoteButton className="btn-outline inline-flex" />
           </div>
         </div>
       </section>

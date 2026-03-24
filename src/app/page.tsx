@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import QuoteButton from "@/components/QuoteButton";
 import ReviewCard from "@/components/ReviewCard";
 import ScrollReveal from "@/components/ScrollReveal";
-import ServiceCard from "@/components/ServiceCard";
 import TrustBadges from "@/components/TrustBadges";
 import { BUSINESS_INFO, HOURS, REVIEWS, SERVICES } from "@/lib/constants";
 import { buildMetadata } from "@/lib/site";
@@ -73,40 +72,46 @@ export default function HomePage() {
             </p>
           </ScrollReveal>
 
-          {/* Service cards — common services */}
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((s, i) => (
-              <ScrollReveal key={s.id} delay={i * 0.04}>
-                <ServiceCard name={s.name} shortDescription={s.shortDescription} icon={s.icon} />
-              </ScrollReveal>
-            ))}
-          </div>
+          {/* Clean service list — two columns, no cards */}
+          <ScrollReveal>
+            <div className="mt-10 grid divide-y divide-slate-100 border-y border-slate-200 sm:grid-cols-2 sm:divide-y-0 sm:[&>*:nth-child(odd)]:border-r sm:[&>*:nth-child(odd)]:border-slate-200">
+              {[
+                ...SERVICES.map((s) => s.name),
+                "Power Stroke Bulletproofing",
+                "Aftermarket & Performance Upgrades",
+                "Engine Rebuilds",
+                "Brake Service & Repair",
+                "Fuel System Service",
+                "Power Steering",
+                "Exhaust Systems",
+                "Wheel Alignment",
+                "Suspension Repair",
+                "Electrical Diagnostics",
+              ].map((name) => (
+                <div key={name} className="flex items-center gap-3 px-1 py-3.5 sm:px-5">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-navy" />
+                  <span className="text-sm font-semibold text-slate-700">{name}</span>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
 
-          {/* Specialty highlight row */}
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <ScrollReveal>
-              <div className="flex items-start gap-4 border border-navy/20 bg-navy-50 p-6">
-                <div className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-navy" />
-                <div>
-                  <p className="font-black text-navy">Power Stroke Bulletproofing</p>
-                  <p className="mt-1 text-sm leading-relaxed text-slate-500">
-                    Our signature service — Ford 6.0L &amp; 7.3L complete reliability upgrades.
-                  </p>
-                </div>
+          {/* "Don't see it?" strip */}
+          <ScrollReveal>
+            <div className="mt-5 flex flex-col gap-4 border border-slate-200 bg-slate-50 p-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+              <p className="text-sm font-semibold text-slate-600">
+                <span className="font-black text-slate-900">Don&apos;t see your service?</span>
+                &nbsp; If it has an engine, we can work on it — call and we&apos;ll confirm.
+              </p>
+              <div className="flex shrink-0 flex-wrap gap-3">
+                <a href="tel:8325976986" className="btn-action whitespace-nowrap">
+                  <Phone size={14} strokeWidth={2.5} />
+                  Call Us
+                </a>
+                <QuoteButton className="btn-outline whitespace-nowrap" />
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.05}>
-              <div className="flex items-start gap-4 border border-slate-200 bg-slate-50 p-6">
-                <div className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-slate-400" />
-                <div>
-                  <p className="font-black text-slate-700">Aftermarket &amp; Performance Upgrades</p>
-                  <p className="mt-1 text-sm leading-relaxed text-slate-500">
-                    Lift kits, exhaust, tuning, intake, suspension — you name it.
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
+            </div>
+          </ScrollReveal>
 
           {/* "We do it all" callout banner */}
           <ScrollReveal>

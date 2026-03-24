@@ -68,17 +68,24 @@ export default function Hero() {
               </Link>
             </motion.div>
 
-            {/* Stats */}
+            {/* Stats — full-width grid, evenly spaced */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.44 }}
-              className="mt-12 flex divide-x divide-slate-200 border-t border-slate-200 pt-7"
+              className="mt-12 grid w-full grid-cols-3 border-t border-slate-200 pt-8"
             >
-              {STATS.map((stat) => (
-                <div key={stat.label} className="pr-8 first:pl-0">
-                  <p className="text-3xl font-black tracking-tight text-slate-900">{stat.value}</p>
-                  <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+              {STATS.map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className={`flex flex-col gap-2 py-2 ${
+                    i > 0 ? "border-l border-slate-200 pl-6 sm:pl-8" : "pr-6 sm:pr-8"
+                  }`}
+                >
+                  <p className="text-2xl font-black leading-none tracking-tight text-slate-900 sm:text-3xl">
+                    {stat.value}
+                  </p>
+                  <p className="text-[10px] font-bold uppercase leading-tight tracking-[0.18em] text-slate-400">
                     {stat.label}
                   </p>
                 </div>

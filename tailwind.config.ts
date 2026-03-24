@@ -51,8 +51,8 @@ const config: Config = {
           "50%": { transform: "translateY(-8px)" },
         },
         "ken-burns": {
-          "0%": { transform: "scale(1) translate(0,0)" },
-          "100%": { transform: "scale(1.08) translate(-1%,-1%)" },
+          "0%": { transform: "scale(1)" },
+          "100%": { transform: "scale(1.06)" },
         },
         shimmer: {
           "0%": { backgroundPosition: "-200% center" },

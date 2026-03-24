@@ -4,7 +4,7 @@ type Props = { name: string; text: string; rating: number };
 
 export default function ReviewCard({ name, text, rating }: Props) {
   return (
-    <article className="flex flex-col border border-slate-200 bg-white p-7 transition-shadow duration-300 hover:shadow-hover">
+    <article className="flex h-full flex-col border border-slate-200 bg-white p-7 transition-shadow duration-300 hover:shadow-hover">
       {/* Stars */}
       <div className="flex gap-1" aria-label={`${rating} out of 5 stars`}>
         {Array.from({ length: 5 }).map((_, i) => (

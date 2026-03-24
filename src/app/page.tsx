@@ -87,16 +87,22 @@ export default function HomePage() {
                 "Wheel Alignment",
                 "Suspension Repair",
                 "Electrical Diagnostics",
-              ].map((name) => (
-                <div key={name} className="flex items-center gap-3 px-1 py-3.5 sm:px-5">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-navy" />
-                  <span className="text-sm font-semibold text-slate-700">{name}</span>
-                </div>
-              ))}
+                "And Many More…",
+              ].map((name, idx, arr) => {
+                const isLast = idx === arr.length - 1;
+                return (
+                  <div key={name} className="flex items-center gap-3 px-1 py-3.5 sm:px-5">
+                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${isLast ? "bg-action" : "bg-navy"}`} />
+                    <span className={`text-sm font-semibold ${isLast ? "italic text-slate-400" : "text-slate-700"}`}>
+                      {name}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </ScrollReveal>
 
-          {/* "Don't see it?" strip */}
+          {/* Single "Don't see it?" strip */}
           <ScrollReveal>
             <div className="mt-5 flex flex-col gap-4 border border-slate-200 bg-slate-50 p-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
               <p className="text-sm font-semibold text-slate-600">
@@ -109,31 +115,6 @@ export default function HomePage() {
                   Call Us
                 </a>
                 <QuoteButton className="btn-outline whitespace-nowrap" />
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* "We do it all" callout banner */}
-          <ScrollReveal>
-            <div className="mt-6 border border-slate-200 bg-slate-50 p-6 sm:p-8">
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-lg font-black text-slate-900">
-                    Don&apos;t see your service listed?
-                  </p>
-                  <p className="mt-1 max-w-xl text-sm font-medium leading-relaxed text-slate-500">
-                    We handle brakes, tires, engine rebuilds, fuel systems, power steering, electrical,
-                    exhaust, alignments, and much more. If it rolls and has an engine,
-                    we can diagnose and repair it. Call and we&apos;ll tell you exactly what we can do.
-                  </p>
-                </div>
-                <div className="flex shrink-0 flex-wrap gap-3">
-                  <a href="tel:8325976986" className="btn-action whitespace-nowrap">
-                    <Phone size={14} strokeWidth={2.5} />
-                    Call Us
-                  </a>
-                  <QuoteButton className="btn-outline whitespace-nowrap" />
-                </div>
               </div>
             </div>
           </ScrollReveal>
@@ -237,9 +218,9 @@ export default function HomePage() {
               What Customers Say.
             </h2>
           </ScrollReveal>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
             {REVIEWS.map((r, i) => (
-              <ScrollReveal key={r.id} delay={i * 0.08}>
+              <ScrollReveal key={r.id} delay={i * 0.08} className="h-full">
                 <ReviewCard name={r.name} text={r.text} rating={r.rating} />
               </ScrollReveal>
             ))}
@@ -270,7 +251,7 @@ export default function HomePage() {
             </p>
           </ScrollReveal>
 
-          <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="mt-10 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Form */}
             <ScrollReveal>
               <ContactForm />
@@ -278,45 +259,47 @@ export default function HomePage() {
 
             {/* Info panel */}
             <ScrollReveal delay={0.1}>
-              <div className="space-y-0 divide-y divide-slate-100 border border-slate-200">
+              <div className="divide-y divide-slate-100 border border-slate-200">
 
-                <div className="flex gap-4 p-5">
+                {/* Phone */}
+                <div className="flex items-center gap-4 p-5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-action-50 text-action">
                     <Phone size={16} strokeWidth={2} />
                   </span>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Phone</p>
                     <a href={`tel:${BUSINESS_INFO.phone}`}
-                      className="mt-1 block text-xl font-black text-slate-900 hover:text-action">
+                      className="mt-0.5 block text-xl font-black text-slate-900 hover:text-action">
                       {BUSINESS_INFO.phoneFormatted}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex gap-4 p-5">
+                {/* Address */}
+                <div className="flex items-center gap-4 p-5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-navy-50 text-navy">
                     <MapPin size={16} strokeWidth={2} />
                   </span>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Address</p>
-                    <p className="mt-1 text-sm font-semibold text-slate-700">
-                      {BUSINESS_INFO.address}<br />
-                      {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
+                    <p className="mt-0.5 text-sm font-semibold text-slate-700">
+                      {BUSINESS_INFO.address}, {BUSINESS_INFO.city}, {BUSINESS_INFO.state} {BUSINESS_INFO.zip}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 p-5">
+                {/* Hours */}
+                <div className="flex items-start gap-4 p-5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-navy-50 text-navy">
                     <Clock3 size={16} strokeWidth={2} />
                   </span>
-                  <div>
+                  <div className="flex-1">
                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Hours</p>
-                    <ul className="mt-2 space-y-1.5">
+                    <ul className="mt-2">
                       {HOURS.map((e) => (
-                        <li key={e.day} className="flex justify-between gap-8">
-                          <span className="text-sm font-semibold text-slate-700">{e.day}</span>
-                          <span className={`text-sm ${e.isOpen ? "text-slate-500" : "text-slate-300"}`}>{e.hours}</span>
+                        <li key={e.day} className="grid grid-cols-[120px_1fr] py-1.5 text-sm">
+                          <span className="font-semibold text-slate-700">{e.day}</span>
+                          <span className={e.isOpen ? "text-slate-500" : "text-slate-300"}>{e.hours}</span>
                         </li>
                       ))}
                     </ul>

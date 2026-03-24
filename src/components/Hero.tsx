@@ -73,13 +73,17 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.44 }}
-              className="mt-12 grid w-full grid-cols-3 border-t border-slate-200 pt-8"
+              className="mt-12 grid w-full grid-cols-2 border-t border-slate-200 pt-8 sm:grid-cols-3"
             >
               {STATS.map((stat, i) => (
                 <div
                   key={stat.label}
-                  className={`flex flex-col gap-2 py-2 ${
-                    i > 0 ? "border-l border-slate-200 pl-6 sm:pl-8" : "pr-6 sm:pr-8"
+                  className={`flex-col gap-2 py-2 ${
+                    i === 0
+                      ? "hidden pr-6 sm:flex sm:pr-8"
+                      : i === 1
+                        ? "flex pr-4 sm:border-l sm:border-slate-200 sm:pl-8 sm:pr-0"
+                        : "flex border-l border-slate-200 pl-4 sm:pl-8"
                   }`}
                 >
                   <p className="text-2xl font-black leading-none tracking-tight text-slate-900 sm:text-3xl">

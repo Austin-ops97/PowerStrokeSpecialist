@@ -34,7 +34,7 @@ const shopValues = [
   { icon: Wrench,      label: "Power Stroke Experts",  sub: "Deep Ford 6.0L and 7.3L specialization." },
   { icon: Gauge,       label: "Advanced Diagnostics",  sub: "We find the real problem — not a guess." },
   { icon: ShieldCheck, label: "Trusted Across Texas",  sub: "Customers drive from all over to see us." },
-  { icon: BadgeCheck,  label: "Any Size Job",          sub: "Oil changes to complete engine rebuilds." },
+  { icon: BadgeCheck,  label: "Any Size Job",          sub: "Oil changes to rebuilt engine installs." },
   { icon: Truck,       label: "Fleet Support",         sub: "Keep your commercial vehicles in service." },
 ];
 
@@ -79,7 +79,7 @@ export default function HomePage() {
                 ...SERVICES.map((s) => s.name),
                 "Power Stroke Bulletproofing",
                 "Aftermarket & Performance Upgrades",
-                "Engine Rebuilds",
+                "Rebuilt Engine Installs",
                 "Brake Service & Repair",
                 "Fuel System Service",
                 "Power Steering",
@@ -90,8 +90,9 @@ export default function HomePage() {
                 "And Many More…",
               ].map((name, idx, arr) => {
                 const isLast = idx === arr.length - 1;
+                const hideOnMobile = idx >= 10 && !isLast;
                 return (
-                  <div key={name} className="flex items-center gap-3 px-1 py-3.5 sm:px-5">
+                  <div key={name} className={`${hideOnMobile ? "hidden sm:flex" : "flex"} items-center gap-3 px-1 py-3.5 sm:px-5`}>
                     <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${isLast ? "bg-action" : "bg-navy"}`} />
                     <span className={`text-sm font-semibold ${isLast ? "italic text-slate-400" : "text-slate-700"}`}>
                       {name}
@@ -187,14 +188,14 @@ export default function HomePage() {
               </p>
 
               {/* Stats */}
-              <div className="mt-8 grid grid-cols-3 divide-x divide-slate-200 border border-slate-200">
+              <div className="mt-8 grid grid-cols-2 divide-x divide-slate-200 border border-slate-200 sm:grid-cols-3">
                 {[
-                  { v: "100+", l: "Engines" },
-                  { v: "10+",  l: "Years" },
-                  { v: "Gas+Diesel", l: "Engines" },
+                  { v: "100+", l: "Engines", mobileHide: true },
+                  { v: "10+",  l: "Years", mobileHide: false },
+                  { v: "Gas+Diesel", l: "Engines", mobileHide: false },
                 ].map((s) => (
-                  <div key={s.l + s.v} className="px-4 py-5 text-center">
-                    <p className="text-2xl font-black tracking-tight text-navy">{s.v}</p>
+                  <div key={s.l + s.v} className={`${s.mobileHide ? "hidden sm:block" : ""} px-3 py-4 text-center sm:px-4 sm:py-5`}>
+                    <p className="text-xl font-black tracking-tight text-navy sm:text-2xl">{s.v}</p>
                     <p className="mt-1 text-[9px] font-black uppercase tracking-widest text-slate-400">{s.l}</p>
                   </div>
                 ))}
@@ -223,7 +224,7 @@ export default function HomePage() {
           {/* Values grid */}
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shopValues.map((v, i) => (
-              <ScrollReveal key={v.label} delay={i * 0.05}>
+              <ScrollReveal key={v.label} delay={i * 0.05} className={v.label === "Any Size Job" ? "hidden sm:block" : ""}>
                 <div className="border border-slate-200 p-6 transition-shadow hover:shadow-card">
                   <v.icon size={20} strokeWidth={2} className="text-navy" />
                   <h3 className="mt-4 text-base font-black text-slate-900">{v.label}</h3>
@@ -280,7 +281,7 @@ export default function HomePage() {
             </p>
           </ScrollReveal>
 
-          <div className="mt-10 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="mt-10 grid items-start gap-6 sm:gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Form */}
             <ScrollReveal>
               <ContactForm />
@@ -291,7 +292,7 @@ export default function HomePage() {
               <div className="divide-y divide-slate-100 border border-slate-200">
 
                 {/* Phone */}
-                <div className="flex items-center gap-4 p-5">
+                <div className="flex items-center gap-4 p-4 sm:p-5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-action-50 text-action">
                     <Phone size={16} strokeWidth={2} />
                   </span>
@@ -305,7 +306,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Address */}
-                <div className="flex items-center gap-4 p-5">
+                <div className="flex items-center gap-4 p-4 sm:p-5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-navy-50 text-navy">
                     <MapPin size={16} strokeWidth={2} />
                   </span>
@@ -318,7 +319,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Hours */}
-                <div className="flex items-start gap-4 p-5">
+                <div className="flex items-start gap-4 p-4 sm:p-5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-navy-50 text-navy">
                     <Clock3 size={16} strokeWidth={2} />
                   </span>

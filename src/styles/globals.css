@@ -8,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 /* Offset anchor targets so sticky navbar doesn't cover them */

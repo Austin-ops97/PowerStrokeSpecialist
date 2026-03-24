@@ -149,11 +149,10 @@ export default function HomePage() {
             Performance
           </span>
           <h2 className="mt-3 text-3xl font-black leading-tight tracking-tighter text-white sm:text-4xl lg:text-5xl">
-            Built for the Strip.<br />
-            <span className="text-white/60">Trusted on the Road.</span>
+            We Work on Your Toys Too.
           </h2>
           <p className="mt-3 max-w-lg text-sm font-medium leading-relaxed text-white/55 sm:text-base">
-            From daily drivers to full performance builds — we take every job seriously.
+            Dragsters, race builds, weekend warriors — bring it in.
           </p>
         </div>
       </section>

@@ -5,7 +5,7 @@ import { iconMap } from "@/lib/icon-map";
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 
-const ease = [0.22, 1, 0.36, 1];
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function TrustBadges() {
   return (

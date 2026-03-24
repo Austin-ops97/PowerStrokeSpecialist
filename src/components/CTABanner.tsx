@@ -12,7 +12,7 @@ type Props = {
   variant?: "action" | "navy";
 };
 
-const ease = [0.22, 1, 0.36, 1];
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function CTABanner({ heading, subtext, buttonText, buttonLink, variant = "navy" }: Props) {
   const isPhone = buttonLink.startsWith("tel:");

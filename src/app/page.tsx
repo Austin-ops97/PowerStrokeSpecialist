@@ -1,3 +1,4 @@
+import BackToTop from "@/components/BackToTop";
 import BulletproofHero from "@/components/BulletproofHero";
 import CTABanner from "@/components/CTABanner";
 import ContactForm from "@/components/ContactForm";
@@ -73,8 +74,8 @@ export default function HomePage() {
           </ScrollReveal>
 
           {/* Clean service list — two columns, no cards */}
-          <ScrollReveal>
-            <div className="mt-10 grid divide-y divide-slate-100 border-y border-slate-200 sm:grid-cols-2 sm:divide-y-0 sm:[&>*:nth-child(odd)]:border-r sm:[&>*:nth-child(odd)]:border-slate-200">
+          <ScrollReveal direction="scale">
+            <div className="mt-10 grid divide-y divide-slate-100 rounded-lg border border-slate-200 sm:grid-cols-2 sm:divide-y-0 sm:[&>*:nth-child(odd)]:border-r sm:[&>*:nth-child(odd)]:border-slate-200">
               {[
                 ...SERVICES.map((s) => s.name),
                 "Power Stroke Bulletproofing",
@@ -92,9 +93,12 @@ export default function HomePage() {
                 const isLast = idx === arr.length - 1;
                 const hideOnMobile = idx >= 10 && !isLast;
                 return (
-                  <div key={name} className={`${hideOnMobile ? "hidden sm:flex" : "flex"} items-center gap-3 px-1 py-3.5 sm:px-5`}>
-                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${isLast ? "bg-action" : "bg-navy"}`} />
-                    <span className={`text-sm font-semibold ${isLast ? "italic text-slate-400" : "text-slate-700"}`}>
+                  <div
+                    key={name}
+                    className={`${hideOnMobile ? "hidden sm:flex" : "flex"} group items-center gap-3 px-3 py-3.5 transition-all duration-200 hover:bg-slate-50 sm:px-5`}
+                  >
+                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full transition-transform duration-200 group-hover:scale-150 ${isLast ? "bg-action" : "bg-navy"}`} />
+                    <span className={`text-sm font-semibold transition-colors duration-200 ${isLast ? "italic text-slate-400" : "text-slate-700 group-hover:text-navy"}`}>
                       {name}
                     </span>
                   </div>
@@ -120,23 +124,25 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          <div className="mt-7 flex flex-wrap items-center gap-4">
-            <a href="#contact" className="btn-navy inline-flex">
-              Schedule Service
-              <ArrowRight size={14} strokeWidth={2.5} />
-            </a>
-          </div>
+          <ScrollReveal>
+            <div className="mt-7 flex flex-wrap items-center gap-4">
+              <a href="#contact" className="btn-navy inline-flex">
+                Schedule Service
+                <ArrowRight size={14} strokeWidth={2.5} />
+              </a>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ─── DRAG STRIP PHOTO ─── */}
       <section className="relative overflow-hidden" style={{ height: "clamp(320px, 55vh, 620px)" }}>
-        {/* Photo */}
+        {/* Photo with Ken Burns animation */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://2pbqjgxycewduhvh.public.blob.vercel-storage.com/PowerStroke/467700419_10231728681578635_282292225606239125_n.jpg"
           alt="Performance build on the drag strip"
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full animate-ken-burns object-cover object-center"
           loading="lazy"
         />
 
@@ -177,7 +183,7 @@ export default function HomePage() {
 
           {/* Story + photo */}
           <div className="mt-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-            <ScrollReveal>
+            <ScrollReveal direction="left">
               <p className="text-base font-medium leading-relaxed text-slate-500">
                 We work on and fix all sorts of vehicle issues. Our team is knowledgeable, skilled,
                 and dedicated to making vehicles run like new again.
@@ -203,7 +209,7 @@ export default function HomePage() {
             </ScrollReveal>
 
             {/* Shop photo */}
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal delay={0.1} direction="right">
               <div className="relative">
                 <div className="absolute -bottom-3 -right-3 h-full w-full rounded-2xl border-2 border-navy/15" />
                 <div className="relative overflow-hidden rounded-2xl border border-slate-200" style={{ aspectRatio: "16/10" }}>
@@ -211,7 +217,7 @@ export default function HomePage() {
                   <img
                     src={SHOP_IMG}
                     alt="Power Stroke Specialist shop exterior"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                   <div className="absolute inset-x-0 bottom-0 rounded-b-2xl bg-navy px-5 py-2.5">
                     <p className="text-xs font-bold text-white/80">711 Massey Tompkins Rd · Baytown, TX 77521</p>
@@ -224,9 +230,11 @@ export default function HomePage() {
           {/* Values grid */}
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shopValues.map((v, i) => (
-              <ScrollReveal key={v.label} delay={i * 0.05} className={v.label === "Any Size Job" ? "hidden sm:block" : ""}>
-                <div className="rounded-lg border border-slate-200 p-6 transition-shadow hover:shadow-card">
-                  <v.icon size={20} strokeWidth={2} className="text-navy" />
+              <ScrollReveal key={v.label} delay={i * 0.06} className={v.label === "Any Size Job" ? "hidden sm:block" : ""}>
+                <div className="group rounded-lg border border-slate-200 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-hover">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-navy-50 text-navy transition-all duration-300 group-hover:bg-navy group-hover:text-white">
+                    <v.icon size={20} strokeWidth={2} />
+                  </span>
                   <h3 className="mt-4 text-base font-black text-slate-900">{v.label}</h3>
                   <p className="mt-1 text-sm font-medium leading-relaxed text-slate-500">{v.sub}</p>
                 </div>
@@ -250,18 +258,20 @@ export default function HomePage() {
           </ScrollReveal>
           <div className="mt-10 grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
             {REVIEWS.map((r, i) => (
-              <ScrollReveal key={r.id} delay={i * 0.08} className="h-full">
+              <ScrollReveal key={r.id} delay={i * 0.1} className="h-full">
                 <ReviewCard name={r.name} text={r.text} rating={r.rating} />
               </ScrollReveal>
             ))}
           </div>
-          <div className="mt-8">
-            <a href={BUSINESS_INFO.facebookUrl} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:text-navy-dark">
-              <Facebook size={15} strokeWidth={2} />
-              Leave a Review on Facebook
-            </a>
-          </div>
+          <ScrollReveal>
+            <div className="mt-8">
+              <a href={BUSINESS_INFO.facebookUrl} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-bold text-navy transition-colors hover:text-navy-dark">
+                <Facebook size={15} strokeWidth={2} />
+                Leave a Review on Facebook
+              </a>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -283,31 +293,31 @@ export default function HomePage() {
 
           <div className="mt-10 grid items-start gap-6 sm:gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Form */}
-            <ScrollReveal>
+            <ScrollReveal direction="left">
               <ContactForm />
             </ScrollReveal>
 
             {/* Info panel */}
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal delay={0.1} direction="right">
               <div className="divide-y divide-slate-100 overflow-hidden rounded-lg border border-slate-200">
 
                 {/* Phone */}
-                <div className="flex items-center gap-4 p-4 sm:p-5">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-action-50 text-action">
+                <div className="group flex items-center gap-4 p-4 transition-colors duration-200 hover:bg-slate-50 sm:p-5">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-action-50 text-action transition-transform duration-300 group-hover:scale-110">
                     <Phone size={16} strokeWidth={2} />
                   </span>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Phone</p>
                     <a href={`tel:${BUSINESS_INFO.phone}`}
-                      className="mt-0.5 block text-xl font-black text-slate-900 hover:text-action">
+                      className="mt-0.5 block text-xl font-black text-slate-900 transition-colors hover:text-action">
                       {BUSINESS_INFO.phoneFormatted}
                     </a>
                   </div>
                 </div>
 
                 {/* Address */}
-                <div className="flex items-center gap-4 p-4 sm:p-5">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-navy-50 text-navy">
+                <div className="group flex items-center gap-4 p-4 transition-colors duration-200 hover:bg-slate-50 sm:p-5">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-navy-50 text-navy transition-transform duration-300 group-hover:scale-110">
                     <MapPin size={16} strokeWidth={2} />
                   </span>
                   <div>
@@ -319,8 +329,8 @@ export default function HomePage() {
                 </div>
 
                 {/* Hours */}
-                <div className="flex items-start gap-4 p-4 sm:p-5">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-navy-50 text-navy">
+                <div className="group flex items-start gap-4 p-4 transition-colors duration-200 hover:bg-slate-50 sm:p-5">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-navy-50 text-navy transition-transform duration-300 group-hover:scale-110">
                     <Clock3 size={16} strokeWidth={2} />
                   </span>
                   <div className="flex-1">
@@ -342,7 +352,7 @@ export default function HomePage() {
 
           {/* Map */}
           <div className="mt-10">
-            <ScrollReveal>
+            <ScrollReveal direction="scale">
               <GoogleMap />
             </ScrollReveal>
           </div>
@@ -357,6 +367,9 @@ export default function HomePage() {
         buttonLink={`tel:${BUSINESS_INFO.phone}`}
         variant="action"
       />
+
+      {/* ─── BACK TO TOP ─── */}
+      <BackToTop />
     </>
   );
 }

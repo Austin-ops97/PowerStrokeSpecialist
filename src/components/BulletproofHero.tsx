@@ -5,7 +5,7 @@ import StatCounter from "@/components/StatCounter";
 import { motion } from "framer-motion";
 import { CheckCircle2, Phone } from "lucide-react";
 
-const ease = [0.22, 1, 0.36, 1];
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const checklist = [
   "ARP head stud installation",

@@ -1,3 +1,4 @@
+import { Phone } from "lucide-react";
 import Link from "next/link";
 
 type Props = {
@@ -9,26 +10,46 @@ type Props = {
 };
 
 export default function CTABanner({ heading, subtext, buttonText, buttonLink, variant = "navy" }: Props) {
-  const isExternal = buttonLink.startsWith("tel:") || buttonLink.startsWith("mailto:");
-  const btnClass = variant === "action" ? "btn-outline-white" : "btn-outline-white";
+  const isPhone = buttonLink.startsWith("tel:");
   const bg = variant === "action" ? "bg-action" : "bg-navy";
 
-  const btn = isExternal
-    ? <a href={buttonLink} className={btnClass}>{buttonText}</a>
-    : <Link href={buttonLink} className={btnClass}>{buttonText}</Link>;
-
   return (
-    <section className={bg}>
-      <div className="wrap section-pad">
-        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl font-black tracking-tighter text-white sm:text-5xl">{heading}</h2>
-            {subtext && (
-              <p className="mt-3 text-base font-medium text-white/65">{subtext}</p>
-            )}
-          </div>
-          {btn}
+    <section className={`${bg} py-14 sm:py-20`}>
+      <div className="wrap text-center">
+        {/* Heading */}
+        <h2 className="text-3xl font-black tracking-tighter text-white sm:text-4xl lg:text-5xl">
+          {heading}
+        </h2>
+        {subtext && (
+          <p className="mx-auto mt-3 max-w-lg text-base font-medium text-white/65 sm:text-lg">
+            {subtext}
+          </p>
+        )}
+
+        {/* Big phone number / CTA */}
+        <div className="mt-8">
+          {isPhone ? (
+            <a
+              href={buttonLink}
+              className="group inline-flex items-center justify-center gap-3 transition-opacity hover:opacity-90"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white/25">
+                <Phone size={22} strokeWidth={2.5} className="text-white" />
+              </span>
+              <span className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+                {buttonText}
+              </span>
+            </a>
+          ) : (
+            <Link href={buttonLink} className="btn-outline-white mx-auto">
+              {buttonText}
+            </Link>
+          )}
         </div>
+
+        {isPhone && (
+          <p className="mt-3 text-sm font-semibold text-white/45">Mon – Fri &nbsp;8:00 AM – 6:00 PM</p>
+        )}
       </div>
     </section>
   );

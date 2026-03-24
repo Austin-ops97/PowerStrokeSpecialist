@@ -192,10 +192,9 @@ export const REVIEWS = [
 ] as const;
 
 export const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Contact", href: "/contact" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ] as const;
 
 export const TRUST_BADGES = [
@@ -208,5 +207,5 @@ export const TRUST_BADGES = [
 export const STATS = [
   { value: "100+", label: "Engines Bulletproofed" },
   { value: "10+", label: "Years Experience" },
-  { value: "2", label: "Engine Types Specialized" },
+  { value: "Gas & Diesel", label: "Engines We Service" },
 ] as const;

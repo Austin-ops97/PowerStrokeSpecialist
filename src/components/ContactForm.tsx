@@ -31,7 +31,7 @@ export default function ContactForm() {
       <h2 className="text-3xl font-black tracking-tight text-slate-900">Send a Message</h2>
       <p className="mt-1.5 text-sm font-medium text-slate-500">We respond during business hours.</p>
 
-      {state.errors && state.errors.length > 0 && (
+      {state.errors && (
         <div className="mt-5 flex items-center gap-2.5 border border-action/20 bg-action-50 p-4 text-sm font-semibold text-action-dark">
           <AlertTriangle size={16} strokeWidth={2.5} />
           Could not send your message. Please call us directly.
